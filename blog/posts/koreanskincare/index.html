@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Korean skincare — Pinboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fff8f3;
+    --card:#ffffff;
+    --ink:#33302e;
+    --ink-soft:#847d78;
+    --pink:#ff6f91;
+    --lavender:#8c7ae6;
+    --butter:#ffc94a;
+    --mint:#4fd1a5;
+    --radius:20px;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'Karla', sans-serif; line-height:1.6; position:relative; overflow-x:hidden;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+  }
+
+  .confetti{ position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
+  .confetti span{
+    position:absolute; border-radius:50%; opacity:0.35;
+    animation:floaty 14s ease-in-out infinite;
+  }
+  @keyframes floaty{ 0%,100%{ transform:translateY(0) translateX(0); } 50%{ transform:translateY(-26px) translateX(14px); } }
+
+  .wrap{ position:relative; z-index:1; max-width:1180px; margin:0 auto; padding:0 24px; }
+
+  header.hero{ padding:74px 0 40px; text-align:center; }
+  .kicker{
+    display:inline-flex; align-items:center; gap:8px;
+    background:#fff; border-radius:100px; padding:8px 18px; margin-bottom:22px;
+    font-family:'Karla', sans-serif; font-weight:700; font-size:12.5px; letter-spacing:0.04em;
+    color:var(--pink); box-shadow:0 4px 14px rgba(51,48,46,0.08);
+  }
+  .kicker::before{ content:'📌'; }
+  h1.title{
+    font-family:'Fredoka', sans-serif; font-weight:600;
+    font-size:clamp(2.2rem, 5.5vw, 3.4rem); margin:0 0 16px; color:var(--ink);
+    opacity:0; transform:scale(0.94);
+    animation:popIn 0.7s cubic-bezier(.34,1.56,.64,1) forwards 0.1s;
+  }
+  @keyframes popIn{ to{ opacity:1; transform:scale(1); } }
+  p.intro{
+    font-size:1.08rem; color:var(--ink-soft); max-width:560px; margin:0 auto;
+    opacity:0; animation:fadeUp 0.7s ease forwards 0.4s;
+  }
+  @keyframes fadeUp{ from{ opacity:0; transform:translateY(12px); } to{ opacity:1; transform:translateY(0); } }
+
+  /* masonry board */
+  .board{ columns:3 280px; column-gap:22px; padding:20px 0 70px; }
+  @media (max-width:900px){ .board{ columns:2 240px; } }
+  @media (max-width:560px){ .board{ columns:1; } }
+
+  .pin{
+    break-inside:avoid; margin-bottom:22px; background:var(--card);
+    border-radius:var(--radius); overflow:hidden; position:relative;
+    box-shadow:0 8px 22px rgba(51,48,46,0.08);
+    opacity:0; transform:translateY(26px) rotate(var(--tilt, -2deg));
+    transition:opacity 0.6s ease, transform 0.6s cubic-bezier(.2,.7,.2,1), box-shadow 0.3s ease;
+  }
+  .pin.is-visible{ opacity:1; transform:translateY(0) rotate(0deg); }
+  .pin:hover{ box-shadow:0 16px 32px rgba(51,48,46,0.16); transform:translateY(-4px) rotate(0deg); }
+
+  .tape{
+    position:absolute; top:-8px; left:50%; transform:translateX(-50%) rotate(-4deg);
+    width:74px; height:24px; opacity:0.85; z-index:3;
+    border-radius:2px;
+  }
+
+  .pin-media{ position:relative; width:100%; background:#faf5ee; display:flex; align-items:center; justify-content:center; }
+  .pin-media img{ width:100%; display:block; object-fit:contain; padding:18px; }
+  .pin-media.no-image{ aspect-ratio:1/1; font-size:12px; color:var(--ink-soft); }
+
+  .save-btn{
+    position:absolute; top:14px; right:14px; z-index:3;
+    background:var(--pink); color:#fff; border:none; border-radius:100px;
+    padding:8px 16px; font-family:'Karla',sans-serif; font-weight:700; font-size:12px;
+    opacity:0; transform:translateY(-6px);
+    transition:opacity 0.25s ease, transform 0.25s ease;
+    box-shadow:0 4px 10px rgba(255,111,145,0.4);
+  }
+  .pin:hover .save-btn{ opacity:1; transform:translateY(0); }
+
+  .pin-body{ padding:18px 18px 20px; }
+  .rank-chip{
+    display:inline-block; font-family:'Fredoka', sans-serif; font-weight:600; font-size:11px;
+    color:#fff; border-radius:8px; padding:3px 9px; margin-bottom:10px;
+  }
+  h3.pin-title{ font-family:'Fredoka', sans-serif; font-weight:600; font-size:1.1rem; margin:0 0 10px; line-height:1.28; }
+
+  .meta-row{ display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-bottom:12px; }
+  .price{ font-family:'Fredoka', sans-serif; font-weight:600; font-size:1rem; color:var(--ink); }
+  .rating-pill{
+    display:inline-flex; align-items:center; gap:4px; background:#fff4de;
+    color:#9a6b0a; border-radius:100px; padding:3px 10px; font-size:11.5px; font-weight:700;
+  }
+
+  ul.taglist{ list-style:none; padding:0; margin:0 0 16px; display:flex; flex-wrap:wrap; gap:6px; }
+  ul.taglist li{
+    font-size:11px; color:var(--ink-soft); background:#f4efe9; border-radius:100px; padding:4px 10px;
+  }
+
+  .cta{
+    display:inline-flex; align-items:center; gap:6px; width:100%; justify-content:center;
+    background:var(--ink); color:#fff; border-radius:100px; padding:11px 0; text-decoration:none;
+    font-family:'Karla', sans-serif; font-weight:700; font-size:13.5px;
+    transition:background 0.25s ease;
+  }
+  .cta:hover{ background:var(--pink); }
+
+  .flag{
+    display:inline-block; font-size:11px; color:#9a6b0a; background:#fff4de;
+    border-radius:8px; padding:4px 9px; margin-bottom:10px;
+  }
+
+  footer{ padding:36px 0 70px; color:var(--ink-soft); font-size:0.85rem; text-align:center; }
+</style>
+</head>
+<body>
+
+<div class="confetti">
+  <span style="width:14px;height:14px;background:var(--pink);top:8%;left:6%;"></span>
+  <span style="width:10px;height:10px;background:var(--lavender);top:20%;left:88%;animation-delay:2s;"></span>
+  <span style="width:16px;height:16px;background:var(--butter);top:60%;left:3%;animation-delay:4s;"></span>
+  <span style="width:12px;height:12px;background:var(--mint);top:75%;left:92%;animation-delay:1s;"></span>
+  <span style="width:9px;height:9px;background:var(--pink);top:45%;left:50%;animation-delay:3s;"></span>
+</div>
+
+<div class="wrap">
+  <header class="hero">
+    <span class="kicker">Saved to Korean skincare</span>
+    <h1 class="title">Korean skincare</h1>
+    <p class="intro">Consider this a briefing, not a listicle. 6 items in korean skincare, checked for build, value, and whether they&#39;d survive a Tuesday-night dinner rush.</p>
+  </header>
+
+  <div class="board">
+    
+    <div class="pin" style="--tilt:-3deg;">
+      <div class="tape" style="background:#ff6f91;"></div>
+      <div class="pin-media ">
+        <img src="https://m.media-amazon.com/images/I/61H7A+PRpIL._SL1500_.jpg" alt="COSRX Low pH Good Morning Gel Face Cleanser, Gentle Face Wash, 5.07 fl oz" loading="lazy">
+        <button class="save-btn" type="button" onclick="return false;">Save</button>
+      </div>
+      <div class="pin-body">
+        <span class="rank-chip" style="background:#ff6f91;">#01</span>
+        
+        <h3 class="pin-title">COSRX Low pH Good Morning Gel Face Cleanser, Gentle Face Wash, 5.07 fl oz</h3>
+        <div class="meta-row">
+          <span class="price">INR 1,428.36</span>
+          
+          <span class="rating-pill">★ 4.5 · 21,192</span>
+          
+        </div>
+        
+        <ul class="taglist"><li>Low pH Good Morning Gel Clea…</li><li>Cleanse for a Luminous Day a…</li><li>Key Ingredients: pH balanced…</li></ul>
+        
+        <a class="cta" href="https://amzn.to/4xcWIgr" target="_blank" rel="noopener sponsored">View on Amazon</a>
+      </div>
+    </div>
+    
+    <div class="pin" style="--tilt:2deg;">
+      <div class="tape" style="background:#8c7ae6;"></div>
+      <div class="pin-media ">
+        <img src="https://m.media-amazon.com/images/I/71efdgMUtML._SL1500_.jpg" alt="COSRX Snail Mucin 96% Peptide Booster Set, Self Care Gift Set for Women" loading="lazy">
+        <button class="save-btn" type="button" onclick="return false;">Save</button>
+      </div>
+      <div class="pin-body">
+        <span class="rank-chip" style="background:#8c7ae6;">#02</span>
+        
+        <h3 class="pin-title">COSRX Snail Mucin 96% Peptide Booster Set, Self Care Gift Set for Women</h3>
+        <div class="meta-row">
+          <span class="price">INR 1,732.46</span>
+          
+          <span class="rating-pill">★ 4.7 · 1,182</span>
+          
+        </div>
+        
+        <ul class="taglist"><li>Snail 96% Peptide Booster Se…</li><li>The Real Snail Essence: Form…</li><li>Skin Booster Peptide Toner S…</li></ul>
+        
+        <a class="cta" href="https://amzn.to/3TYyVSH" target="_blank" rel="noopener sponsored">View on Amazon</a>
+      </div>
+    </div>
+    
+    <div class="pin" style="--tilt:-1.5deg;">
+      <div class="tape" style="background:#ffc94a;"></div>
+      <div class="pin-media ">
+        <img src="https://m.media-amazon.com/images/I/516fOKVrTIL._SL1500_.jpg" alt="Beauty of Joseon Glow Serum Propolis and Niacinamide Hydrating Facial Soothing Moisturizer for Irritated Uneven Skin Tone, Korean Skin Care, 60ml, 2 Fl.Oz" loading="lazy">
+        <button class="save-btn" type="button" onclick="return false;">Save</button>
+      </div>
+      <div class="pin-body">
+        <span class="rank-chip" style="background:#e0a52a;">#03</span>
+        
+        <h3 class="pin-title">Beauty of Joseon Glow Serum Propolis and Niacinamide Hydrating Facial Soothing Moisturizer for Irritated Uneven Skin Tone, Korean Skin Care, 60ml, 2 Fl.Oz</h3>
+        <div class="meta-row">
+          <span class="price">INR1,429.12</span>
+          
+          <span class="rating-pill">★ 4.6 · 1,640</span>
+          
+        </div>
+        
+        <ul class="taglist"><li>Korean Skincare Brilliance: …</li><li>Glows and Exfoliates: Niacin…</li><li>Key ingredients: 60% Propoli…</li></ul>
+        
+        <a class="cta" href="https://amzn.to/3U85PjH" target="_blank" rel="noopener sponsored">View on Amazon</a>
+      </div>
+    </div>
+    
+    <div class="pin" style="--tilt:2.5deg;">
+      <div class="tape" style="background:#4fd1a5;"></div>
+      <div class="pin-media ">
+        <img src="https://m.media-amazon.com/images/I/71yPz5uLQXL._SL1500_.jpg" alt="Snail Mucin 92% Repair Serum Cream - Face Moisturizer Hydrating Anti Age Firming Wrinkle Reduction Daily Repair Snail Mucin Face Cream for Dry &amp; Sensitive Skin, All Skin Types-100 g/3.52 oz" loading="lazy">
+        <button class="save-btn" type="button" onclick="return false;">Save</button>
+      </div>
+      <div class="pin-body">
+        <span class="rank-chip" style="background:#2fb888;">#04</span>
+        
+        <h3 class="pin-title">Snail Mucin 92% Repair Serum Cream - Face Moisturizer Hydrating Anti Age Firming Wrinkle Reduction Daily Repair Snail Mucin Face Cream for Dry &amp; Sensitive Skin, All Skin Types-100 g/3.52 oz</h3>
+        <div class="meta-row">
+          <span class="price">INR954.97</span>
+          
+          <span class="rating-pill">★ 4.6 · 256</span>
+          
+        </div>
+        
+        <ul class="taglist"><li>❤️【 92% Snail Mucin Cream】Co…</li><li>❤️【Deep Moisturizing and Nou…</li><li>❤️【Snail Mucin Moisturizer】L…</li></ul>
+        
+        <a class="cta" href="https://amzn.to/3SfEc7S" target="_blank" rel="noopener sponsored">View on Amazon</a>
+      </div>
+    </div>
+    
+    <div class="pin" style="--tilt:-2deg;">
+      <div class="tape" style="background:#ff6f91;"></div>
+      <div class="pin-media ">
+        <img src="https://m.media-amazon.com/images/I/61IW-Y5O1YL._SL1500_.jpg" alt="Organic Korean sunscreen SPF50+, PA++++ Riceand Probiotics | Korean Skin Care Solution for All Skin TypesNourishing Skin Protection and UV Def" loading="lazy">
+        <button class="save-btn" type="button" onclick="return false;">Save</button>
+      </div>
+      <div class="pin-body">
+        <span class="rank-chip" style="background:#ff6f91;">#05</span>
+        
+        <h3 class="pin-title">Organic Korean sunscreen SPF50+, PA++++ Riceand Probiotics | Korean Skin Care Solution for All Skin TypesNourishing Skin Protection and UV Def</h3>
+        <div class="meta-row">
+          <span class="price">INR1,390.88</span>
+          
+          <span class="rating-pill">★ 4.2 · 58</span>
+          
+        </div>
+        
+        <ul class="taglist"><li>Rice Extract &amp; Probiotics Co…</li><li>Organic SPF 50+ PA++++ Broad…</li><li>Lightweight, Non-Greasy Text…</li></ul>
+        
+        <a class="cta" href="https://amzn.to/4xPInGr" target="_blank" rel="noopener sponsored">View on Amazon</a>
+      </div>
+    </div>
+    
+    <div class="pin" style="--tilt:-3deg;">
+      <div class="tape" style="background:#8c7ae6;"></div>
+      <div class="pin-media ">
+        <img src="https://m.media-amazon.com/images/I/51ubxqzNGIL._SL1000_.jpg" alt="BIODANCE Bio-Collagen Real Deep Mask, Hydrating Overnight Hydrogel Face Mask, Pore Minimizing, Elasticity, Plumping, Travel Essentials &amp; Self Care Gifts for Women, Korean Skin Care | 1.19oz(34g) x 4ea" loading="lazy">
+        <button class="save-btn" type="button" onclick="return false;">Save</button>
+      </div>
+      <div class="pin-body">
+        <span class="rank-chip" style="background:#8c7ae6;">#06</span>
+        
+        <h3 class="pin-title">BIODANCE Bio-Collagen Real Deep Mask, Hydrating Overnight Hydrogel Face Mask, Pore Minimizing, Elasticity, Plumping, Travel Essentials &amp; Self Care Gifts for Women, Korean Skin Care | 1.19oz(34g) x 4ea</h3>
+        <div class="meta-row">
+          <span class="price">INR 1,781.99</span>
+          
+          <span class="rating-pill">★ 4.5 · 45,648</span>
+          
+        </div>
+        
+        <ul class="taglist"><li>PORE TIGHTENING &amp; FIRMING: F…</li><li>DEEP HYDRATION: The oligo-hy…</li><li>BRIGHTENS THE SKIN: Formulat…</li></ul>
+        
+        <a class="cta" href="https://amzn.to/4bVYjyv" target="_blank" rel="noopener sponsored">View on Amazon</a>
+      </div>
+    </div>
+    
+  </div>
+
+  <footer>
+    <p>Board updated 20 Aug 2026, 15:57 · As an Amazon Associate, this page may earn from qualifying purchases.</p>
+  </footer>
+</div>
+
+<script>
+  const pins = document.querySelectorAll('.pin');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry, idx) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('is-visible'), (idx % 3) * 90);
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  pins.forEach(p => io.observe(p));
+</script>
+
+</body>
+</html>
