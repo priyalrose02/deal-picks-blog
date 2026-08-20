@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitchen Essentials — Field Notes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#0a0c12;
+    --panel:#12161f;
+    --panel-border:#1f2733;
+    --cyan:#3fe0d0;
+    --amber:#ff9b45;
+    --text:#edeff3;
+    --muted:#8b93a7;
+    --radius:14px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    background:var(--void);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{
+      animation-duration:0.001ms !important;
+      animation-iteration-count:1 !important;
+      transition-duration:0.001ms !important;
+      scroll-behavior:auto !important;
+    }
+  }
+
+  /* ambient background: drifting grid + glows */
+  .bg-grid{
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:
+      linear-gradient(rgba(63,224,208,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(63,224,208,0.05) 1px, transparent 1px);
+    background-size:48px 48px;
+    animation:drift 26s linear infinite;
+    mask-image:radial-gradient(ellipse 80% 60% at 50% 20%, black 40%, transparent 90%);
+  }
+  @keyframes drift{
+    from{ background-position:0 0, 0 0; }
+    to{ background-position:48px 96px, 48px 96px; }
+  }
+  .bg-glow{
+    position:fixed; z-index:0; pointer-events:none; border-radius:50%;
+    filter:blur(90px); opacity:0.28;
+  }
+  .bg-glow.cyan{ width:520px; height:520px; top:-120px; left:-100px; background:var(--cyan); animation:float1 18s ease-in-out infinite; }
+  .bg-glow.amber{ width:460px; height:460px; bottom:-140px; right:-100px; background:var(--amber); animation:float2 22s ease-in-out infinite; }
+  @keyframes float1{ 0%,100%{ transform:translate(0,0); } 50%{ transform:translate(40px,60px); } }
+  @keyframes float2{ 0%,100%{ transform:translate(0,0); } 50%{ transform:translate(-30px,-50px); } }
+
+  .wrap{ position:relative; z-index:1; max-width:920px; margin:0 auto; padding:0 24px; }
+
+  /* hero */
+  header.hero{ padding:96px 0 64px; text-align:left; }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--cyan); display:flex; align-items:center; gap:10px; margin-bottom:22px;
+  }
+  .eyebrow .dot{
+    width:7px; height:7px; border-radius:50%; background:var(--cyan);
+    box-shadow:0 0 0 0 rgba(63,224,208,0.6);
+    animation:pulseDot 2s ease-out infinite;
+  }
+  @keyframes pulseDot{
+    0%{ box-shadow:0 0 0 0 rgba(63,224,208,0.55); }
+    70%{ box-shadow:0 0 0 9px rgba(63,224,208,0); }
+    100%{ box-shadow:0 0 0 0 rgba(63,224,208,0); }
+  }
+  h1.title{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:clamp(2.4rem, 5.5vw, 4rem);
+    font-weight:700; line-height:1.05; margin:0 0 22px;
+    letter-spacing:-0.01em;
+    border-right:3px solid var(--cyan);
+    display:inline-block;
+    white-space:nowrap;
+    overflow:hidden;
+    animation:typeIn 1.6s steps(28,end) forwards, caretBlink 0.8s step-end infinite;
+    max-width:100%;
+  }
+  @keyframes typeIn{ from{ width:0; } to{ width:100%; } }
+  @keyframes caretBlink{ 50%{ border-color:transparent; } }
+  p.intro{ font-size:1.08rem; color:var(--muted); max-width:640px; opacity:0; animation:fadeUp 0.8s ease forwards 1.7s; }
+  @keyframes fadeUp{ from{ opacity:0; transform:translateY(14px); } to{ opacity:1; transform:translateY(0); } }
+
+  /* timeline */
+  .timeline{ position:relative; padding:20px 0 60px; }
+  .timeline::before{
+    content:''; position:absolute; left:23px; top:8px; bottom:8px; width:2px;
+    background:linear-gradient(180deg, var(--cyan), var(--panel-border) 85%);
+    opacity:0.5;
+  }
+  .signal{
+    position:absolute; left:19px; width:10px; height:10px; border-radius:50%;
+    background:var(--cyan); box-shadow:0 0 14px 3px rgba(63,224,208,0.7);
+    animation:travel 5s linear infinite;
+  }
+  @keyframes travel{ 0%{ top:0%; opacity:0; } 5%{ opacity:1; } 95%{ opacity:1; } 100%{ top:97%; opacity:0; } }
+
+  .card-row{ display:flex; gap:24px; margin-bottom:44px; position:relative; }
+  .node{
+    flex:0 0 48px; height:48px; border-radius:50%;
+    background:var(--panel); border:1px solid var(--panel-border);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono', monospace; font-size:10px; color:var(--cyan);
+    position:relative; z-index:2; margin-top:4px;
+  }
+
+  .card{
+    flex:1; min-width:0;
+    background:var(--panel); border:1px solid var(--panel-border); border-radius:var(--radius);
+    padding:26px; position:relative; overflow:hidden;
+    opacity:0; transform:translateY(28px);
+    transition:opacity 0.7s ease, transform 0.7s ease;
+  }
+  .card.is-visible{ opacity:1; transform:translateY(0); }
+  .card::after{
+    content:''; position:absolute; left:0; right:0; top:-100%; height:100%;
+    background:linear-gradient(180deg, transparent, rgba(63,224,208,0.18), transparent);
+    transition:top 1.1s ease;
+    pointer-events:none;
+  }
+  .card.is-visible::after{ top:120%; }
+
+  .card-media{
+    width:100%; aspect-ratio:4/3; border-radius:10px; overflow:hidden;
+    background:#0d1119; border:1px solid var(--panel-border);
+    margin-bottom:18px; display:flex; align-items:center; justify-content:center;
+  }
+  .card-media img{ width:100%; height:100%; object-fit:contain; padding:14px; }
+  .card-media.no-image{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--muted); }
+
+  h3.card-title{ font-family:'Space Grotesk', sans-serif; font-size:1.28rem; font-weight:600; margin:0 0 14px; }
+
+  .meta-row{ display:flex; flex-wrap:wrap; align-items:center; gap:18px; margin-bottom:16px; }
+  .price{ font-family:'IBM Plex Mono', monospace; font-size:1.05rem; color:var(--amber); }
+
+  .meter{ display:flex; align-items:center; gap:8px; }
+  .segments{ display:flex; gap:3px; }
+  .segments span{ width:14px; height:6px; border-radius:2px; background:var(--panel-border); }
+  .segments span.filled{ background:var(--cyan); }
+  .rating-label{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--muted); }
+
+  ul.specs{ list-style:none; padding:0; margin:0 0 22px; display:grid; gap:8px; }
+  ul.specs li{ font-size:0.92rem; color:var(--muted); padding-left:16px; position:relative; }
+  ul.specs li::before{ content:''; position:absolute; left:0; top:8px; width:6px; height:6px; background:var(--cyan); opacity:0.7; }
+
+  .cta{
+    display:inline-flex; align-items:center; gap:8px;
+    background:transparent; color:var(--cyan);
+    border:1px solid var(--cyan); border-radius:8px;
+    padding:11px 20px; text-decoration:none;
+    font-family:'IBM Plex Mono', monospace; font-size:13px; letter-spacing:0.03em;
+    transition:background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .cta:hover{ background:var(--cyan); color:var(--void); box-shadow:0 0 22px rgba(63,224,208,0.45); }
+
+  .flag{
+    display:inline-block; font-family:'IBM Plex Mono', monospace; font-size:11px;
+    color:var(--amber); border:1px dashed var(--amber); border-radius:6px;
+    padding:4px 8px; margin-bottom:14px;
+  }
+
+  footer{ padding:40px 0 80px; color:var(--muted); font-size:0.85rem; border-top:1px solid var(--panel-border); }
+  footer .gen{ font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.05em; }
+
+  @media (max-width:640px){
+    .card-row{ gap:14px; }
+    .node{ flex:0 0 36px; height:36px; font-size:8.5px; }
+    .timeline::before{ left:17px; }
+    .signal{ left:13px; width:8px; height:8px; }
+    header.hero{ padding:64px 0 44px; }
+    h1.title{ white-space:normal; border-right:none; animation:fadeUp 0.8s ease forwards; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="bg-glow cyan"></div>
+<div class="bg-glow amber"></div>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow"><span class="dot"></span>SYSTEM BRIEFING · 6 UNITS ANALYZED</div>
+    <h1 class="title">Kitchen Essentials</h1>
+    <p class="intro">Kitchen Essentials is one of those categories where the difference between &#39;fine&#39; and &#39;genuinely good&#39; rarely shows up in the photos. Below is a systems check on 6 pieces of kit — pulled apart, priced, and put back together here so you don&#39;t have to dig through spec sheets yourself.</p>
+  </header>
+
+  <div class="timeline">
+    <div class="signal"></div>
+    
+    <div class="card-row">
+      <div class="node">UNIT-01</div>
+      <div class="card">
+        
+        <div class="card-media ">
+          <img src="https://m.media-amazon.com/images/I/61NEz27pw3L._SL1086_.jpg" alt="Ninja Air Fryer MAX PRO, 6.2L Air Fryer Oven 2-Year Warranty, Oil-Free Cooking, Max Crisp Technology, Variable Air Flow, Chemical Free Cooking Surface, 6-in-1 Air Fry, Roast, Bake &amp; Reheat, Black" loading="lazy">
+        </div>
+        <h3 class="card-title">Ninja Air Fryer MAX PRO, 6.2L Air Fryer Oven 2-Year Warranty, Oil-Free Cooking, Max Crisp Technology, Variable Air Flow, Chemical Free Cooking Surface, 6-in-1 Air Fry, Roast, Bake &amp; Reheat, Black</h3>
+        <div class="meta-row">
+          <span class="price">₹9,998.00</span>
+          
+          <div class="meter">
+            <div class="segments">
+              
+              <span class="filled"></span>
+              
+              <span class="filled"></span>
+              
+              <span class="filled"></span>
+              
+              <span class="filled"></span>
+              
+              <span class=""></span>
+              
+            </div>
+            <span class="rating-label">4.4/5 · 2,213 reviews</span>
+          </div>
+          
+        </div>
+        
+        <ul class="specs">
+          <li>MAX CRISP TECHNOLOGY: 240°C superheated air delivers powerful 360° circulation for hotter, crispier results with little to no oil.</li><li>2000W RAPID HEAT PERFORMANCE: Delivers fast preheat and stable cooking temperatures for efficient, even results every time</li><li>SMART VARIABLE AIRFLOW: Designed for precision across every mode, the system dynamically adjusts from 1200 RPM (40°C) to 2600 RPM (240°C) for different cooking modes to optimize heat intensity and circulation.</li><li>GUILT FREE FRIED FOOD: Enjoy crispy textures using little to no oil — up to 75% less fat compared to deep-fried, hand-cut French fries.</li><li>6-IN-1 FUNCTIONALITY: Max Crisp | Air Fry | Air Roast | Bake | Reheat | Dehydrate — versatile cooking for snacks, mains, and desserts in one appliance.</li>
+        </ul>
+        
+        <a class="cta" href="https://amzn.to/3U5Xz3S" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="card-row">
+      <div class="node">UNIT-02</div>
+      <div class="card">
+        
+        <div class="card-media ">
+          <img src="https://m.media-amazon.com/images/I/71R8NU5Mu7L._SL1500_.jpg" alt="Milton Euroline Go Electro Stainless Steel Electric Kettle 1.2L, 1350 Watts, Portable Electric Kettle for Home, Office, Cool-touch Handle &amp; Lid, Auto Cut-off, Detachable 360 Degree Connector, Silver" loading="lazy">
+        </div>
+        <h3 class="card-title">Milton Euroline Go Electro Stainless Steel Electric Kettle 1.2L, 1350 Watts, Portable Electric Kettle for Home, Office, Cool-touch Handle &amp; Lid, Auto Cut-off, Detachable 360 Degree Connector, Silver</h3>
+        <div class="meta-row">
+          <span class="price">₹699.00</span>
+          
+          <div class="meter">
+            <div class="segments">
+              
+              <span class="filled"></span>
+              
+              <span class="filled"></span>
+              
+              <span class="filled"></span>
+              
+              <span class="filled"></span>
+              
+              <span class=""></span>
+              
+            </div>
+            <span class="rating-label">4.1/5 · 11,230 reviews</span>
+          </div>
+          
+        </div>
+        
+        <ul class="specs">
+          <li>The Go Electro Electric Kettle is a convenient appliance for quick and easy boiling of water, perfect for making coffee or tea.</li><li>The kettle is easy to clean with instructions to periodically descale with vinegar and water, and should not be immersed in water.</li><li>The kettle features a power indicator, convenient on-off button, automatic shut-off for safety and power saving, and a sturdy handle that can be touched immediately after use without burning hands.</li><li>The wide mouth and hinged lid make for easy cleaning and convenience, while the ergonomically designed body and convenient spout make pouring easy.</li><li>The product comes with a 1-year warranty against manufacturing defects, with the warranty valid with the original bill endorsed by the seller.</li>
+        </ul>
+        
+        <a class="cta" href="https://amzn.to/4zzFifx" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="card-row">
+      <div class="node">UNIT-03</div>
+      <div class="card">
+        
+        <div class="card-media ">
+          <img src="https://m.media-amazon.com/images/I/616tuMC2olL._SL1024_.jpg" alt="10KG Rice, Flour, Dry Food Storage Container, Decimeter with lid and Measuring Cup, Large Food Storage Container, airtight Dry Food Dispenser, Whole Wheat Rice Storage Box" loading="lazy">
+        </div>
+        <h3 class="card-title">10KG Rice, Flour, Dry Food Storage Container, Decimeter with lid and Measuring Cup, Large Food Storage Container, airtight Dry Food Dispenser, Whole Wheat Rice Storage Box</h3>
+        <div class="meta-row">
+          <span class="price">₹1,899.00</span>
+          
+          <div class="meter">
+            <div class="segments">
+              
+              <span class="filled"></span>
+              
+              <span class="filled"></span>
+              
+              <span class="filled"></span>
+              
+              <span class="filled"></span>
+              
+              <span class="filled"></span>
+              
+            </div>
+            <span class="rating-label">5.0/5 · 2 reviews</span>
+          </div>
+          
+        </div>
+        
+        <ul class="specs">
+          <li>[Light Luxury Design]: The large capacity rice bucket is made of pet material, ensuring durability and longevity, and the gold plated exterior adds a touch of luxury and elegance.</li><li>[Easy to Clean]: The large capacity rice container is easy to clean, ensuring a tidy kitchen, also can save storage space, allowing for a more organized and clutter kitchen environment.</li><li>[Large Capacity]: The light luxury rice bucket has spacious interior, can store a significant amount of rice, grains, and other cereals, meeting the daily needs of your family.</li><li>[Sealed Design]: The dampproof rice bucket features a sealed design that effectively blocks out moisture, extending the shelf life of your rice, grains, and cereals while preserving their nutritional value.</li><li>[Thickened Material]: The sealed rice dispenser has thickened material, effectively prevents pests and moisture, keeping your rice, grains, and cereals freshly and preserving their original texture and taste.</li>
+        </ul>
+        
+        <a class="cta" href="https://amzn.to/45EhJEr" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="card-row">
+      <div class="node">UNIT-04</div>
+      <div class="card">
+        
+        <div class="card-media ">
+          <img src="https://m.media-amazon.com/images/I/61TDmpQ6-2L._SL1500_.jpg" alt="Philips Viva Collection HD4928/01 2100-Watt Induction Cooktop | Fast Gas-Free Cooking | No LPG Required | Preset Indian Menus | Crystal Glass Plate | Auto-Off | Black" loading="lazy">
+        </div>
+        <h3 class="card-title">Philips Viva Collection HD4928/01 2100-Watt Induction Cooktop | Fast Gas-Free Cooking | No LPG Required | Preset Indian Menus | Crystal Glass Plate | Auto-Off | Black</h3>
+        <div class="meta-row">
+          <span class="price">₹3,260.00</span>
+          
+          <div class="meter">
+            <div class="segments">
+              
+              <span class="filled"></span>
+              
+              <span class="filled"></span>
+              
+              <span class="filled"></span>
+              
+              <span class="filled"></span>
+              
+              <span class=""></span>
+              
+            </div>
+            <span class="rating-label">4.2/5 · 56,466 reviews</span>
+          </div>
+          
+        </div>
+        
+        <ul class="specs">
+          <li>Joyful Effortless Cooking with Electromagnetic induction technology ensures high heating efficiency, cooks food faster than a gas stove seals nutrition into the food and prevents vitamin loss.</li><li>Programmed for Indian cooking needs</li><li>Enhance the cooking experience with 2100W cooktop that helps in fast cooking</li><li>Enjoy the convenience with touch start for ease of use &amp; 0-3 hours time setting</li><li>Comes with 5 preset menus &amp; Smart Sense technology that helps to detect right vessels for usage on Induction cooktop</li>
+        </ul>
+        
+        <a class="cta" href="https://amzn.to/3TXwaB4" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="card-row">
+      <div class="node">UNIT-05</div>
+      <div class="card">
+        
+        <div class="card-media ">
+          <img src="https://m.media-amazon.com/images/I/81m3Ry3b4QL._SL1500_.jpg" alt="Wood Chop Single-Piece Solid Acacia Wood Cutting &amp; Chopping Board | Reversible | Anti-Bacterial | No Varnish, No Dyes | Medium 38 × 20 × 1.5 cm | 1-Year Warranty" loading="lazy">
+        </div>
+        <h3 class="card-title">Wood Chop Single-Piece Solid Acacia Wood Cutting &amp; Chopping Board | Reversible | Anti-Bacterial | No Varnish, No Dyes | Medium 38 × 20 × 1.5 cm | 1-Year Warranty</h3>
+        <div class="meta-row">
+          <span class="price">₹1,375.00</span>
+          
+          <div class="meter">
+            <div class="segments">
+              
+              <span class="filled"></span>
+              
+              <span class="filled"></span>
+              
+              <span class="filled"></span>
+              
+              <span class="filled"></span>
+              
+              <span class=""></span>
+              
+            </div>
+            <span class="rating-label">4.3/5 · 1,188 reviews</span>
+          </div>
+          
+        </div>
+        
+        <ul class="specs">
+          <li>Long Life and Heavy-Duty Construction – Built to last, this cutting board is made from solid, high-quality wood designed to withstand daily use. Its durable construction makes it perfect for heavy chopping, slicing, and food preparation, ensuring years of reliable performance in your kitchen.</li><li>No Signs of Aging or Wear – Designed for longevity, this board maintains its smooth surface and natural beauty over time. Unlike cheaper alternatives, it resists scratches, stains, and discoloration, keeping your kitchen looking neat and professional.</li><li>High Stability Thanks to Heavy Weight – The substantial weight and solid build provide excellent stability during food prep. This minimizes slipping or wobbling, allowing for safer, more precise chopping and slicing.</li><li>100% Natural and Chemical-Free – Made entirely from natural wood with no chemical treatments, varnishes, dyes, or polishes, this cutting board offers a completely safe and healthy surface for preparing your meals.</li><li>Safe, Hygienic, and Eco-Friendly – The natural wood surface is gentle on knives while being resistant to bacteria, making it both hygienic and eco-friendly. It’s a healthy, safe, and sustainable choice for every kitchen.</li>
+        </ul>
+        
+        <a class="cta" href="https://amzn.to/4qqebzl" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="card-row">
+      <div class="node">UNIT-06</div>
+      <div class="card">
+        
+        <div class="card-media ">
+          <img src="https://m.media-amazon.com/images/I/51yWi0MnqjL._SL1000_.jpg" alt="Borosil Chef Delite 260 Watts Electric Chopper for Kitchen, Twin Blade Technology, 500 ml &#39;chop-n-store&#39; plastic bowl with lid, Vegetable Chopper, Cutter, Chop, Mince, Dice, Whisk, Blend, Transparent" loading="lazy">
+        </div>
+        <h3 class="card-title">Borosil Chef Delite 260 Watts Electric Chopper for Kitchen, Twin Blade Technology, 500 ml &#39;chop-n-store&#39; plastic bowl with lid, Vegetable Chopper, Cutter, Chop, Mince, Dice, Whisk, Blend, Transparent</h3>
+        <div class="meta-row">
+          <span class="price">₹1,649.00</span>
+          
+          <div class="meter">
+            <div class="segments">
+              
+              <span class="filled"></span>
+              
+              <span class="filled"></span>
+              
+              <span class="filled"></span>
+              
+              <span class="filled"></span>
+              
+              <span class=""></span>
+              
+            </div>
+            <span class="rating-label">3.7/5 · 885 reviews</span>
+          </div>
+          
+        </div>
+        
+        <ul class="specs">
+          <li>Efficient Chopping: Equipped with two sets of sharp-edged stainless steel blades, this chopper is designed to make chopping a breeze. Say goodbye to manual labor and hello to precision chopping. Avoid processing hard items such as frozen foods, ice, rice, spices, coffee, and beans, as well as thin liquids like water or milk. Always read the instructions before use.</li><li>Silent and Safe: The low noise motor ensures a quiet operation, and the inbuilt thermal auto cut-off feature enhances motor safety. Plus, the motor mount switch adds an extra layer of security.</li><li>Anti-Skid Convenience: The anti-skid rubber base not only keeps the chopper stable during operation but also doubles as a lid for the chopping container, adding versatility to your kitchen.</li><li>Leafy Greens, No Problem: Thanks to the dual blades, you can effortlessly chop leafy vegetables like spinach and more, saving you time and effort in the kitchen.</li><li>Easy to Use: Its simple push operation makes it user-friendly, and its portability ensures you can use it wherever you need it. Cleaning up is a breeze with its dishwasher-safe design. Enjoy the convenience of effortless maintenance.</li>
+        </ul>
+        
+        <a class="cta" href="https://amzn.to/4xSezcl" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+  </div>
+
+  <footer>
+    <div class="gen">GENERATED 20 Aug 2026, 12:31</div>
+    <p>As an Amazon Associate, this page may earn from qualifying purchases.</p>
+  </footer>
+</div>
+
+<script>
+  const cards = document.querySelectorAll('.card');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  cards.forEach(c => io.observe(c));
+</script>
+
+</body>
+</html>
