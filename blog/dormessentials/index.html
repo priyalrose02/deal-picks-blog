@@ -1,1 +1,532 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dorm Essentials — A Trusted Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#faf5ec;
+    --card:#ffffff;
+    --ink:#2a2723;
+    --ink-soft:#6b6459;
+    --moss:#3f5c43;
+    --moss-soft:#e7eee3;
+    --gold:#b8863b;
+    --line:#e6ddc9;
+    --radius:16px;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Work Sans', sans-serif; line-height:1.65;
+    position:relative;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+  }
+
+  /* subtle paper grain */
+  body::before{
+    content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+    opacity:0.5; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  }
+
+  .wrap{ position:relative; z-index:1; max-width:880px; margin:0 auto; padding:0 28px; }
+
+  header.hero{ padding:80px 0 48px; border-bottom:1px solid var(--line); }
+  .kicker{
+    font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--moss);
+    font-weight:600; margin-bottom:18px; display:block;
+  }
+  h1.title{
+    font-family:'Fraunces', serif; font-optical-sizing:auto;
+    font-size:clamp(2.3rem, 5vw, 3.6rem); font-weight:500; line-height:1.08;
+    margin:0 0 20px; color:var(--ink);
+    opacity:0; transform:translateY(16px);
+    animation:riseIn 0.9s cubic-bezier(.2,.7,.2,1) forwards 0.15s;
+  }
+  @keyframes riseIn{ to{ opacity:1; transform:translateY(0); } }
+  p.intro{
+    font-size:1.12rem; color:var(--ink-soft); max-width:600px; margin:0 0 28px;
+    opacity:0; animation:riseIn 0.9s cubic-bezier(.2,.7,.2,1) forwards 0.35s;
+  }
+
+  .trust-strip{
+    display:flex; flex-wrap:wrap; gap:10px;
+    opacity:0; animation:riseIn 0.9s cubic-bezier(.2,.7,.2,1) forwards 0.55s;
+  }
+  .badge{
+    display:inline-flex; align-items:center; gap:6px;
+    background:var(--moss-soft); color:var(--moss); border-radius:100px;
+    padding:7px 14px; font-size:12.5px; font-weight:600;
+  }
+  .badge svg{ width:13px; height:13px; flex-shrink:0; }
+
+  /* editorial rows */
+  .article{ padding:64px 0; }
+  .row{
+    display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;
+    padding:52px 0; border-bottom:1px solid var(--line);
+    opacity:0; transform:translateY(24px);
+    transition:opacity 0.7s ease, transform 0.7s ease;
+  }
+  .row:last-child{ border-bottom:none; }
+  .row.is-visible{ opacity:1; transform:translateY(0); }
+  .row.flip{ direction:rtl; }
+  .row.flip > *{ direction:ltr; }
+
+  .media{
+    position:relative; aspect-ratio:5/4; border-radius:var(--radius); overflow:hidden;
+    background:var(--card); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .media img{ width:100%; height:100%; object-fit:contain; padding:20px; transition:transform 0.5s ease; }
+  .row:hover .media img{ transform:scale(1.04); }
+  .media.no-image{ font-size:12px; color:var(--ink-soft); font-family:'Work Sans',sans-serif; }
+
+  .stamp{
+    position:absolute; top:16px; right:16px; z-index:2;
+    width:74px; height:74px; border-radius:50%;
+    background:var(--moss); color:#fff;
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    font-family:'Fraunces', serif; font-size:10px; font-weight:600; letter-spacing:0.04em;
+    line-height:1.15; padding:6px; transform:rotate(-14deg) scale(0);
+    box-shadow:0 4px 14px rgba(63,92,67,0.35);
+    transition:transform 0.55s cubic-bezier(.34,1.56,.64,1) 0.15s;
+    border:2px dashed rgba(255,255,255,0.55);
+  }
+  .row.is-visible .stamp{ transform:rotate(-14deg) scale(1); }
+
+  .eyebrow-num{
+    font-family:'Fraunces', serif; font-size:13px; color:var(--gold); font-weight:600;
+    margin-bottom:10px; display:block;
+  }
+  h3.name{
+    font-family:'Fraunces', serif; font-size:1.6rem; font-weight:500; margin:0 0 14px; line-height:1.25;
+    display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
+  }
+
+  .meta-row{ display:flex; flex-wrap:wrap; align-items:center; gap:16px; margin-bottom:16px; }
+  .price{ font-size:1.1rem; font-weight:600; color:var(--ink); }
+  .stars{ display:inline-flex; gap:2px; }
+  .stars svg{ width:15px; height:15px; }
+  .rating-txt{ font-size:12.5px; color:var(--ink-soft); }
+
+  ul.notes{ list-style:none; padding:0; margin:0 0 24px; }
+  ul.notes li{
+    font-size:0.95rem; color:var(--ink-soft); padding-left:22px; position:relative; margin-bottom:9px;
+  }
+  ul.notes li::before{
+    content:'✓'; position:absolute; left:0; top:0; color:var(--moss); font-weight:700; font-size:13px;
+  }
+
+  .cta{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--ink); color:var(--paper);
+    border-radius:100px; padding:13px 26px; text-decoration:none;
+    font-size:14px; font-weight:600;
+    transition:background 0.25s ease, transform 0.25s ease;
+  }
+  .cta:hover{ background:var(--moss); transform:translateY(-1px); }
+
+  .flag{
+    display:inline-block; font-size:12px; color:var(--gold);
+    background:#f6ecd9; border-radius:8px; padding:5px 10px; margin-bottom:14px;
+  }
+
+  footer{ padding:40px 0 80px; color:var(--ink-soft); font-size:0.85rem; border-top:1px solid var(--line); }
+  footer .gen{ font-size:11.5px; letter-spacing:0.04em; text-transform:uppercase; margin-bottom:6px; }
+
+  /* custom-swap banner */
+  .custom-cta{ padding:8px 0 60px; }
+  .custom-card{
+    display:flex; gap:28px; align-items:center;
+    background:var(--card); border:2px dashed var(--moss); border-radius:var(--radius);
+    padding:30px;
+  }
+  .custom-media{
+    flex:0 0 140px; aspect-ratio:1/1; border-radius:12px; overflow:hidden;
+    background:var(--paper); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .custom-media img{ width:100%; height:100%; object-fit:contain; padding:12px; }
+  .custom-copy .kicker{ margin-bottom:8px; }
+  .custom-copy h3{
+    font-family:'Fraunces', serif; font-weight:500; font-size:1.35rem; margin:0 0 10px; color:var(--ink);
+  }
+  .custom-copy p{ font-size:0.95rem; color:var(--ink-soft); margin:0 0 18px; max-width:480px; }
+
+  @media (max-width:600px){
+    .custom-card{ flex-direction:column; text-align:center; }
+    .custom-copy p{ max-width:none; }
+  }
+
+  @media (max-width:720px){
+    .row, .row.flip{ grid-template-columns:1fr; direction:ltr; gap:22px; padding:38px 0; }
+    header.hero{ padding:56px 0 36px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <span class="kicker">A Trusted Guide</span>
+    <h1 class="title">Dorm Essentials</h1>
+    <p class="intro">Every kitchen accumulates gear it never asked for. This is the opposite list: 9 picks in dorm essentials, chosen because each one earns its counter space rather than just occupying it.</p>
+    <div class="trust-strip">
+      <span class="badge"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>Checked line by line</span>
+      <span class="badge"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.7-10.3a1 1 0 00-1.4-1.4L9 9.6 7.7 8.3a1 1 0 00-1.4 1.4l2 2a1 1 0 001.4 0l4-4z" clip-rule="evenodd"/></svg>Prices verified</span>
+      <span class="badge"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a1 1 0 011 1v1.06A6 6 0 0116 9v3.59l1.7 1.7a1 1 0 01-.7 1.71H3a1 1 0 01-.7-1.71L4 12.59V9a6 6 0 015-5.94V2a1 1 0 011-1zM8.5 17a1.5 1.5 0 003 0h-3z"/></svg>Updated 22 Aug 2026, 21:07</span>
+    </div>
+  </header>
+
+  <div class="article">
+    
+    <div class="row ">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/71ZZNVQTu+L._AC_SL1500_.jpg" alt="EASELAND Twin XL Mattress Pad Cotton Pillow Top Mattress Topper White" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 01</span>
+        
+        <h3 class="name" title="EASELAND Twin XL Mattress Pad Cotton Pillow Top Mattress Topper White">EASELAND Twin XL Mattress Pad Cotton Pillow Top Mattress Topper White</h3>
+        <div class="meta-row">
+          <span class="price">INR3,495.77</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.5/5 · 117,249 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>Twin XL Mattress Pad 39x80 inch,21 inch Deep Pocket, 32 oz Elastic &amp; Hollow Down Alternative Microfiber.</li><li>Soft: With down alternative fillings,this pad will add great softness to your firm mattress.</li><li>Skin-friendly:300TC cotton surface will absorb sweat making it breathable.Filled with down alternative fillings.</li><li>Fitted Sheet Style:Adopting the deep pocket design which will easily stretch up to 21 inch with 130GSM Single-track Elastic Fabric, no matter how you move on the bed this pad will keep neat all the night. No worry of a messy bed anymore.</li><li>Machine Washable:Machine washable under gentle cycle and make it fluffy again dried under the sunshine.</li></ul>
+        
+        <a class="cta" href="https://amzn.to/4gyyFl0" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row flip">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/61Z6pzcCyML._AC_SL1500_.jpg" alt="Twin XL 3 Piece Sheet Set - College Dorm Room Essentials - White" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 02</span>
+        
+        <h3 class="name" title="Twin XL 3 Piece Sheet Set - College Dorm Room Essentials - White">Twin XL 3 Piece Sheet Set - College Dorm Room Essentials - White</h3>
+        <div class="meta-row">
+          <span class="price">INR 2,021.14</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.5/5 · 453,111 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>3 PIECE BED SHEET SET: 1 pillow case and flat sheet and fitted sheet. Flat Sheet (66&#34;x 102&#34;) Fitted Sheet (39&#34;x 80&#34;) 1 Pillow Case (20”x 30”)</li><li>DEEP POCKETS/ EASY FIT: They fit mattresses up to around 16 inches deep. If your mattress is smaller than 16 inches it will fit just fine. A lot of mattresses are pretty big these days and we feel this is a good universal size that fits most mattresses.</li><li>FEEL THE DIFFERENCE: If you&#39;re looking for very soft sheets you have found them! They&#39;re breathable, cool and super silky soft. The comfort of these sheets will have you coming back! They&#39;re softer than Egyptian cotton and organic cotton sheets! Best for any room in your house - bedroom, guest room, RV, vacation home. Great gift idea for everyone.</li><li>HIGHEST QUALITY BRUSHED MICROFIBER: A lighter difference. A softer, finer touch. These are made of the highest quality double brushed microfiber yarns. The virtually weightless wonder of CGK Unlimited sheets will have you coming back for more. Linger in your dreams.</li><li>DORM ROOM READY: Get set for back to school with these extra long Twin XL sheets, made to fit the taller mattresses in most college dorms and bunk beds. Their soft, breathable feel turns a bare dorm bed into a cozy, home-like retreat for restful nights between classes.</li></ul>
+        
+        <a class="cta" href="https://amzn.to/4iti58m" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row ">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/61yvglczN8L._AC_SL1500_.jpg" alt="Lifewit Bedside Caddy Storage Organizer, Hanging Storage Bag for Bunk Bed" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 03</span>
+        
+        <h3 class="name" title="Lifewit Bedside Caddy Storage Organizer, Hanging Storage Bag for Bunk Bed">Lifewit Bedside Caddy Storage Organizer, Hanging Storage Bag for Bunk Bed</h3>
+        <div class="meta-row">
+          <span class="price">$10.99</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">3.8/5 · 60 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>High Load-Bearing Security: Two stainless steel hooks and two adjustable hook and loop fasteners provide double security, strongly supporting heavy items and preventing falls from your bedside</li><li>Full-Coverage Stability: Unlike partial designs, our beside caddy features a fully enclosed metal frame embedded in the opening. This firmly secures the bag, evenly distributes weight, and prevents tilting for superior stability</li><li>Versatile &amp; Accessible: Install securely by your bed for easy access to tablets, phones, books, water, cables, and remotes. Perfect for beds, bunk beds, loft bed, hospital rails, cribs, or camping</li><li>Sizes &amp; Colors to Match: Available in Small 13&#34;(33cm)×3.9&#34;(10cm)×7.9&#34;(20cm) and Large 14.6&#34;(37cm)×4.7&#34;(12cm)×7.9&#34;(20cm). Choose from four colors to perfectly complement your decor and space</li><li>Multi-Pocket Organization: Features two front pockets (large/small) for remotes, chargers, or eye glasses; two mesh side pockets for small items; and a large main compartment for books, tablets, water, or stuffed animals</li></ul>
+        
+        <a class="cta" href="https://amzn.to/4zyAKpB" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row flip">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/71x9ggiJHkL._AC_SL1500_.jpg" alt="Under Bed Storage with Wheels 2-Pack, Under Bed Storage Containers 66L Clear Lids, Rolling Storage Drawers for Clothes Shoes Blankets, Underbed Organizer Bins(30&#34; L x 16.2&#34; W x 7.5&#34; H)" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 04</span>
+        
+        <h3 class="name" title="Under Bed Storage with Wheels 2-Pack, Under Bed Storage Containers 66L Clear Lids, Rolling Storage Drawers for Clothes Shoes Blankets, Underbed Organizer Bins(30&#34; L x 16.2&#34; W x 7.5&#34; H)">Under Bed Storage with Wheels 2-Pack, Under Bed Storage Containers 66L Clear Lids, Rolling Storage Drawers for Clothes Shoes Blankets, Underbed Organizer Bins(30&#34; L x 16.2&#34; W x 7.5&#34; H)</h3>
+        <div class="meta-row">
+          <span class="price">INR 1,782.36</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.4/5 · 584 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>【Say Goodbye to Cluttered Space】– Tired of cluttered closets and wasted space? Our under bed storage containers measure 30&#34; L x 16.2&#34; W x 7.5&#34; H, effortlessly turn unused under-bed areas into smart storage zones—perfect for apartments, dorms and living spaces where every square foot counts.</li><li>【Turn Dead Space Into Storage】 – Maximize your bedroom’s potential! Our under the bed storage bins slide seamlessly under most beds, reclaiming dead space to store seasonal clothes, extra bedding, quilts or kids&#39; toys. No more tripping over bulky items scattered around your room.</li><li>【No More Guessing Inside Items】 – Stop guessing what’s inside! The clear under bed storage design lets you spot shoes, sweaters, or holiday decor at a glance. Featuring a full zipper sealed cover, it keeps dust and moisture out perfectly. No more messy rummaging, just grab and go for busy lifestyles.</li><li>【Effortless Moving &amp; Heavy-Duty Build】 – Need to move heavy items effortlessly? These under bed storage bins come with smooth rolling wheels and firm side carry handles, rolling smoothly on carpets or hardwood floors. The reinforced structure supports up to 70 lbs, stackable and built for long-term daily use.</li><li>【Affordable Organization Essential】– Practical home organization for daily use: Each under bed storage container holds 66L, ideal for bulky winter coats, blankets or summer gear. Get the set of 2 to double your storage space at an affordable price. Durable, lightweight and built to last.</li></ul>
+        
+        <a class="cta" href="https://amzn.to/4zpd86F" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row ">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/810iTm77M7L._AC_SL1500_.jpg" alt="EUDELE Mesh Shower Caddy Portable for College Dorm Room Essentials, Shower Caddy Dorm with 9-Pocket Large Capacity for Beach, Swimming, Gym, Camping, Travel essentials" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 05</span>
+        
+        <h3 class="name" title="EUDELE Mesh Shower Caddy Portable for College Dorm Room Essentials, Shower Caddy Dorm with 9-Pocket Large Capacity for Beach, Swimming, Gym, Camping, Travel essentials">EUDELE Mesh Shower Caddy Portable for College Dorm Room Essentials, Shower Caddy Dorm with 9-Pocket Large Capacity for Beach, Swimming, Gym, Camping, Travel essentials</h3>
+        <div class="meta-row">
+          <span class="price">$9.99</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.5/5 · 7,805 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>🎓【MUST-HAVE DORM ESSENTIALS】Perfect for college dorm life, this dorm shower caddy keeps your toiletries organized and easy to carry to shared bathrooms. A convenient essential for students.</li><li>✨【WIDE APPLICATION &amp; PORTABLE】This shower caddy portable keeps toiletries organized on the go. Perfect for dorms, gyms, beaches, camping, travel, and more.</li><li>🗂【9-POCKET DESIGN &amp; LARGE CAPACITY】With 8 outer pockets and 1 large center pocket, this mesh shower caddy keeps your essentials organized. Store small items in the side pockets and larger toiletries in the spacious main pocket.</li><li>💧【QUICK DRY &amp; EASY CLEAN】Breathable mesh fabric allows quick drainage and fast drying, while easy washing and air drying make maintenance simple.</li><li>💎【HIGH QUALITY】The mesh shower caddy portable features durable, tear-resistant mesh material to hold full-sized toiletries. The reinforced handle allows easy hanging and quick access to your essentials.</li></ul>
+        
+        <a class="cta" href="https://amzn.to/4qwVTfO" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row flip">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/51lGPGOkjUL._AC_SL1500_.jpg" alt="Wall Charger, Surge Protector, QINLIANF 5 Outlet Extender with 4 USB Ports" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 06</span>
+        
+        <h3 class="name" title="Wall Charger, Surge Protector, QINLIANF 5 Outlet Extender with 4 USB Ports">Wall Charger, Surge Protector, QINLIANF 5 Outlet Extender with 4 USB Ports</h3>
+        <div class="meta-row">
+          <span class="price">INR955.05</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.7/5 · 117,545 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>【 Multi Function USB Outlet】- Securing onto the wall design. Fit duplex outlet perfectly, just plug in to use. You get 5 AC outlet splitter (3 sides) with wide space in between; 4 USB charger ports; using the screw at the middle to secure it onto the wall for duplex outlet, so it is not pulled out when pulling the plugged in devices and loss power. Note: this works on duplex outlet only, other types of outlet like GFCI outlet cannot be secured onto the wall. Best Ideal Stocking Stuffers for Adults.</li><li>【The Groove Design on The Back and Wide space 】- 5 AC outlets with 2.1 inches long space in between, larger than standard 1.5-inch socket. Larger spacing makes it easier to use for all kinds of equipment. The groove at the back make it flush against the wall perfectly, good for all Duplex Receptacle Outlet. NOTE: This product can be used on wall outlet with space lager than 1 inches in between, This product cannot be used on outlets with more than 2 set of parallel sockets.</li><li>【 Smart Charge with USB A &amp; USB C 】- 4 USB Charging ports, Each USB A port features 5V/2.4A Max output. USB C charging port features 5V/3A MAX. Built in smart technology, detecting charging devices and deliver optimal charging speed automatically, compatible with Kindle and most USB devices. NOTE: The UCB-C port is not Quick Charger 3.0, doesn&#39;t support any other devices which need 9~22V charging voltage.</li><li>【Reliable Surge Protector Circuit】: This Outlet Extender provides 1680 joules of surge protection for electronic devices and serves as a reliable Power Strip Multi Plug Adapter(The “Protected” indicator light turns on to indicate that your devices are protected).</li><li>【 Our After Sale Service 】- ETL Certified, Our friendly and reliable customer service will respond to you within 24 hours. You can purchase with confidence, with our 30-day return and 12-month warranty.</li></ul>
+        
+        <a class="cta" href="https://amzn.to/4xMBbe4" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row ">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/71duy1ev1wL._AC_SL1500_.jpg" alt="efluky Slim Laundry Hamper with Wheels, Rolling Laundry Basket for Clothes, Small Laundry Basket for Bedroom, Dorm and Laundry Room, 60L (12.7 Gallons) Beige" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 07</span>
+        
+        <h3 class="name" title="efluky Slim Laundry Hamper with Wheels, Rolling Laundry Basket for Clothes, Small Laundry Basket for Bedroom, Dorm and Laundry Room, 60L (12.7 Gallons) Beige">efluky Slim Laundry Hamper with Wheels, Rolling Laundry Basket for Clothes, Small Laundry Basket for Bedroom, Dorm and Laundry Room, 60L (12.7 Gallons) Beige</h3>
+        <div class="meta-row">
+          <span class="price">INR 1,881.44</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.3/5 · 993 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>【Skinny Laundry Basket】: efluky skinny laundry basket is specially designed for small spaces such as closets, laundry room (between washer and dryer), bedroom or bathroom. It will help you make better use of every inch of space in your home.</li><li>【Laundry Basket with Wheels】: The basket is equipped with 4 durable multi-direction wheels, which makes it easy to slide on hardwood floors, tiles or carpets. The wheels are also equipped with brakes to prevent the laundry basket rolling arbitrarily when not in use.</li><li>【Durable &amp; Sturdy Material】The dirty laundry basket is made of 600D Oxford fabric. It won&#39;t tear or damage even after long time use. The laundry basket is designed with four handles so you can easily transport the laundry basket to your bedroom, bathroom or laundry room.</li><li>【Dimensions】efluky skinny laundry basket measures 15.8&#39;&#39;L x 7.9&#39;&#39;W x 25.2&#39;&#39;H. The capacity is 60L, which is very suitable for storing one person&#39;s dirty clothes.</li><li>【Drawstring Mesh Cover】The drawstring mesh cover on the top of the laundry basket can block some dust and prevent clothes from scattering.</li></ul>
+        
+        <a class="cta" href="https://amzn.to/45D6qwn" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row flip">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/71dau9RTrSL._AC_SL1500_.jpg" alt="LED Desk Lamp with Power Strip, 3 AC Outlets, 4 USB Ports, Stepless Dimming" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 08</span>
+        
+        <h3 class="name" title="LED Desk Lamp with Power Strip, 3 AC Outlets, 4 USB Ports, Stepless Dimming">LED Desk Lamp with Power Strip, 3 AC Outlets, 4 USB Ports, Stepless Dimming</h3>
+        <div class="meta-row">
+          <span class="price">INR 1,881.44</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.3/5 · 257 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>STEPLESS DIMMING &amp; FULL COLOR CONTROL FOR ANY TASK: Enjoy smooth stepless dimming from 1% to 100% and adjustable color temperature from 2800K to 6500K. This LED desk lamp functions as a powerful desk light for reading, studying, working, or relaxing. Long-press control allows quick brightness adjustment—ideal for home office setups, bedrooms, and dorm rooms</li><li>ALL-IN-ONE DESK LAMP WITH POWER STRIP &amp; USB-C CHARGING: More than just a lamp—this multifunctional desk essential combines 3 AC outlets, 2 USB-C ports, and 2 USB-A ports to power up to 7 devices at once. Charge your phone, tablet, laptop, and accessories simultaneously—even when the light is off. Ideal for college dorm rooms and clutter-free desk setups. (Max 1200W/10A)</li><li>SPACE-SAVING FOLDABLE DESIGN FOR SMALL DESKS: Designed for limited spaces, this foldable table lamp features a 90° adjustable arm and 180° flexible light head, allowing precise light positioning while saving valuable desk space. Easily fold it away when not in use—perfect for compact desks, dorm rooms, and bedside tables</li><li>EYE-CARING LED LIGHT WITH UNIFORM ILLUMINATION: Built with 64 high-quality LED beads, this desk lamp for home office delivers flicker-free, glare-free lighting with reduced blue light to help minimize eye strain during long study or work sessions. Energy-efficient design saves up to 85% compared to traditional incandescent lamps</li><li>USB-C DESK LAMP WITH TIMER, MEMORY &amp; FLAT PLUG: Upgrade your desk setup with this all-in-one desk lamp and desk light featuring built-in USB charging ports and a power strip. The 45° flat plug and 5 ft cord fit easily behind furniture and in tight spaces. Set the 1-hour auto-off timer to save energy, while the smart memory function keeps your preferred brightness every time—no need to reset</li></ul>
+        
+        <a class="cta" href="https://amzn.to/4c6X9jP" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row ">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/81OzR8gdV5L._AC_SL1500_.jpg" alt="First Aid Kit 277PCS Car Home Camping Essentials Red Emergency Kit YIDERBO" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 09</span>
+        
+        <h3 class="name" title="First Aid Kit 277PCS Car Home Camping Essentials Red Emergency Kit YIDERBO">First Aid Kit 277PCS Car Home Camping Essentials Red Emergency Kit YIDERBO</h3>
+        <div class="meta-row">
+          <span class="price">INR956.00</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.7/5 · 2,965 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>[Durable First Aid Bag] YIDERBO first aid bag is made by high quality EVA which is water resistant, shockproof and wear resistant. Thanks to its compact dimension, it is ideal for taking with you when travelling, hiking, skiing, camping, in the car, backpack, handbag and outdoor adventures. It is also perfect for extended use.</li><li>[Safe and Reliable] This versatile kit includes a wide selection of equipment that can be used effectively for many types of injuries, which ensures that you are fully prepared in the event of an accident or injury when you leave home.</li><li>[Accident Ready] This survival kit contains items including: instant ice pack, burn dressing, cotton swabs, emergency blanket, scissors, safety pins, bandages, gauze pads, etc, that can make all the difference, and it is a great emergency kit for basic supplies.</li><li>[Multipupose Emergency Blanket] Perfect for emergency situations where warmth or protection from all-weather conditions is required. Helps prevent hypothermia and shock by retaining of a user&#39;s body heat. our blankets can help block rain, snow, and moisture to keep you dry in damp, wet, cold, rainy environments.</li><li>[We Hope] To impress every customer with high quality products, and provide the best service to every customer. If you have any questions about our products, please feel free contact us and trust that we will do it well.</li></ul>
+        
+        <a class="cta" href="https://amzn.to/4zMZgDE" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+  </div>
+
+  
+
+  <footer>
+    <div class="gen">Last checked 22 Aug 2026, 21:07</div>
+    <p>As an Amazon Associate, this page may earn from qualifying purchases.</p>
+  </footer>
+</div>
+
+<script>
+  const rows = document.querySelectorAll('.row');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  rows.forEach(r => io.observe(r));
+</script>
+
+</body>
+</html>
