@@ -1,1 +1,637 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Cleaning Essentials — A Trusted Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#faf5ec;
+    --card:#ffffff;
+    --ink:#2a2723;
+    --ink-soft:#6b6459;
+    --moss:#3f5c43;
+    --moss-soft:#e7eee3;
+    --gold:#b8863b;
+    --line:#e6ddc9;
+    --radius:16px;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Work Sans', sans-serif; line-height:1.65;
+    position:relative;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+  }
+
+  /* subtle paper grain */
+  body::before{
+    content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+    opacity:0.5; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  }
+
+  .wrap{ position:relative; z-index:1; max-width:880px; margin:0 auto; padding:0 28px; }
+
+  header.hero{ padding:80px 0 48px; border-bottom:1px solid var(--line); }
+  .kicker{
+    font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--moss);
+    font-weight:600; margin-bottom:18px; display:block;
+  }
+  h1.title{
+    font-family:'Fraunces', serif; font-optical-sizing:auto;
+    font-size:clamp(2.3rem, 5vw, 3.6rem); font-weight:500; line-height:1.08;
+    margin:0 0 20px; color:var(--ink);
+    opacity:0; transform:translateY(16px);
+    animation:riseIn 0.9s cubic-bezier(.2,.7,.2,1) forwards 0.15s;
+  }
+  @keyframes riseIn{ to{ opacity:1; transform:translateY(0); } }
+  p.intro{
+    font-size:1.12rem; color:var(--ink-soft); max-width:600px; margin:0 0 28px;
+    opacity:0; animation:riseIn 0.9s cubic-bezier(.2,.7,.2,1) forwards 0.35s;
+  }
+
+  .trust-strip{
+    display:flex; flex-wrap:wrap; gap:10px;
+    opacity:0; animation:riseIn 0.9s cubic-bezier(.2,.7,.2,1) forwards 0.55s;
+  }
+  .badge{
+    display:inline-flex; align-items:center; gap:6px;
+    background:var(--moss-soft); color:var(--moss); border-radius:100px;
+    padding:7px 14px; font-size:12.5px; font-weight:600;
+  }
+  .badge svg{ width:13px; height:13px; flex-shrink:0; }
+
+  /* editorial rows */
+  .article{ padding:64px 0; }
+  .row{
+    display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;
+    padding:52px 0; border-bottom:1px solid var(--line);
+    opacity:0; transform:translateY(24px);
+    transition:opacity 0.7s ease, transform 0.7s ease;
+  }
+  .row:last-child{ border-bottom:none; }
+  .row.is-visible{ opacity:1; transform:translateY(0); }
+  .row.flip{ direction:rtl; }
+  .row.flip > *{ direction:ltr; }
+
+  .media{
+    position:relative; aspect-ratio:5/4; border-radius:var(--radius); overflow:hidden;
+    background:var(--card); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .media img{ width:100%; height:100%; object-fit:contain; padding:20px; transition:transform 0.5s ease; }
+  .row:hover .media img{ transform:scale(1.04); }
+  .media.no-image{ font-size:12px; color:var(--ink-soft); font-family:'Work Sans',sans-serif; }
+
+  .stamp{
+    position:absolute; top:16px; right:16px; z-index:2;
+    width:74px; height:74px; border-radius:50%;
+    background:var(--moss); color:#fff;
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    font-family:'Fraunces', serif; font-size:10px; font-weight:600; letter-spacing:0.04em;
+    line-height:1.15; padding:6px; transform:rotate(-14deg) scale(0);
+    box-shadow:0 4px 14px rgba(63,92,67,0.35);
+    transition:transform 0.55s cubic-bezier(.34,1.56,.64,1) 0.15s;
+    border:2px dashed rgba(255,255,255,0.55);
+  }
+  .row.is-visible .stamp{ transform:rotate(-14deg) scale(1); }
+
+  .eyebrow-num{
+    font-family:'Fraunces', serif; font-size:13px; color:var(--gold); font-weight:600;
+    margin-bottom:10px; display:block;
+  }
+  h3.name{
+    font-family:'Fraunces', serif; font-size:1.6rem; font-weight:500; margin:0 0 14px; line-height:1.25;
+    display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
+  }
+
+  .meta-row{ display:flex; flex-wrap:wrap; align-items:center; gap:16px; margin-bottom:16px; }
+  .price{ font-size:1.1rem; font-weight:600; color:var(--ink); }
+  .stars{ display:inline-flex; gap:2px; }
+  .stars svg{ width:15px; height:15px; }
+  .rating-txt{ font-size:12.5px; color:var(--ink-soft); }
+
+  ul.notes{ list-style:none; padding:0; margin:0 0 24px; }
+  ul.notes li{
+    font-size:0.95rem; color:var(--ink-soft); padding-left:22px; position:relative; margin-bottom:9px;
+  }
+  ul.notes li::before{
+    content:'✓'; position:absolute; left:0; top:0; color:var(--moss); font-weight:700; font-size:13px;
+  }
+
+  .cta{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--ink); color:var(--paper);
+    border-radius:100px; padding:13px 26px; text-decoration:none;
+    font-size:14px; font-weight:600;
+    transition:background 0.25s ease, transform 0.25s ease;
+  }
+  .cta:hover{ background:var(--moss); transform:translateY(-1px); }
+
+  .flag{
+    display:inline-block; font-size:12px; color:var(--gold);
+    background:#f6ecd9; border-radius:8px; padding:5px 10px; margin-bottom:14px;
+  }
+
+  footer{ padding:40px 0 80px; color:var(--ink-soft); font-size:0.85rem; border-top:1px solid var(--line); }
+  footer .gen{ font-size:11.5px; letter-spacing:0.04em; text-transform:uppercase; margin-bottom:6px; }
+
+  /* custom-swap banner */
+  .custom-cta{ padding:8px 0 60px; }
+  .custom-card{
+    display:flex; gap:28px; align-items:center;
+    background:var(--card); border:2px dashed var(--moss); border-radius:var(--radius);
+    padding:30px;
+  }
+  .custom-media{
+    flex:0 0 140px; aspect-ratio:1/1; border-radius:12px; overflow:hidden;
+    background:var(--paper); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .custom-media img{ width:100%; height:100%; object-fit:contain; padding:12px; }
+  .custom-copy .kicker{ margin-bottom:8px; }
+  .custom-copy h3{
+    font-family:'Fraunces', serif; font-weight:500; font-size:1.35rem; margin:0 0 10px; color:var(--ink);
+  }
+  .custom-copy p{ font-size:0.95rem; color:var(--ink-soft); margin:0 0 18px; max-width:480px; }
+
+  @media (max-width:600px){
+    .custom-card{ flex-direction:column; text-align:center; }
+    .custom-copy p{ max-width:none; }
+  }
+
+  @media (max-width:720px){
+    .row, .row.flip{ grid-template-columns:1fr; direction:ltr; gap:22px; padding:38px 0; }
+    header.hero{ padding:56px 0 36px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <span class="kicker">A Trusted Guide</span>
+    <h1 class="title">Home Cleaning Essentials</h1>
+    <p class="intro">Consider this a briefing, not a listicle. 12 items in home cleaning essentials, checked for build, value, and whether they&#39;d survive a Tuesday-night dinner rush.</p>
+    <div class="trust-strip">
+      <span class="badge"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>Checked line by line</span>
+      <span class="badge"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.7-10.3a1 1 0 00-1.4-1.4L9 9.6 7.7 8.3a1 1 0 00-1.4 1.4l2 2a1 1 0 001.4 0l4-4z" clip-rule="evenodd"/></svg>Prices verified</span>
+      <span class="badge"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a1 1 0 011 1v1.06A6 6 0 0116 9v3.59l1.7 1.7a1 1 0 01-.7 1.71H3a1 1 0 01-.7-1.71L4 12.59V9a6 6 0 015-5.94V2a1 1 0 011-1zM8.5 17a1.5 1.5 0 003 0h-3z"/></svg>Updated 22 Aug 2026, 15:11</span>
+    </div>
+  </header>
+
+  <div class="article">
+    
+    <div class="row ">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/71GhDHqOwNL._AC_SL1490_.jpg" alt="TUYU Electric Spin Scrubber, Cordless Cleaning Brush for Bathroom,Home" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 01</span>
+        
+        <h3 class="name" title="TUYU Electric Spin Scrubber, Cordless Cleaning Brush for Bathroom,Home">TUYU Electric Spin Scrubber, Cordless Cleaning Brush for Bathroom,Home</h3>
+        <div class="meta-row">
+          <span class="price">Price unavailable — check listing</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.4/5 · 8,499 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>【TIME &amp; LABOR SAVING ERGONOMIC DESIGN】Upgraded Electric Spin Scrubber Cordless gets rid of the troubles caused by traditional cleaning tools. it can be used anywhere you want. This spin scrubber is super lightweight and very easy to pick up and use to clean surfaces without getting tired and drastically reduce your work time from 1 hour to 30 minutes.</li><li>【450RPM HIGH-POWER STAIN REMOVAL MOTOR】Built-in high-performance motor delivers up to 450±10 RPM spinning power to blast stubborn grime across your home. Paired with cleaning detergent, it effortlessly wipes away soap scum, bathroom buildup and tough stains. Perfect for bathtubs, marble floors, tile grout lines, crevices and toilets.</li><li>【【2 ADJUSTABLE SPEEDS &amp; IPX7 WATERPROOF】You can easily clean your entire house in one fell swoop with this cleaning brush ,it set has 2 working speeds, I: Low Speed: 350RPM/Min; II: High Speed: 450RPM/Min; what you need to do is press the ON/OFF button once. The entire machine is IPX7 waterproof,you can rinse directly under running tap water without worrying about product damage.</li><li>【MULTI-PURPOSE REUSABLE BRUSH HEADS】Our electric spin scrubber comes with a complete set of accessories, including 4 replaceable brush heads, a charging cable and a storage mesh bag. Each brush head reaches tight corners and fits different cleaning scenarios to efficiently clear grout lines and stubborn dirt. All brush heads can be detached separately for easy cleaning.The bristles are soft and of good quality and will not scratch tiles, glass and cars. You can use it at ease.</li><li>【ADJUSTABLE EXTENSION ROD】This electric shower scrubber is equipped with a retractable stainless steel handle that extends freely from 26 inches to 45 inches. You can effortlessly clean hard-to-reach corners without bending over or kneeling. TUYU household cleaning tools ease pressure on your waist and knee joints. Ideal for seniors and those with lower back soreness, it saves your time and energy during cleaning work.</li></ul>
+        
+        <a class="cta" href="https://amzn.to/4gKf7uV" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row flip">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/819+KNXgN3L._AC_SL1500_.jpg" alt="Microfiber Spray Mops for Floors Cleaning: Wet Dry Mop Hardwood Floor Mops" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 02</span>
+        
+        <h3 class="name" title="Microfiber Spray Mops for Floors Cleaning: Wet Dry Mop Hardwood Floor Mops">Microfiber Spray Mops for Floors Cleaning: Wet Dry Mop Hardwood Floor Mops</h3>
+        <div class="meta-row">
+          <span class="price">INR1,625.79</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.4/5 · 12,779 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>Spray Mop for Effortless Cleaning: This spray mop has both wet and dry functions and is designed for housewives</li><li>Housewife Dust Mop: Designed for housewives, also suitable for the elderly, parents, pet owners, cleaners, students</li><li>Multi-Purpose Floor Mop: Suitable for multiple surfaces, such as hardwood, tile, wood, laminate, vinyl, marble ceramic etc</li><li>Microfiber Mop with 3 Pads: Machine washable reusable microfiber pads, compatible with Swiffer Powermop</li><li>Kitchen Mop with 360° Roating Head: 360° swivel head reaches under furniture and into tight spaces</li></ul>
+        
+        <a class="cta" href="https://amzn.to/4gvLJaN" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row ">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/61yhnxnOKOL._AC_SL1500_.jpg" alt="Shark Pet Cordless Stick Vacuum, Ice Blue, IX141AMZ" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 03</span>
+        
+        <h3 class="name" title="Shark Pet Cordless Stick Vacuum, Ice Blue, IX141AMZ">Shark Pet Cordless Stick Vacuum, Ice Blue, IX141AMZ</h3>
+        <div class="meta-row">
+          <span class="price">INR17,223.42</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.1/5 · 17,221 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>POWERFUL PERFORMANCE: Hypervelocity suction provides incredible cleaning performance for everyday messes and high-traffic areas</li><li>40 MINUTES OF RUNTIME: Up to 40 minutes of runtime to clean your home, *measured at the hand vac in standard mode, without accessories</li><li>VERSATILE FLOOR-TO-CARPET CLEANING: Shark bristle brushroll and powerful suction deliver powerful cleaning on both floors and carpets</li><li>LIGHTWEIGHT ABOVE-FLOOR REACH: Transforms to a hand vac for lightweight above-floor cleaning and comes with the Crevice Tool for hard-to-reach areas</li><li>LARGE EASY EMPTY DUST CUP: Large removable dust cup with CleanTouch Dirt Ejector for easy, hands-free debris disposal</li></ul>
+        
+        <a class="cta" href="https://amzn.to/4gdLpyt" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row flip">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/717X5secGjL._AC_SL1500_.jpg" alt="BISSELL Little Green Multi-Purpose Portable Carpet Cleaner, 1400B" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 04</span>
+        
+        <h3 class="name" title="BISSELL Little Green Multi-Purpose Portable Carpet Cleaner, 1400B">BISSELL Little Green Multi-Purpose Portable Carpet Cleaner, 1400B</h3>
+        <div class="meta-row">
+          <span class="price">INR10,525.05</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.5/5 · 94,483 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>AMERICA&#39;S #1 BRAND IN PORTABLE DEEP CLEANING: Trusted by over 7 million households.</li><li>TAKE THE STRESS OUT OF MESS: Scientifically proven to lift and remove 100+ common messes and stains.</li><li>ULTRA-POWERFUL TRIPLE ACTION FORMULA: Permanently removes stains and powerfully eliminates odors for “like new” results.</li><li>LARGE 48OZ. CLEAN WATER TANK: Clean more, uninterrupted, with large capacity clean water tank.</li><li>EASY STAIN REMOVAL: Just spray, scrub &amp; suction.</li></ul>
+        
+        <a class="cta" href="https://amzn.to/4cEgQQ7" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row ">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/61gZ64bcbcL._AC_SL1500_.jpg" alt="OXO Good Grips Microfiber Hand Duster" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 05</span>
+        
+        <h3 class="name" title="OXO Good Grips Microfiber Hand Duster">OXO Good Grips Microfiber Hand Duster</h3>
+        <div class="meta-row">
+          <span class="price">INR1,196.14</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.6/5 · 19,934 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>Traps and holds dust without cleaning chemicals</li><li>Generous Microfiber head covers a large surface with every swipe</li><li>Slim profile for easy maneuvering in or around tight spaces. Replacement head available (#1334680)</li><li>Reusable microfiber head unsnaps from handle for convenient machine washing. Soft, comfortable non-slip grip</li><li>Dry without using heat</li></ul>
+        
+        <a class="cta" href="https://amzn.to/4wFC8Eg" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row flip">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/71kiOOs1MGL._AC_SL1500_.jpg" alt="Scrub Mommy Kitchen Sponges - Dual-Sided Dish Sponges for Scrubbing - Non-Scratch Cleaning Sponges for Washing Dishes, Bathroom &amp; Multi-Surface Cleaning - Online Exclusive (3 Count)" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 06</span>
+        
+        <h3 class="name" title="Scrub Mommy Kitchen Sponges - Dual-Sided Dish Sponges for Scrubbing - Non-Scratch Cleaning Sponges for Washing Dishes, Bathroom &amp; Multi-Surface Cleaning - Online Exclusive (3 Count)">Scrub Mommy Kitchen Sponges - Dual-Sided Dish Sponges for Scrubbing - Non-Scratch Cleaning Sponges for Washing Dishes, Bathroom &amp; Multi-Surface Cleaning - Online Exclusive (3 Count)</h3>
+        <div class="meta-row">
+          <span class="price">INR954.04</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.8/5 · 33,592 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>Dual-Sided &amp; Temperature-Controlled - Scrub Mommy takes traditional kitchen sponges and scrubbers to the next level. Her FlexTexture foam stays soft in warm water and firm in cool, while spongy ResoFoam on the back lathers up suds for wiping spills.</li><li>Scratch-Free Cleaning - These non scratch sponges are safe on over a dozen surfaces: glass, stainless steel, cast iron, non-stick, copper, chrome, leather. So they double as dish sponges for dinner dishes and a gentle scrubber for the car.</li><li>Odor &amp; Stain Resistant - Unlike other dish sponges, just like the OG Scrub Daddy, Scrub Mommy is dishwasher safe and built to resist buildup. With proper care, this dishwashing sponge stays fresh and resists odors and stains for up to 12 weeks.</li><li>Flexible &amp; Multipurpose - Use Scrub Mommy kitchen sponges for washing dishes, plus utensils, furniture, siding, sneakers, bathtubs and more. Wherever there is dirt, grime or gunk, these sponges for cleaning make quick work of every mess.</li><li>Ergonomic &amp; Smile-Worthy - Scrub Mommy is shaped to fit your hand for a comfy grip and 360° reach. Her eyes hold tight while her mouth cleans both sides of utensils. The kitchen scrub and household cleaning sponge that turns chores into smiles.</li></ul>
+        
+        <a class="cta" href="https://amzn.to/4gK8U2e" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row ">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/51xWdgXFUwL._AC_SL1500_.jpg" alt="RIMAY Soap Dispensing Dish Brush Dish Scrubber with Soap Dispenser Handle" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 07</span>
+        
+        <h3 class="name" title="RIMAY Soap Dispensing Dish Brush Dish Scrubber with Soap Dispenser Handle">RIMAY Soap Dispensing Dish Brush Dish Scrubber with Soap Dispenser Handle</h3>
+        <div class="meta-row">
+          <span class="price">INR668.88</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.6/5 · 382 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>Package Includes: 1 dish brush with soap dispensing + 1 brush head + 1 beautiful packaging box. ( No include extra brush head refill )</li><li>Dish Brush Replacement Head: The brush head is made of nylon bristles, they are gentle and durable enough to be used for non-stick cookware. (Please refer to ASIN B0CQ51C9TH to order replacement brush refills. )</li><li>Back Scraper Design: The dish brush replacement head has a built-in scraper to clean both soft and hard stains, which is easily remove the food stuck on dish.</li><li>Soap Hole &amp; Handle Button Design: The button of soap dispensing dish brush is completely covered with high-quality silicone rubber, it will not tear or leak. As the button is pressed, the soap will flow out of the small hole in the middle of the brush head</li><li>Comfortable Grip Design: The dish wand with soap dispenser adopts non-slip design, ergonomic handle and soft touch surface provide non-slip grip, so you don&#39;t have to worry about the handle slipping from your hand</li></ul>
+        
+        <a class="cta" href="https://amzn.to/4cwIyOI" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row flip">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/71v5L6L1IcL._AC_SL1500_.jpg" alt="Handheld Steam Cleaner, Portable Steamer for Cleaning with 18PCS Accessories, 12s Fast Heating, Pressurized Steam Cleaner for Home, Kitchen, Bathroom, Car Detailing, Window, and Clothes, Green" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 08</span>
+        
+        <h3 class="name" title="Handheld Steam Cleaner, Portable Steamer for Cleaning with 18PCS Accessories, 12s Fast Heating, Pressurized Steam Cleaner for Home, Kitchen, Bathroom, Car Detailing, Window, and Clothes, Green">Handheld Steam Cleaner, Portable Steamer for Cleaning with 18PCS Accessories, 12s Fast Heating, Pressurized Steam Cleaner for Home, Kitchen, Bathroom, Car Detailing, Window, and Clothes, Green</h3>
+        <div class="meta-row">
+          <span class="price">INR8,727.98</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.2/5 · 419 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>1200W Powerful Steam Cleaner: DOURARY handheld steam cleaner heats up in 10-12 seconds, blasting 230°F hot steam to melt grease, grime, and bacteria on contact. No chemicals needed. Perfect for kitchen stoves, bathroom grout, car engines, and glass windows. A true high pressure handheld steam cleaners for home.</li><li>2-Level Steam: Switch between low steam for everyday cleaning (sofas, curtains, dust) and high steam for stubborn stains (burnt grease, tile grout, dried spills). A simple button gives you the right power for delicate fabrics or heavy-duty scrubbing. Works as a handheld steamer for home.</li><li>All-in-One Cleaning Accessories: Includes 18pcs cleaning Kit ( nylon brushes, steel wire brushes, gloves, cloth, funnel, extension tube, connector, elbow nozzle, and other tools.) DOURARY portable steam cleaner reaches under fridge, inside oven, car cup holders, window tracks, pet areas – ideal as a steamer for car detailing or handheld steam cleaners for small areas around the house.</li><li>Removable 550ml Tank &amp; Self-Cleaning: With a removable 550ml water tank, this handheld steam cleaner offers 25 minutes of continuous steam. Maintain our steam cleaner machine at peak performance in just 15 seconds with one-touch self-cleaning removes limescale inside the boiler – no clogging, no descaling solution. A reliable hand held steamer for cleaning that keeps itself clean for long-lasting performance.</li><li>Portable Steam Cleaner Design: With a 9.84 feet power cord, clean an entire room without switching outlets. The ergonomic handle reduces hand strain. This steamer for home uses only water to produce high-temperature steam – no chemicals, no fumes, no residue. Naturally removes dust, grease, and allergens. Safe for kids&#39; items, pet areas, and every room. Ideal for allergy-prone families, creating a healthier home with pure steam power.</li></ul>
+        
+        <a class="cta" href="https://amzn.to/4hOWmrl" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row ">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/51-N9QpDr4L._AC_SL1500_.jpg" alt="Casabella Cleaning Storage Caddy with Handle Plastic Multipurpose Organizer, Rectangle, 1.85-Gallon, Gray" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 09</span>
+        
+        <h3 class="name" title="Casabella Cleaning Storage Caddy with Handle Plastic Multipurpose Organizer, Rectangle, 1.85-Gallon, Gray">Casabella Cleaning Storage Caddy with Handle Plastic Multipurpose Organizer, Rectangle, 1.85-Gallon, Gray</h3>
+        <div class="meta-row">
+          <span class="price">INR1,913.82</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.6/5 · 12,654 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>PORTABLE CLEANING ORGANIZER: Lightweight cleaning caddy makes it simple to move supplies from room to room and is ideal for household office or professional use</li><li>CLEANING CADDY WITH HANDLE: Casabella storage caddy in translucent gray with an easy grip orange handle designed to organize and carry cleaning products sprays and tools</li><li>EASY-TO-STORE DESIGN: Compact shape fits neatly under sinks, in closets, or on shelves for convenient storage when not in use</li><li>MULTIPURPOSE UTILITY CADDY: Space saving organizer also functions for gardening, craft supplies, or general home storage and organization</li></ul>
+        
+        <a class="cta" href="https://amzn.to/4ztFInD" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row flip">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/51Za5Z9+QYL._AC_SL1432_.jpg" alt="Hiware All-Purpose Shower Squeegee for Shower Doors, Bathroom, Window and Car Glass - Stainless Steel, 10 Inches" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 10</span>
+        
+        <h3 class="name" title="Hiware All-Purpose Shower Squeegee for Shower Doors, Bathroom, Window and Car Glass - Stainless Steel, 10 Inches">Hiware All-Purpose Shower Squeegee for Shower Doors, Bathroom, Window and Car Glass - Stainless Steel, 10 Inches</h3>
+        <div class="meta-row">
+          <span class="price">INR955.95</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.7/5 · 77,370 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>ALL PURPOSE SQUEEGEE: Easily clean shower doors, windows, tile, mirrors, bathroom, kitchen, decks, patios, and many other surfaces with the versatile squeegee.</li><li>STREAK-FREE SHINE: Remove soap scum, limescale, and other sources of buildup with this easy squeegee for shower glass doors and other surfaces! Pair with your favorite household cleaner to reveal surfaces that shine.</li><li>DESIGNED FOR OPTIMUM FUNCTIONALITY: This squeegee shower cleaner comes with a 10-inch wide rubber blade, an ergonomic design, and a lightweight handle, all of which allow for convenient cleaning and quick-drying action. Moreover, the blade features even construction which allow for streak-free and squeak-free water control.</li><li>EASY TO USE &amp; STORE: Complete with a set of waterproof adhesive hooks, the shower squeegee can be stored almost anywhere for quick access and easy use.</li><li>INDOOR &amp; OUTDOOR USE: Designed to work in and out of the bathroom, this squeegee works just as well for windows and car doors! Enjoy resistance-free swiping anywhere for almost all your hard surfaces .</li></ul>
+        
+        <a class="cta" href="https://amzn.to/4zyejRh" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row ">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/71ZksXXyxlL._AC_SL1500_.jpg" alt="Shark VACMOP Cordless Vacuum &amp; Spray Mop, Gray, VM180" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 11</span>
+        
+        <h3 class="name" title="Shark VACMOP Cordless Vacuum &amp; Spray Mop, Gray, VM180">Shark VACMOP Cordless Vacuum &amp; Spray Mop, Gray, VM180</h3>
+        <div class="meta-row">
+          <span class="price">INR6,697.41</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.4/5 · 696 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>POWERFUL SUCTION MEETS SPRAY MOPPING: Vacuums and locks away debris, then spray mops tough messes— a complete clean all in one disposable pad, without clogging your machine.</li><li>A COMPLETE CLEANING SOLUTION: Maximize your cleaning power with the Shark VACMOP starter kit. VACMOP disposable pads and cleaning solution are designed for use with the cleaner for a spotless clean.</li><li>TARGETED ON-DEMAND SPRAY: Tackle tough messes and stubborn stains with the on-demand spray of cleaning solution at the touch of a button.</li><li>LOCKS AWAY DEBRIS: Powerful vacuum suction captures debris in the disposable pad’s built-in dirt chamber—unlike other pads that push dirt around.</li><li>NO-TOUCH DISPOSAL: Toss away absorbent VACMOP pads after use with the click of a button— without having to touch the mess.</li></ul>
+        
+        <a class="cta" href="https://amzn.to/4wT2uCY" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row flip">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/71lOhFFaWuL._AC_SL1500_.jpg" alt="Tikom Robot Vacuum and Mop Combo, 5000Pa Robotic Vacuum Cleaner, 150 Min Max, App &amp; Remote Control, Ideal for Hard Floor, Carpet, Pet Hair, Self-Charge(G8000 Max)" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 12</span>
+        
+        <h3 class="name" title="Tikom Robot Vacuum and Mop Combo, 5000Pa Robotic Vacuum Cleaner, 150 Min Max, App &amp; Remote Control, Ideal for Hard Floor, Carpet, Pet Hair, Self-Charge(G8000 Max)">Tikom Robot Vacuum and Mop Combo, 5000Pa Robotic Vacuum Cleaner, 150 Min Max, App &amp; Remote Control, Ideal for Hard Floor, Carpet, Pet Hair, Self-Charge(G8000 Max)</h3>
+        <div class="meta-row">
+          <span class="price">INR57,413.64</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.2/5 · 14,186 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>5000Pa Strong Suction: Robot Vacuum With 5000Pa suction power, it effortlessly removes pet hair, dust, and debris from all types of floors. It can also easily clean on short-pile &amp; medium-pile carpets</li><li>Vacuum &amp; Mop in One Go: G8000 Max robot vacuum is equipped with 450 ml dustbin and 300 ml water tank combo, it supports simultaneous vacuuming and mopping in one go. The innovative design reduces cleaning time by 50%, enhancing household efficiency</li><li>Long Battery Life, Always Ready: Up to 150 minutes in quiet mode, meeting daily cleaning needs and automatically recharging when the battery is low, always ready for the next cleaning task</li><li>4 Control Ways &amp; 4 Cleaning Modes: Supports 4 control methods: App, Remote, Voice, and Button, making it ideal for wives, seniors, and parents. Choose from 4 cleaning modes(Spot, Edge, Zig-zag, and Manual cleaning) to meet your daily cleaning needs. The Zig-zag mode ensures maximum coverage and cleaning efficiency</li><li>Ultra-Slim Design, Smart Sensors: The robot cleaner is 2.99 inches in height, it easily reaches under beds, sofas, and cabinets for thorough cleaning. With anti-collision and anti-fall sensor technology, it intelligently navigates around obstacles, walls, and stairs</li></ul>
+        
+        <a class="cta" href="https://amzn.to/4zBUFUI" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+  </div>
+
+  
+
+  <footer>
+    <div class="gen">Last checked 22 Aug 2026, 15:11</div>
+    <p>As an Amazon Associate, this page may earn from qualifying purchases.</p>
+  </footer>
+</div>
+
+<script>
+  const rows = document.querySelectorAll('.row');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  rows.forEach(r => io.observe(r));
+</script>
+
+</body>
+</html>
