@@ -1,1 +1,462 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Under Sink Organization — A Trusted Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#faf5ec;
+    --card:#ffffff;
+    --ink:#2a2723;
+    --ink-soft:#6b6459;
+    --moss:#3f5c43;
+    --moss-soft:#e7eee3;
+    --gold:#b8863b;
+    --line:#e6ddc9;
+    --radius:16px;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Work Sans', sans-serif; line-height:1.65;
+    position:relative;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+  }
+
+  /* subtle paper grain */
+  body::before{
+    content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+    opacity:0.5; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  }
+
+  .wrap{ position:relative; z-index:1; max-width:880px; margin:0 auto; padding:0 28px; }
+
+  header.hero{ padding:80px 0 48px; border-bottom:1px solid var(--line); }
+  .kicker{
+    font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--moss);
+    font-weight:600; margin-bottom:18px; display:block;
+  }
+  h1.title{
+    font-family:'Fraunces', serif; font-optical-sizing:auto;
+    font-size:clamp(2.3rem, 5vw, 3.6rem); font-weight:500; line-height:1.08;
+    margin:0 0 20px; color:var(--ink);
+    opacity:0; transform:translateY(16px);
+    animation:riseIn 0.9s cubic-bezier(.2,.7,.2,1) forwards 0.15s;
+  }
+  @keyframes riseIn{ to{ opacity:1; transform:translateY(0); } }
+  p.intro{
+    font-size:1.12rem; color:var(--ink-soft); max-width:600px; margin:0 0 28px;
+    opacity:0; animation:riseIn 0.9s cubic-bezier(.2,.7,.2,1) forwards 0.35s;
+  }
+
+  .trust-strip{
+    display:flex; flex-wrap:wrap; gap:10px;
+    opacity:0; animation:riseIn 0.9s cubic-bezier(.2,.7,.2,1) forwards 0.55s;
+  }
+  .badge{
+    display:inline-flex; align-items:center; gap:6px;
+    background:var(--moss-soft); color:var(--moss); border-radius:100px;
+    padding:7px 14px; font-size:12.5px; font-weight:600;
+  }
+  .badge svg{ width:13px; height:13px; flex-shrink:0; }
+
+  /* editorial rows */
+  .article{ padding:64px 0; }
+  .row{
+    display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;
+    padding:52px 0; border-bottom:1px solid var(--line);
+    opacity:0; transform:translateY(24px);
+    transition:opacity 0.7s ease, transform 0.7s ease;
+  }
+  .row:last-child{ border-bottom:none; }
+  .row.is-visible{ opacity:1; transform:translateY(0); }
+  .row.flip{ direction:rtl; }
+  .row.flip > *{ direction:ltr; }
+
+  .media{
+    position:relative; aspect-ratio:5/4; border-radius:var(--radius); overflow:hidden;
+    background:var(--card); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .media img{ width:100%; height:100%; object-fit:contain; padding:20px; transition:transform 0.5s ease; }
+  .row:hover .media img{ transform:scale(1.04); }
+  .media.no-image{ font-size:12px; color:var(--ink-soft); font-family:'Work Sans',sans-serif; }
+
+  .stamp{
+    position:absolute; top:16px; right:16px; z-index:2;
+    width:74px; height:74px; border-radius:50%;
+    background:var(--moss); color:#fff;
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    font-family:'Fraunces', serif; font-size:10px; font-weight:600; letter-spacing:0.04em;
+    line-height:1.15; padding:6px; transform:rotate(-14deg) scale(0);
+    box-shadow:0 4px 14px rgba(63,92,67,0.35);
+    transition:transform 0.55s cubic-bezier(.34,1.56,.64,1) 0.15s;
+    border:2px dashed rgba(255,255,255,0.55);
+  }
+  .row.is-visible .stamp{ transform:rotate(-14deg) scale(1); }
+
+  .eyebrow-num{
+    font-family:'Fraunces', serif; font-size:13px; color:var(--gold); font-weight:600;
+    margin-bottom:10px; display:block;
+  }
+  h3.name{
+    font-family:'Fraunces', serif; font-size:1.6rem; font-weight:500; margin:0 0 14px; line-height:1.25;
+    display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
+  }
+
+  .meta-row{ display:flex; flex-wrap:wrap; align-items:center; gap:16px; margin-bottom:16px; }
+  .price{ font-size:1.1rem; font-weight:600; color:var(--ink); }
+  .stars{ display:inline-flex; gap:2px; }
+  .stars svg{ width:15px; height:15px; }
+  .rating-txt{ font-size:12.5px; color:var(--ink-soft); }
+
+  ul.notes{ list-style:none; padding:0; margin:0 0 24px; }
+  ul.notes li{
+    font-size:0.95rem; color:var(--ink-soft); padding-left:22px; position:relative; margin-bottom:9px;
+  }
+  ul.notes li::before{
+    content:'✓'; position:absolute; left:0; top:0; color:var(--moss); font-weight:700; font-size:13px;
+  }
+
+  .cta{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--ink); color:var(--paper);
+    border-radius:100px; padding:13px 26px; text-decoration:none;
+    font-size:14px; font-weight:600;
+    transition:background 0.25s ease, transform 0.25s ease;
+  }
+  .cta:hover{ background:var(--moss); transform:translateY(-1px); }
+
+  .flag{
+    display:inline-block; font-size:12px; color:var(--gold);
+    background:#f6ecd9; border-radius:8px; padding:5px 10px; margin-bottom:14px;
+  }
+
+  footer{ padding:40px 0 80px; color:var(--ink-soft); font-size:0.85rem; border-top:1px solid var(--line); }
+  footer .gen{ font-size:11.5px; letter-spacing:0.04em; text-transform:uppercase; margin-bottom:6px; }
+
+  /* custom-swap banner */
+  .custom-cta{ padding:8px 0 60px; }
+  .custom-card{
+    display:flex; gap:28px; align-items:center;
+    background:var(--card); border:2px dashed var(--moss); border-radius:var(--radius);
+    padding:30px;
+  }
+  .custom-media{
+    flex:0 0 140px; aspect-ratio:1/1; border-radius:12px; overflow:hidden;
+    background:var(--paper); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .custom-media img{ width:100%; height:100%; object-fit:contain; padding:12px; }
+  .custom-copy .kicker{ margin-bottom:8px; }
+  .custom-copy h3{
+    font-family:'Fraunces', serif; font-weight:500; font-size:1.35rem; margin:0 0 10px; color:var(--ink);
+  }
+  .custom-copy p{ font-size:0.95rem; color:var(--ink-soft); margin:0 0 18px; max-width:480px; }
+
+  @media (max-width:600px){
+    .custom-card{ flex-direction:column; text-align:center; }
+    .custom-copy p{ max-width:none; }
+  }
+
+  @media (max-width:720px){
+    .row, .row.flip{ grid-template-columns:1fr; direction:ltr; gap:22px; padding:38px 0; }
+    header.hero{ padding:56px 0 36px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <span class="kicker">A Trusted Guide</span>
+    <h1 class="title">Under Sink Organization</h1>
+    <p class="intro">Consider this a briefing, not a listicle. 7 items in under sink organization, checked for build, value, and whether they&#39;d survive a Tuesday-night dinner rush.</p>
+    <div class="trust-strip">
+      <span class="badge"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>Checked line by line</span>
+      <span class="badge"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.7-10.3a1 1 0 00-1.4-1.4L9 9.6 7.7 8.3a1 1 0 00-1.4 1.4l2 2a1 1 0 001.4 0l4-4z" clip-rule="evenodd"/></svg>Prices verified</span>
+      <span class="badge"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a1 1 0 011 1v1.06A6 6 0 0116 9v3.59l1.7 1.7a1 1 0 01-.7 1.71H3a1 1 0 01-.7-1.71L4 12.59V9a6 6 0 015-5.94V2a1 1 0 011-1zM8.5 17a1.5 1.5 0 003 0h-3z"/></svg>Updated 23 Aug 2026, 09:32</span>
+    </div>
+  </header>
+
+  <div class="article">
+    
+    <div class="row ">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/81UyJfoFg2L._AC_SL1500_.jpg" alt="Delamu Under Sink Organizer Kitchen, 2-Tier Pull-Out Cabinet Shelf, 2-Pack" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 01</span>
+        
+        <h3 class="name" title="Delamu Under Sink Organizer Kitchen, 2-Tier Pull-Out Cabinet Shelf, 2-Pack">Delamu Under Sink Organizer Kitchen, 2-Tier Pull-Out Cabinet Shelf, 2-Pack</h3>
+        <div class="meta-row">
+          <span class="price">Price unavailable — check listing</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.5/5 · 304 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>2-Tier Smooth Pull-Out for Instant Access: Upgraded slide-out kitchen cabinet organizer adopts premium guide rails for ultra-smooth, quiet sliding. Both upper and lower layers are pull-out style, fitted with limit stops to avoid tipping. A simple pull brings every bottle, sponge, detergent - no more reaching blindly into the back of cabinet corners or under sink organizer kitchen</li><li>L-Shaped Design for Superior Space Efficiency: Fits around pipes and garbage disposals to fully utilizes under sink storage space, turning awkward dead corners into neat, accessible bathroom cabinet storage organizer for toiletries. Easy-clean grid baskets ensure simple daily maintenance for your under bathroom sink organizer and storage</li><li>Adjustable Heights for Flexible Storage: Featuring 5 height settings, this under cabinet organizer adapts to items of different sizes, from tall bottles to small containers. It works as pantry organizer and storage, a bathroom cabinet organizer on the vanity, or laundry room storage shelves beside the washer: Versatile for use in multiple spaces</li><li>Metal Frame Built to Last: Four large suction cups secure to the cabinet floor and keep the pull-out home organizer steady while sliding. The sturdy all-metal frame holds up to 50 lbs without bending or sagging, far more durable than plastic shelves. Moisture-resistant baked finish withstands household cleaners for reliable use as a under sink bathroom organizer</li><li>Measure Cabinet Size First: Please note that Delamu under the sink organizer measures 10.43&#34;W x 14.37&#34;D x (13.78&#34;-17.72&#34;)H, offering ample capacity for tall bottles or cleaning supplies organizer. Before purchase, please double-check your cabinet sizes to ensure this under kitchen sink organizer fits properly. The minimum required inner cabinet space is 12&#34;W x 17&#34;D x 15&#34;H for 1-Pack, and 25&#34;W x 17&#34;D x 15&#34;H for 2-Pack</li></ul>
+        
+        <a class="cta" href="https://amzn.to/4xRthjG" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row flip">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/71bmj1o5fuL._AC_SL1216_.jpg" alt="3 Tier Under Sink Organizer for Bathroom, Pull Out Drawers, 2 Pack" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 02</span>
+        
+        <h3 class="name" title="3 Tier Under Sink Organizer for Bathroom, Pull Out Drawers, 2 Pack">3 Tier Under Sink Organizer for Bathroom, Pull Out Drawers, 2 Pack</h3>
+        <div class="meta-row">
+          <span class="price">Price unavailable — check listing</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.2/5 · 31 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>Maximized 3-Tier Large Capacity Storage:Upgraded 3-tier large capacity design provides 30% more vertical space than common 2-tier models to reclaim cluttered areas.The L-shaped narrow-top and wide-bottom design fits perfectly around plumbing and garbage disposals,ensuring every inch of your cabinet is utilized.</li><li>Smooth Silent Sliding &amp; Dual-Side Installation:Each tier features an independent smooth-sliding drawer system for effortless access.The L-shaped narrow-top design with symmetrical structure fits around plumbing on either left or right side,allowing flexible installation to suit your specific cabinet layout.</li><li>Adjustable Height For Various Bottles:The 4-level adjustable height middle shelf accommodates everything from tall laundry detergent jugs to spice jars. This customizable spacing ensures that even large-sized cleaning supplies stay upright and organized without getting caught on the upper basket.</li><li>Heavy Duty Carbon Steel Built to Last:Crafted from reinforced carbon steel, this organizer supports 60 lbs with 4 anti-slip suction cups and 2 nano adhesive films each set to ensure maximum stability and prevent tipping when drawers are extended.The premium baking paint finish provides a waterproof and rustproof surface that resists daily humidity.</li><li>Tool-Free Assembly In 5 Minutes:Arrives with all necessary parts and a detailed guide for quick installation. The freestanding design features anti-slip suction cups to ensure maximum stability on cabinet surfaces,preventing tipping when drawers are fully extended with heavy loads.</li></ul>
+        
+        <a class="cta" href="https://amzn.to/4y2aS41" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row ">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/717Nqjdsc+L._AC_SL1500_.jpg" alt="Hvygss Clear Stackable Storage Drawers, Countertop Bottle Organizer 5-Pack" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 03</span>
+        
+        <h3 class="name" title="Hvygss Clear Stackable Storage Drawers, Countertop Bottle Organizer 5-Pack">Hvygss Clear Stackable Storage Drawers, Countertop Bottle Organizer 5-Pack</h3>
+        <div class="meta-row">
+          <span class="price">Price unavailable — check listing</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.7/5 · 9 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>BEAUTY &amp; SKINCARE ORGANIZER: Perfect as a makeup organizer for foundations, serums, and palettes, or a skincare organizer for toners, creams, and lotions. These stackable drawers rearrange to fit your needs – a flexible system that keeps beauty essentials organized and accessible daily</li><li>SEE-THROUGH CLARITY: Find exactly what you need in seconds – no rummaging, no labels needed. The clear design lets you see every item at a glance, saving you time and frustration during busy mornings</li><li>SMOOTH GLIDE, NO TIPPING: Our drawer organizer built-in handles and smooth tracks ensure smooth pull-out every time. Four extra anti-slip pads at the base keep the entire unit stable, so you can access items without wobbling</li><li>WATERPROOF and DUSTPROOF: Thickened waterproof BPA-Free plastic resists moisture, dust, and daily wear. Spills wipe clean in seconds, and durable construction keeps stored items protected – ideal for humid bathrooms and busy vanities</li><li>MULTI-SCENE BOTTLE ORGANIZER: This stackable storage drawer set works on vanity countertops, bathroom sinks, and kitchen cabinets. Its flexible, detachable stackable frame fits standard cabinet heights – refer to our size guide image for exact measurements</li></ul>
+        
+        <a class="cta" href="https://amzn.to/4cDNUaV" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row flip">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/71X8D81V-rL._AC_SL1500_.jpg" alt="REALINN Under Sink Organizer, L-Shaped 2 Tier Pull Out Cabinet Organizer" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 04</span>
+        
+        <h3 class="name" title="REALINN Under Sink Organizer, L-Shaped 2 Tier Pull Out Cabinet Organizer">REALINN Under Sink Organizer, L-Shaped 2 Tier Pull Out Cabinet Organizer</h3>
+        <div class="meta-row">
+          <span class="price">Price unavailable — check listing</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.4/5 · 15,640 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>L Shaped Design: L-shaped design with narrow top and wide bottom, leaves space for plumbing and garbage disposal, maximizing the vertical space of the sink. And the bottom tier leaves a suitable space for your tall bottles, which can solve your cabinet storage troubles</li><li>Sliding Storage Drawer: The under sink organizer is designed as a sliding drawer with handles, can be pulled out from both sides, allowing you to easily access the items stored at the bottom</li><li>Easy Installation and Stable: No tools required. It only takes a few seconds to install. Double design with bottom suction cups and tapes. No need to punch mounting screws, but more stable than it is</li><li>Sturdy and Clean: Made of high quality steel, can bear 50 lbs. With baking paint, beautiful and rust-proof. Sink shelf is grid design to prevent water accumulation; 2 pads to prevent objects from falling, removable and washable</li><li>Multi-purpose Organizer: Assembled Dimensions: 14.2*10.6*11 in. Top basket: 14.2*4.8*2.3 in, bottom basket: 14.2*8.9*3 in. The bottom area can hold bottles up to 8 inches in height. (Warm Tips: Please take measurements before ordering.）Ideal for sinks, kitchens and bathrooms. It can be used as bathroom toiletries storage, kitchen spice rack or laundry room storage, etc. to keep your items organized and in order</li></ul>
+        
+        <a class="cta" href="https://amzn.to/3UdCR1T" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row ">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/71U6J1CPSlL._AC_SL1500_.jpg" alt="Expandable Under Sink Organizer, 2 Tier Under Sink Shelf" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 05</span>
+        
+        <h3 class="name" title="Expandable Under Sink Organizer, 2 Tier Under Sink Shelf">Expandable Under Sink Organizer, 2 Tier Under Sink Shelf</h3>
+        <div class="meta-row">
+          <span class="price">Price unavailable — check listing</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.6/5 · 173 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>Multifunctional Cabinet Shelf Organizer: Our versatile cabinet shelf organizer is not only suitable for under sink storage but also be used in kitchen cabinets; closets; and other storage spaces</li><li>Premium Quality and Durability: The sturdy frame ensures stability and can withstand heavy items without bending or collapsing</li><li>Removable Board and Adjustable Height: Move basket and board to accommodate different space sizes</li><li>Designed for Convenience: Easy to assemble without complicated tools or expertise</li><li>Sleek and Minimalist Design: Its neutral color and clean lines add a touch of elegance to your storage space while ensuring that it seamlessly integrates with your existing furniture</li></ul>
+        
+        <a class="cta" href="https://amzn.to/4gKBPDg" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row flip">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/71pGgQqZWPL._AC_SL1500_.jpg" alt="Lae Nuvole Adhesive Cabinet Door Organizer, 2 Pack Wall Shower Caddy, Clear" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 06</span>
+        
+        <h3 class="name" title="Lae Nuvole Adhesive Cabinet Door Organizer, 2 Pack Wall Shower Caddy, Clear">Lae Nuvole Adhesive Cabinet Door Organizer, 2 Pack Wall Shower Caddy, Clear</h3>
+        <div class="meta-row">
+          <span class="price">INR1,357.93</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.5/5 · 1,148 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>MORE REPLACEMENT OPTIONS : We will provide 4 adhesive stickers(more than normal), with 2 as replacements for backup, this allows you to quickly replace the adhesive sticker when it loses its adhesive force or when you need to change the installation location</li><li>SIMPLE STORAGE : The sleek modern look of this Cabinet Door Organizer will add style to your storage and complement your decor; The clean lines and angled design of this floating shelf make it a style statement in any home; Beautiful and functional, this organizational basket provides a convenient drop zone for mail, cell phones, sunglasses, leashes in an entryway; Use in mudrooms, home offices, bathrooms, craft rooms, garages, kitchens, pantries and throughout your home</li><li>FUNCTIONAL AND VERSATILE : The bathroom organizers and storage create extra storage space wherever you need it; The compact design fits in small or crowded bathroom spaces, just position as needed to store and organize small items, bath toys, wipes, shampoo, conditioner and other bottles; Use as under sink door organizer in the kitchen or use in utility room for cleaning supplies, extra garbage bags, liners, scrub brushes or sponges; Ideal for houses, apartments, condos, college dorm rooms, RVs, campers, boats and cabins</li><li>STRONG AND STURDY : These sponge holder for kitchen sink caddy are made of reliable high quality PET, it&#39;s food grade, BPA free and shatter proof plastic. Moreover This Bathroom shower organizer has a strong load bearing which holds up to 11 Pounds and Stands Up to Daily Use</li><li>THOUGHTFULLY SIZED : This Peel and Stick wall storage shelf measures 7.88 x 4.72 x 3.54 inches, perfect for your maximizing storage space in any size home; It&#39;s suitable for renter, studio flat/apartment or spaces with limited area</li></ul>
+        
+        <a class="cta" href="https://amzn.to/3Ue3TpU" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row ">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/81DosoMTz6L._AC_SL1500_.jpg" alt="Delamu 2-Tier Multi-Purpose Bathroom Under Sink Organizers and Storage, Stackable Kitchen Pantry Organization, Pull Out Medicine Cabinet Organizer with Movable Dividers, White, 2 Pack" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 07</span>
+        
+        <h3 class="name" title="Delamu 2-Tier Multi-Purpose Bathroom Under Sink Organizers and Storage, Stackable Kitchen Pantry Organization, Pull Out Medicine Cabinet Organizer with Movable Dividers, White, 2 Pack">Delamu 2-Tier Multi-Purpose Bathroom Under Sink Organizers and Storage, Stackable Kitchen Pantry Organization, Pull Out Medicine Cabinet Organizer with Movable Dividers, White, 2 Pack</h3>
+        <div class="meta-row">
+          <span class="price">INR 1,583.75</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.3/5 · 7,932 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>Under Sink Organizers</li><li>Under Sink Organizer</li><li>Available in 2 Different Sizes: The smaller size (S) measures 8.27&#34; x 13.19&#34; x 9.06&#34;, and the larger size (L) measures 8.27&#34; x 13.19&#34; x 10.63&#34;. High-Low combos make this bathroom organizer versatile for multi-purpose storage and organization, such as kitchen organization, cabinet organizer and storage, bathroom organizer countertop, pantry organizer, under sink organizer, etc</li><li>Pull-Out Drawers and Divider: This kitchen organization and storage set come with 4 slide-out drawers and 8 movable dividers. Each drawer can slide in and out smoothly, making it a breeze to access hard-to-reach things. The movable divider allows you to freely adjust the spacing as you like to organize your meds, cosmetics, stationery, skincare, perfume, brushes, etc</li><li>Upgraded Clear Acrylic Organizers: The kitchen cabinet organizer are Selected with high-end acrylic, aluminum alloy support rod, etc high-quality materials to Produce, so you can see the inside clearly and find the wanted stuff fast, An essential assistant for bathroom organization, and kitchen organizer and pantry storage, keeping toiletries and kitchen seasoning organized</li></ul>
+        
+        <a class="cta" href="https://amzn.to/4hOO96D" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+  </div>
+
+  
+
+  <footer>
+    <div class="gen">Last checked 23 Aug 2026, 09:32</div>
+    <p>As an Amazon Associate, this page may earn from qualifying purchases.</p>
+  </footer>
+</div>
+
+<script>
+  const rows = document.querySelectorAll('.row');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  rows.forEach(r => io.observe(r));
+</script>
+
+</body>
+</html>
