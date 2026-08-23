@@ -1,1 +1,462 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desk Organization — A Trusted Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#faf5ec;
+    --card:#ffffff;
+    --ink:#2a2723;
+    --ink-soft:#6b6459;
+    --moss:#3f5c43;
+    --moss-soft:#e7eee3;
+    --gold:#b8863b;
+    --line:#e6ddc9;
+    --radius:16px;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Work Sans', sans-serif; line-height:1.65;
+    position:relative;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+  }
+
+  /* subtle paper grain */
+  body::before{
+    content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+    opacity:0.5; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  }
+
+  .wrap{ position:relative; z-index:1; max-width:880px; margin:0 auto; padding:0 28px; }
+
+  header.hero{ padding:80px 0 48px; border-bottom:1px solid var(--line); }
+  .kicker{
+    font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--moss);
+    font-weight:600; margin-bottom:18px; display:block;
+  }
+  h1.title{
+    font-family:'Fraunces', serif; font-optical-sizing:auto;
+    font-size:clamp(2.3rem, 5vw, 3.6rem); font-weight:500; line-height:1.08;
+    margin:0 0 20px; color:var(--ink);
+    opacity:0; transform:translateY(16px);
+    animation:riseIn 0.9s cubic-bezier(.2,.7,.2,1) forwards 0.15s;
+  }
+  @keyframes riseIn{ to{ opacity:1; transform:translateY(0); } }
+  p.intro{
+    font-size:1.12rem; color:var(--ink-soft); max-width:600px; margin:0 0 28px;
+    opacity:0; animation:riseIn 0.9s cubic-bezier(.2,.7,.2,1) forwards 0.35s;
+  }
+
+  .trust-strip{
+    display:flex; flex-wrap:wrap; gap:10px;
+    opacity:0; animation:riseIn 0.9s cubic-bezier(.2,.7,.2,1) forwards 0.55s;
+  }
+  .badge{
+    display:inline-flex; align-items:center; gap:6px;
+    background:var(--moss-soft); color:var(--moss); border-radius:100px;
+    padding:7px 14px; font-size:12.5px; font-weight:600;
+  }
+  .badge svg{ width:13px; height:13px; flex-shrink:0; }
+
+  /* editorial rows */
+  .article{ padding:64px 0; }
+  .row{
+    display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;
+    padding:52px 0; border-bottom:1px solid var(--line);
+    opacity:0; transform:translateY(24px);
+    transition:opacity 0.7s ease, transform 0.7s ease;
+  }
+  .row:last-child{ border-bottom:none; }
+  .row.is-visible{ opacity:1; transform:translateY(0); }
+  .row.flip{ direction:rtl; }
+  .row.flip > *{ direction:ltr; }
+
+  .media{
+    position:relative; aspect-ratio:5/4; border-radius:var(--radius); overflow:hidden;
+    background:var(--card); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .media img{ width:100%; height:100%; object-fit:contain; padding:20px; transition:transform 0.5s ease; }
+  .row:hover .media img{ transform:scale(1.04); }
+  .media.no-image{ font-size:12px; color:var(--ink-soft); font-family:'Work Sans',sans-serif; }
+
+  .stamp{
+    position:absolute; top:16px; right:16px; z-index:2;
+    width:74px; height:74px; border-radius:50%;
+    background:var(--moss); color:#fff;
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    font-family:'Fraunces', serif; font-size:10px; font-weight:600; letter-spacing:0.04em;
+    line-height:1.15; padding:6px; transform:rotate(-14deg) scale(0);
+    box-shadow:0 4px 14px rgba(63,92,67,0.35);
+    transition:transform 0.55s cubic-bezier(.34,1.56,.64,1) 0.15s;
+    border:2px dashed rgba(255,255,255,0.55);
+  }
+  .row.is-visible .stamp{ transform:rotate(-14deg) scale(1); }
+
+  .eyebrow-num{
+    font-family:'Fraunces', serif; font-size:13px; color:var(--gold); font-weight:600;
+    margin-bottom:10px; display:block;
+  }
+  h3.name{
+    font-family:'Fraunces', serif; font-size:1.6rem; font-weight:500; margin:0 0 14px; line-height:1.25;
+    display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
+  }
+
+  .meta-row{ display:flex; flex-wrap:wrap; align-items:center; gap:16px; margin-bottom:16px; }
+  .price{ font-size:1.1rem; font-weight:600; color:var(--ink); }
+  .stars{ display:inline-flex; gap:2px; }
+  .stars svg{ width:15px; height:15px; }
+  .rating-txt{ font-size:12.5px; color:var(--ink-soft); }
+
+  ul.notes{ list-style:none; padding:0; margin:0 0 24px; }
+  ul.notes li{
+    font-size:0.95rem; color:var(--ink-soft); padding-left:22px; position:relative; margin-bottom:9px;
+  }
+  ul.notes li::before{
+    content:'✓'; position:absolute; left:0; top:0; color:var(--moss); font-weight:700; font-size:13px;
+  }
+
+  .cta{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--ink); color:var(--paper);
+    border-radius:100px; padding:13px 26px; text-decoration:none;
+    font-size:14px; font-weight:600;
+    transition:background 0.25s ease, transform 0.25s ease;
+  }
+  .cta:hover{ background:var(--moss); transform:translateY(-1px); }
+
+  .flag{
+    display:inline-block; font-size:12px; color:var(--gold);
+    background:#f6ecd9; border-radius:8px; padding:5px 10px; margin-bottom:14px;
+  }
+
+  footer{ padding:40px 0 80px; color:var(--ink-soft); font-size:0.85rem; border-top:1px solid var(--line); }
+  footer .gen{ font-size:11.5px; letter-spacing:0.04em; text-transform:uppercase; margin-bottom:6px; }
+
+  /* custom-swap banner */
+  .custom-cta{ padding:8px 0 60px; }
+  .custom-card{
+    display:flex; gap:28px; align-items:center;
+    background:var(--card); border:2px dashed var(--moss); border-radius:var(--radius);
+    padding:30px;
+  }
+  .custom-media{
+    flex:0 0 140px; aspect-ratio:1/1; border-radius:12px; overflow:hidden;
+    background:var(--paper); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .custom-media img{ width:100%; height:100%; object-fit:contain; padding:12px; }
+  .custom-copy .kicker{ margin-bottom:8px; }
+  .custom-copy h3{
+    font-family:'Fraunces', serif; font-weight:500; font-size:1.35rem; margin:0 0 10px; color:var(--ink);
+  }
+  .custom-copy p{ font-size:0.95rem; color:var(--ink-soft); margin:0 0 18px; max-width:480px; }
+
+  @media (max-width:600px){
+    .custom-card{ flex-direction:column; text-align:center; }
+    .custom-copy p{ max-width:none; }
+  }
+
+  @media (max-width:720px){
+    .row, .row.flip{ grid-template-columns:1fr; direction:ltr; gap:22px; padding:38px 0; }
+    header.hero{ padding:56px 0 36px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <span class="kicker">A Trusted Guide</span>
+    <h1 class="title">Desk Organization</h1>
+    <p class="intro">Every kitchen accumulates gear it never asked for. This is the opposite list: 7 picks in desk organization, chosen because each one earns its counter space rather than just occupying it.</p>
+    <div class="trust-strip">
+      <span class="badge"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>Checked line by line</span>
+      <span class="badge"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.7-10.3a1 1 0 00-1.4-1.4L9 9.6 7.7 8.3a1 1 0 00-1.4 1.4l2 2a1 1 0 001.4 0l4-4z" clip-rule="evenodd"/></svg>Prices verified</span>
+      <span class="badge"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a1 1 0 011 1v1.06A6 6 0 0116 9v3.59l1.7 1.7a1 1 0 01-.7 1.71H3a1 1 0 01-.7-1.71L4 12.59V9a6 6 0 015-5.94V2a1 1 0 011-1zM8.5 17a1.5 1.5 0 003 0h-3z"/></svg>Updated 23 Aug 2026, 09:59</span>
+    </div>
+  </header>
+
+  <div class="article">
+    
+    <div class="row ">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/91acTNhrcgL._AC_SL1500_.jpg" alt="EasyPAG Mesh Desk Organizer with Drawer Multi-functional Pen Holder Stationery Organizer for Office School Supplies 6 Compartments Dorm Organizers and Storage for Desk, Black" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 01</span>
+        
+        <h3 class="name" title="EasyPAG Mesh Desk Organizer with Drawer Multi-functional Pen Holder Stationery Organizer for Office School Supplies 6 Compartments Dorm Organizers and Storage for Desk, Black">EasyPAG Mesh Desk Organizer with Drawer Multi-functional Pen Holder Stationery Organizer for Office School Supplies 6 Compartments Dorm Organizers and Storage for Desk, Black</h3>
+        <div class="meta-row">
+          <span class="price">INR1,491.90</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.8/5 · 4,925 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>Wire Mesh Desk Organizer: Crafted from premium mesh metal, this organizer withstands daily use in home offices, classrooms, or makeup vanities. Rust-resistant and easy to clean with a soft cloth.</li><li>Multi-Purpose Stationery Organizer: Deigned with 6 compartments and 1 pull-out drawer, organize stationery (pens, pencils, notebooks, scissors) or makeup (brushes, lipsticks, nail polish), maximize desk space and reduce clutter for a tidy workspace.</li><li>Space-Saving Dorm Organization: Dimensions 8.7x4.9x5.5 inch fit compact desks yet hold essentials. Back document slot, pencil holders, and shallow trays categorize items by type.</li><li>Anti-Scratch Protection Stylish Design: Features 4 silicone pads and rounded edges to protect your desk surface, while the sleek mesh design complements modern office and home decor.</li><li>Perfect Gift for Women: Ideal for students, professionals, or anyone seeking a clutter-free desk. Combines practicality with a feminine aesthetic for offices, dorms, or vanity tables.</li></ul>
+        
+        <a class="cta" href="https://amzn.to/4cpca0D" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row flip">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/71ujmpvYlkL._AC_SL1500_.jpg" alt="Univivi No Drill Under Desk Cable Management Tray, 36 inch Cable Management" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 02</span>
+        
+        <h3 class="name" title="Univivi No Drill Under Desk Cable Management Tray, 36 inch Cable Management">Univivi No Drill Under Desk Cable Management Tray, 36 inch Cable Management</h3>
+        <div class="meta-row">
+          <span class="price">INR1,392.38</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.6/5 · 807 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>Large Capacity and Durable. The cable tray size 36&#34;L x 5.5&#34;W x 5.5&#34;H (The product images include detailed dimension diagrams. Please measure your table before purchasing to select the appropriate size.), it fits all size adapters and sockets, holds and hides everything under your table. It is ideal cable management under desk.</li><li>Two Ways Installations. This under desk organizer supports both no drill clamp on and screw fixing installation, it fits all table top materials such as wood table, glass table, and metal table.</li><li>Make Cable Management Much Easier. You can unfold the tray for much easier adding or removing items, every item can be fixed in the tray by using the build-in ties.</li><li>Premium Quality. The screw free clamp is heavy duty for weight loading, the thick 600D oxford fabric is flame retardant, the tray has bottom support for loading heavy weight keep elegant shape. Premium quality in all details.</li><li>Excellent Customer Service. We are the reliable brand who take customers service in top priority, strictly obey amazon customers service policy with many years reputation. Reminder: If the table has built-in drawers or back-rod, make sure there is a space of at least 5.3 inches along the edges. Otherwise, our products cannot be used. The product is fixed under the table using clips. Space needs to be left on the tabletop for the clips, and it is impossible to make it completely invisible.</li></ul>
+        
+        <a class="cta" href="https://amzn.to/4qzHRKm" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row ">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/71uQ8L3QzHL._AC_SL1300_.jpg" alt="Lamicall 8 Pack Cord Organizer, [1s Lock] Cable Management Clips for Desk" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 03</span>
+        
+        <h3 class="name" title="Lamicall 8 Pack Cord Organizer, [1s Lock] Cable Management Clips for Desk">Lamicall 8 Pack Cord Organizer, [1s Lock] Cable Management Clips for Desk</h3>
+        <div class="meta-row">
+          <span class="price">INR956.00</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.7/5 · 4,106 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>【1s Spring-Lock Design】Our cord holder clips feature an innovative 𝐬𝐩𝐫𝐢𝐧𝒈 𝐨𝐩𝐞𝐧-𝐜𝐥𝐨𝐬𝐞 mechanism, combine with the unique design of the spring&#39;s 60° rotation shaft and thoughtful angled opening. This cord holder organizer allows for seamless &#34;one-handed&#34; operation. Place and remove your phone charging cords, HDMI cords, household wires qucikly and securely. [Installtion Tips] After sticking the cord holders, please WAIT for 30 minutes before using for better adhering effect</li><li>【8mm Widened Slot for Universal Fit】With a diameter range of 2.5-8mm (0.1&#34;-0.32&#34;), our cable management organizer clips can organize a wide variety of wires, including Type-C charger cords, lightning cords, HDMI cords, USB cables, computer power wires, network wires, mouse cords, keyboard cables, headphone cords, TV cables and more. One solution for all your electronic accessories.</li><li>【Stronger Acrylic Adhesive - No Residue】 Unlike ordinary 3M adhesive tapes, our cable holder organizer utilizes the stronger acrylic adhesive. Just simply stick the wire holder organizer to any smooth and dry surface, such as wooden table, glass, or ceramic tiles, etc. Plus, it’s &#34;surface-safe&#34;—peels off cleanly with zero sticky residue, protecting your premium desk or nightstand.</li><li>【Compact &amp; Keycap Aesthetic】Size: 0.85&#34; X 0.85&#34; X 0.55&#34;, Weight: 3g. Inspired by mechanical keyboard keycaps, the ultra-small footprint of our cable clips allows for installation in narrow gaps, table corners, or car dashboards. Its minimalist design blends into any home or office decor, keeping your workspace organized and &#34;clutter-free&#34; without taking up valuable real estate.</li><li>【Premium ABS Durability】Made from high-quality ABS plastic material, our cord management clips are more durable than the rubbers. The strong spring locking action ensures easy one-hand operatin - simply clip in, pull out and retrieve your cables to use effortlessly. The small cord management clips do not take up too much sticking area</li></ul>
+        
+        <a class="cta" href="https://amzn.to/3UOuGct" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row flip">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/61dpRC+gl3L._AC_SL1500_.jpg" alt="Lamicall Aluminum Cell Phone Stand, Adjustable Desk Phone Holder for iPhone" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 04</span>
+        
+        <h3 class="name" title="Lamicall Aluminum Cell Phone Stand, Adjustable Desk Phone Holder for iPhone">Lamicall Aluminum Cell Phone Stand, Adjustable Desk Phone Holder for iPhone</h3>
+        <div class="meta-row">
+          <span class="price">INR860.31</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.7/5 · 42,079 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>Universal Compatibility: Lamicall cell phone stand can work with all smartphones from 4-8 inches, like Applei iPhone 17, iPhone 17 Pro, iPhone 17 Pro Max, iPhone Air, Phone 16, iPhone 16 Pro, iPhone 16 Pro Max, iPhone 16 Plus, iPhone 15, iPhone 15 Pro, iPhone 15 Pro Max, iPhone 15 Plus, iPhone 14, iPhone 14 Plus, iPhone 14 pro, iPhone 14 pro max, iPhone 13 Mini, iPhone 13, iPhone 13 Pro, iPhone 13 Pro Max, 12,11 SE 2020, XS, XS Max, XR, X, 8 7 6 Plus, Galaxy S21 Ultra, S20, S10, S9, S9 Plus, A71, A51, A11, Edge, Note 20 ultra, even with a case on.</li><li>Desktop Partner: Great desk accessories for office and home. A smartphone stand with perfect viewing angle for making phone calls, watching movies, viewing recipes and using facetime.</li><li>Sleek and Elegant: Made of high-quality aluminum alloy, this desk phone holder has a smooth edge, a nice finish and beautiful metallic luster. It looks sleek and elegant on your desktop.</li><li>Stable and Protective: This phone dock with a low gravity center can hold your phone stably. Besides, its rubber cushions protect the phone from scratches and sliding.</li><li>Warm Tips: The hook width of the mobile phone stand is 14mm, please make sure the thickness of your device is no more than 14mm (0.55 in). For a cell phone larger than 6 inches, kindly set it in landscape mode for more stability.</li></ul>
+        
+        <a class="cta" href="https://amzn.to/3STv6xL" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row ">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/81d4-tMNNFL._AC_SL1500_.jpg" alt="Subekyu 6-Tier Desk Paper Organizer, Desktop File Letter Tray with Handle, Document Sorter and Accessories Holder for Office, Home and School Workspace Organizers, White - 2 Pack" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 05</span>
+        
+        <h3 class="name" title="Subekyu 6-Tier Desk Paper Organizer, Desktop File Letter Tray with Handle, Document Sorter and Accessories Holder for Office, Home and School Workspace Organizers, White - 2 Pack">Subekyu 6-Tier Desk Paper Organizer, Desktop File Letter Tray with Handle, Document Sorter and Accessories Holder for Office, Home and School Workspace Organizers, White - 2 Pack</h3>
+        <div class="meta-row">
+          <span class="price">INR6,362.83</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.6/5 · 370 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>Stylish Supplies Organizer Storage: Our desk organizer have a variety of colors to choose from, you can pick the right color to match different office styles and make your life more exciting!</li><li>Space-saving Desk Organizer Tray: Feature portable handles and multi-layer stackable slide trays. Space-saving design as letter tray to hold various items and enhance desktop organization</li><li>Applicable Scenarios: This paper organizer for desk suits office, home, and school. holds different-sized items. Keep desktop organized by sorting manage file, papers, bill, letters, documents, folders, books, magazines, staplers, calculators effectively</li><li>User-friendly Desk Organizer: This desk paper organizer comes with a screwdriver and an installation instruction, easy to install in minutes. Handles for easy movement, sliding trays for adjustability, open design for quick item identification</li><li>Practical Desk File Organizer: The file tray is made of durable metal mesh tray and steel frame. Surface treated for sturdiness, wear-resistance, and rust-proof. Fine workmanship with smooth edges and stable structure make it a qualified paper tray</li></ul>
+        
+        <a class="cta" href="https://amzn.to/3SKxYNo" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row flip">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/81yj+PUYVxL._AC_SL1500_.jpg" alt="Vtopmart 25 PCS Clear Plastic Drawer Organizers Set, 4-Size Versatile Bathroom and Vanity Drawer Organizer Trays, Storage Bins for Makeup, Bedroom, Kitchen Gadgets Utensils and Office" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 06</span>
+        
+        <h3 class="name" title="Vtopmart 25 PCS Clear Plastic Drawer Organizers Set, 4-Size Versatile Bathroom and Vanity Drawer Organizer Trays, Storage Bins for Makeup, Bedroom, Kitchen Gadgets Utensils and Office">Vtopmart 25 PCS Clear Plastic Drawer Organizers Set, 4-Size Versatile Bathroom and Vanity Drawer Organizer Trays, Storage Bins for Makeup, Bedroom, Kitchen Gadgets Utensils and Office</h3>
+        <div class="meta-row">
+          <span class="price">INR1,912.96</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.7/5 · 49,315 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>✔Make Everything Organized -- These clear versatile drawer dividers trays are perfect for any place in your home. Fit all kinds of drawers, such as vanity / bathroom / kitchen / office drawers/ craft room, ideal for organizing cosmetics, makeup tools, hair accessories, jewelry, pins, office supply, craft supplies, utensils, etc.</li><li>✔Combination of 4 Different Sizes -- One set includes 25pcs storage bins in 4 different sizes, which help you customize combinations to store items and organize drawer in shelf/ closet/ cabinet/ dresser . Includes: 9 x 6 x 2 inches (3pcs), 9 x 3x 2 inches(6pcs), 6 x 3 x 2 inches(8pcs), 3 x 3 x 2 inches(8cps).</li><li>✔Non-Slip and Durable -- Extra 100pcs silicone pads are included, just stick them on the bottom of the plastic trays for non-slip. Made of durable and clear plastic, so you can see what’s in it without digging around or making a mess, help you get a neat lifestyle.</li><li>✔Stackable Storage -- The drawer bins can be stacked into one other when you not use them, that will save much space and organize well. You will find it&#39;s so easy to keep things neat and tidy.</li><li>✔Easy to Clean -- Our desk drawer storage bins are easy to be wiped clean with a damp cloth and perfect for keeping everything in its place. Convenient for use in your daily life, make everything look beautiful and better organized.</li></ul>
+        
+        <a class="cta" href="https://amzn.to/4xfVh0r" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row ">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/71dau9RTrSL._AC_SL1500_.jpg" alt="LED Desk Lamp with Power Strip, 3 AC Outlets, 4 USB Ports, Stepless Dimming" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 07</span>
+        
+        <h3 class="name" title="LED Desk Lamp with Power Strip, 3 AC Outlets, 4 USB Ports, Stepless Dimming">LED Desk Lamp with Power Strip, 3 AC Outlets, 4 USB Ports, Stepless Dimming</h3>
+        <div class="meta-row">
+          <span class="price">Price unavailable — check listing</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.3/5 · 259 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>STEPLESS DIMMING &amp; FULL COLOR CONTROL FOR ANY TASK: Enjoy smooth stepless dimming from 1% to 100% and adjustable color temperature from 2800K to 6500K. This LED desk lamp functions as a powerful desk light for reading, studying, working, or relaxing. Long-press control allows quick brightness adjustment—ideal for home office setups, bedrooms, and dorm rooms</li><li>ALL-IN-ONE DESK LAMP WITH POWER STRIP &amp; USB-C CHARGING: More than just a lamp—this multifunctional desk essential combines 3 AC outlets, 2 USB-C ports, and 2 USB-A ports to power up to 7 devices at once. Charge your phone, tablet, laptop, and accessories simultaneously—even when the light is off. Ideal for college dorm rooms and clutter-free desk setups. (Max 1200W/10A)</li><li>SPACE-SAVING FOLDABLE DESIGN FOR SMALL DESKS: Designed for limited spaces, this foldable table lamp features a 90° adjustable arm and 180° flexible light head, allowing precise light positioning while saving valuable desk space. Easily fold it away when not in use—perfect for compact desks, dorm rooms, and bedside tables</li><li>EYE-CARING LED LIGHT WITH UNIFORM ILLUMINATION: Built with 64 high-quality LED beads, this desk lamp for home office delivers flicker-free, glare-free lighting with reduced blue light to help minimize eye strain during long study or work sessions. Energy-efficient design saves up to 85% compared to traditional incandescent lamps</li><li>USB-C DESK LAMP WITH TIMER, MEMORY &amp; FLAT PLUG: Upgrade your desk setup with this all-in-one desk lamp and desk light featuring built-in USB charging ports and a power strip. The 45° flat plug and 5 ft cord fit easily behind furniture and in tight spaces. Set the 1-hour auto-off timer to save energy, while the smart memory function keeps your preferred brightness every time—no need to reset</li></ul>
+        
+        <a class="cta" href="https://amzn.to/4c6X9jP" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+  </div>
+
+  
+
+  <footer>
+    <div class="gen">Last checked 23 Aug 2026, 09:59</div>
+    <p>As an Amazon Associate, this page may earn from qualifying purchases.</p>
+  </footer>
+</div>
+
+<script>
+  const rows = document.querySelectorAll('.row');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  rows.forEach(r => io.observe(r));
+</script>
+
+</body>
+</html>
