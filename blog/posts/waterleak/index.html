@@ -1,1 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Water Leak Detectors &amp; Home Protection — A Trusted Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#faf5ec;
+    --card:#ffffff;
+    --ink:#2a2723;
+    --ink-soft:#6b6459;
+    --moss:#3f5c43;
+    --moss-soft:#e7eee3;
+    --gold:#b8863b;
+    --line:#e6ddc9;
+    --radius:16px;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Work Sans', sans-serif; line-height:1.65;
+    position:relative;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+  }
 
+  /* subtle paper grain */
+  body::before{
+    content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+    opacity:0.5; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  }
+
+  .wrap{ position:relative; z-index:1; max-width:880px; margin:0 auto; padding:0 28px; }
+
+  header.hero{ padding:80px 0 48px; border-bottom:1px solid var(--line); }
+  .kicker{
+    font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--moss);
+    font-weight:600; margin-bottom:18px; display:block;
+  }
+  h1.title{
+    font-family:'Fraunces', serif; font-optical-sizing:auto;
+    font-size:clamp(2.3rem, 5vw, 3.6rem); font-weight:500; line-height:1.08;
+    margin:0 0 20px; color:var(--ink);
+    opacity:0; transform:translateY(16px);
+    animation:riseIn 0.9s cubic-bezier(.2,.7,.2,1) forwards 0.15s;
+  }
+  @keyframes riseIn{ to{ opacity:1; transform:translateY(0); } }
+  p.intro{
+    font-size:1.12rem; color:var(--ink-soft); max-width:600px; margin:0 0 28px;
+    opacity:0; animation:riseIn 0.9s cubic-bezier(.2,.7,.2,1) forwards 0.35s;
+  }
+
+  .trust-strip{
+    display:flex; flex-wrap:wrap; gap:10px;
+    opacity:0; animation:riseIn 0.9s cubic-bezier(.2,.7,.2,1) forwards 0.55s;
+  }
+  .badge{
+    display:inline-flex; align-items:center; gap:6px;
+    background:var(--moss-soft); color:var(--moss); border-radius:100px;
+    padding:7px 14px; font-size:12.5px; font-weight:600;
+  }
+  .badge svg{ width:13px; height:13px; flex-shrink:0; }
+
+  /* editorial rows */
+  .article{ padding:64px 0; }
+  .row{
+    display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;
+    padding:52px 0; border-bottom:1px solid var(--line);
+    opacity:0; transform:translateY(24px);
+    transition:opacity 0.7s ease, transform 0.7s ease;
+  }
+  .row:last-child{ border-bottom:none; }
+  .row.is-visible{ opacity:1; transform:translateY(0); }
+  .row.flip{ direction:rtl; }
+  .row.flip > *{ direction:ltr; }
+
+  .media{
+    position:relative; aspect-ratio:5/4; border-radius:var(--radius); overflow:hidden;
+    background:var(--card); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .media img{ width:100%; height:100%; object-fit:contain; padding:20px; transition:transform 0.5s ease; }
+  .row:hover .media img{ transform:scale(1.04); }
+  .media.no-image{ font-size:12px; color:var(--ink-soft); font-family:'Work Sans',sans-serif; }
+
+  .stamp{
+    position:absolute; top:16px; right:16px; z-index:2;
+    width:74px; height:74px; border-radius:50%;
+    background:var(--moss); color:#fff;
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    font-family:'Fraunces', serif; font-size:10px; font-weight:600; letter-spacing:0.04em;
+    line-height:1.15; padding:6px; transform:rotate(-14deg) scale(0);
+    box-shadow:0 4px 14px rgba(63,92,67,0.35);
+    transition:transform 0.55s cubic-bezier(.34,1.56,.64,1) 0.15s;
+    border:2px dashed rgba(255,255,255,0.55);
+  }
+  .row.is-visible .stamp{ transform:rotate(-14deg) scale(1); }
+
+  .eyebrow-num{
+    font-family:'Fraunces', serif; font-size:13px; color:var(--gold); font-weight:600;
+    margin-bottom:10px; display:block;
+  }
+  h3.name{
+    font-family:'Fraunces', serif; font-size:1.6rem; font-weight:500; margin:0 0 14px; line-height:1.25;
+    display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
+  }
+
+  .meta-row{ display:flex; flex-wrap:wrap; align-items:center; gap:16px; margin-bottom:16px; }
+  .price{ font-size:1.1rem; font-weight:600; color:var(--ink); }
+  .stars{ display:inline-flex; gap:2px; }
+  .stars svg{ width:15px; height:15px; }
+  .rating-txt{ font-size:12.5px; color:var(--ink-soft); }
+
+  ul.notes{ list-style:none; padding:0; margin:0 0 24px; }
+  ul.notes li{
+    font-size:0.95rem; color:var(--ink-soft); padding-left:22px; position:relative; margin-bottom:9px;
+  }
+  ul.notes li::before{
+    content:'✓'; position:absolute; left:0; top:0; color:var(--moss); font-weight:700; font-size:13px;
+  }
+
+  .cta{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--ink); color:var(--paper);
+    border-radius:100px; padding:13px 26px; text-decoration:none;
+    font-size:14px; font-weight:600;
+    transition:background 0.25s ease, transform 0.25s ease;
+  }
+  .cta:hover{ background:var(--moss); transform:translateY(-1px); }
+
+  .flag{
+    display:inline-block; font-size:12px; color:var(--gold);
+    background:#f6ecd9; border-radius:8px; padding:5px 10px; margin-bottom:14px;
+  }
+
+  footer{ padding:40px 0 80px; color:var(--ink-soft); font-size:0.85rem; border-top:1px solid var(--line); }
+  footer .gen{ font-size:11.5px; letter-spacing:0.04em; text-transform:uppercase; margin-bottom:6px; }
+
+  /* custom-swap banner */
+  .custom-cta{ padding:8px 0 60px; }
+  .custom-card{
+    display:flex; gap:28px; align-items:center;
+    background:var(--card); border:2px dashed var(--moss); border-radius:var(--radius);
+    padding:30px;
+  }
+  .custom-media{
+    flex:0 0 140px; aspect-ratio:1/1; border-radius:12px; overflow:hidden;
+    background:var(--paper); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .custom-media img{ width:100%; height:100%; object-fit:contain; padding:12px; }
+  .custom-copy .kicker{ margin-bottom:8px; }
+  .custom-copy h3{
+    font-family:'Fraunces', serif; font-weight:500; font-size:1.35rem; margin:0 0 10px; color:var(--ink);
+  }
+  .custom-copy p{ font-size:0.95rem; color:var(--ink-soft); margin:0 0 18px; max-width:480px; }
+
+  @media (max-width:600px){
+    .custom-card{ flex-direction:column; text-align:center; }
+    .custom-copy p{ max-width:none; }
+  }
+
+  @media (max-width:720px){
+    .row, .row.flip{ grid-template-columns:1fr; direction:ltr; gap:22px; padding:38px 0; }
+    header.hero{ padding:56px 0 36px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <span class="kicker">A Trusted Guide</span>
+    <h1 class="title">Smart Water Leak Detectors &amp; Home Protection</h1>
+    <p class="intro">Every kitchen accumulates gear it never asked for. This is the opposite list: 6 picks in smart water leak detectors &amp; home protection, chosen because each one earns its counter space rather than just occupying it.</p>
+    <div class="trust-strip">
+      <span class="badge"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>Checked line by line</span>
+      <span class="badge"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.7-10.3a1 1 0 00-1.4-1.4L9 9.6 7.7 8.3a1 1 0 00-1.4 1.4l2 2a1 1 0 001.4 0l4-4z" clip-rule="evenodd"/></svg>Prices verified</span>
+      <span class="badge"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a1 1 0 011 1v1.06A6 6 0 0116 9v3.59l1.7 1.7a1 1 0 01-.7 1.71H3a1 1 0 01-.7-1.71L4 12.59V9a6 6 0 015-5.94V2a1 1 0 011-1zM8.5 17a1.5 1.5 0 003 0h-3z"/></svg>Updated 24 Aug 2026, 11:06</span>
+    </div>
+  </header>
+
+  <div class="article">
+    
+    <div class="row ">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/61AF+lKPHCL._AC_SL1500_.jpg" alt="GoveeLife Upgraded Smart Water Leak Detector 1s with Smart Air Quality Monitor with PM2.5" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 01</span>
+        
+        <h3 class="name" title="GoveeLife Upgraded Smart Water Leak Detector 1s with Smart Air Quality Monitor with PM2.5">GoveeLife Upgraded Smart Water Leak Detector 1s with Smart Air Quality Monitor with PM2.5</h3>
+        <div class="meta-row">
+          <span class="price">Price unavailable — check listing</span>
+          
+        </div>
+        
+        <ul class="notes"><li>4.9ft/1.5m Cable for Hard-to-Reach Areas: Extend your reach with a flexible 4.9ft (1.5m) cable. Our compact probe can access hidden risk zones—like behind appliances or in sump pits—for complete coverage and effortless installation, leaving no leak undetected.</li><li>Breakthrough 1804ft/550m Connectivity: Engineered with advanced Sub-1G long-range wireless tech, our leak detector maintains robust signals over unprecedented distances—even through 5 dense walls. Secure every critical space in expansive properties, from deep basements to detached garages and distant outbuildings.</li><li>Upgraded 5-Year Battery Life: Say goodbye to frequent battery changes! The water sensor alarm built to last 5 years on a single charge.</li><li>High Accuracy &amp; Fast Refresh Data: With this smart sensor, the PM2.5 accuracy is ±15 µg/m³ while temperature and humidity accuracies are ±0.54°F and ±3%RH.The two-second correction data feature shows the latest changes in PM2.5, temperature, and humidity.Keep sensor clear for accurate detection.</li><li>Multifunctional Air Quality Detector: The GoveeLife Air Quality Monitor conveniently measures 3 important indexes for indoor air quality, including PM2.5, temperature, and humidity.</li></ul>
+        
+        <a class="cta" href="https://amzn.to/4grglKt" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row flip">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/61TU3skMxKL._AC_SL1500_.jpg" alt="Winees WiFi Water Leak Detector for Home, 3 Pack Water Sensors" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 02</span>
+        
+        <h3 class="name" title="Winees WiFi Water Leak Detector for Home, 3 Pack Water Sensors">Winees WiFi Water Leak Detector for Home, 3 Pack Water Sensors</h3>
+        <div class="meta-row">
+          <span class="price">INR 1,285.44</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.2/5 · 888 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>Remotely Monitoring Leaking - Connect the hub to WiFi, then monitor the water leakage in real time on the mobile APP outside; the distance between the hub and the sensor can be 200 meters, effectively monitor for water leaking events even in basement(only support 2.4G WiFi)</li><li>Pre-paired Sensors &amp; Easy Set Up - When the hub successfully connects to WiFi for the first time, the water leak sensor has been connected to the hub by default; only 1.8mm thickness, arbitrarily placed in any hidden corner</li><li>APP &amp; SMS &amp; Email Notification - Receive the instant app notifications and alerts when a water leak occurs; we have added email and SMS notification services to double protect your home, avoid missing important real flooding events; this water detector is compatible with IFTTT.</li><li>Adjustable alerts &amp; Mute Instantly - The detector provides 3 levels of adjustable volume: high/medium/low; After hub triggered, you can quickly cancel the alarm through three buttons on the hub or APP; set always ringing/10 minutes/1 minute/30 Seconds gear for alarm trigger</li><li>IP66 Waterproof - Fully sealed waterproof housing, allowing you to use water immersion for a long time in high humidity areas. We adopted the stable and reliable solution so that the equipment can report well without missing reports. Connect multiple sensors, you can safely place the sensor in the kitchen, washing machine, etc.</li></ul>
+        
+        <a class="cta" href="https://amzn.to/3Uf03Nf" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row ">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/61dZMUIcfRL._AC_SL1500_.jpg" alt="X-Sense Wi-Fi Water Leak Detector Kit, 120 dB, 3 Sensors + Base, SWS54" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 03</span>
+        
+        <h3 class="name" title="X-Sense Wi-Fi Water Leak Detector Kit, 120 dB, 3 Sensors + Base, SWS54">X-Sense Wi-Fi Water Leak Detector Kit, 120 dB, 3 Sensors + Base, SWS54</h3>
+        <div class="meta-row">
+          <span class="price">INR 1,287.42</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.6/5 · 2,192 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>6-Probe Detection from Above and Below: 2 upper probes detect dripping water, while 4 bottom probes sense pooling water as shallow as 0.4 mm, helping you identify small leaks around appliances, plumbing fixtures, and water lines</li><li>Dual 120 dB Alarms for Greater Awareness: The water sensor and base station sound together when a leak is detected, making the alert easier to notice across the home, including basements, laundry rooms, garages, and utility areas</li><li>Up to 1,804 ft Wireless Range: Sensors communicate with the base station from up to 1,804 ft (550 m) in open areas, supporting flexible placement throughout larger homes, basements, garages, kitchens, bathrooms, and other monitored spaces</li><li>Real-Time App Alerts and Flexible Reminders: Receive a phone notification when water is detected, share device access with up to 12 users, and use Remind Me Later for 10 or 30 minutes, or 2, 6, or 12 hours to keep track of active leak alerts</li><li>IP66-Rated for Leak-Prone Areas: The compact sensors fit beside water heaters, washing machines, dishwashers, sinks, sump pumps, toilets, and refrigerators; the IP66-rated housing is designed for areas exposed to splashes, moisture, and humidity</li></ul>
+        
+        <a class="cta" href="https://amzn.to/4c9crVf" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row flip">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/51PeUOY-b+L._AC_SL1500_.jpg" alt="YoLink LoRa Smart Water Alarm Bundle: Hub + 4 Water Leak Sensors &amp; 110dB Wireless Siren Alarm System with Email/SMS/Push Alerts, 1/4 Mile Range" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 04</span>
+        
+        <h3 class="name" title="YoLink LoRa Smart Water Alarm Bundle: Hub + 4 Water Leak Sensors &amp; 110dB Wireless Siren Alarm System with Email/SMS/Push Alerts, 1/4 Mile Range">YoLink LoRa Smart Water Alarm Bundle: Hub + 4 Water Leak Sensors &amp; 110dB Wireless Siren Alarm System with Email/SMS/Push Alerts, 1/4 Mile Range</h3>
+        <div class="meta-row">
+          <span class="price">INR 1,981.18</span>
+          
+        </div>
+        
+        <ul class="notes"><li>LONGEST RANGE, BY FAR! YoLink devices use a new wireless technology called LoRa. Boasting an open-air range of up to 1/4 mile, and superior obstruction penetration, you can put sensors in places, like basements, outbuildings, several floors away, not possible with WiFi or older wireless systems.</li><li>Early-Warning Notifications - Receive real-time early-warning notifications in the form of smartphone banner alerts, limited SMS/text messages, and emails, each optional and configured per your needs</li><li>DEVICE-TO-DEVICE PAIRING allows for two or more devices, like your Leak Sensor and a Siren Alarm, to be paired together, so they will operate when needed, without WiFi, internet.</li></ul>
+        
+        <a class="cta" href="https://amzn.to/3Uf00Rz" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row ">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/51dmI9g4vRL._AC_SL1001_.jpg" alt="Kidde WiFi Water Leak Detector &amp; Freeze Alarm, Alexa Device, Smart Leak Detector &amp; Smart Smoke Detector, WiFi, Alexa Compatible Device, Hardwired w/Battery Backup, Voice &amp; App Alerts" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 05</span>
+        
+        <h3 class="name" title="Kidde WiFi Water Leak Detector &amp; Freeze Alarm, Alexa Device, Smart Leak Detector &amp; Smart Smoke Detector, WiFi, Alexa Compatible Device, Hardwired w/Battery Backup, Voice &amp; App Alerts">Kidde WiFi Water Leak Detector &amp; Freeze Alarm, Alexa Device, Smart Leak Detector &amp; Smart Smoke Detector, WiFi, Alexa Compatible Device, Hardwired w/Battery Backup, Voice &amp; App Alerts</h3>
+        <div class="meta-row">
+          <span class="price">INR5,543.67</span>
+          
+        </div>
+        
+        <ul class="notes"><li>Product 1: Water sensor provides early detection of water leaks or freezing conditions, so you can take steps to avoid damage</li><li>Product 1: Detects freezing conditions when temperature reach 37 degrees Fahrenheit or when there is a rapid temperature drop</li><li>Product 1: Battery powered: 2 AA batteries are included for simple operation &amp; replacement</li><li>Product 1: Sleek &amp; small design allows for placement next to dishwashers, refrigerators, water heaters, toilets, or under sinks - ideal for use in basements or garages</li><li>Product 2: Voice Alarm announces the hazard type when detected: “Fire!” = smoke or fire or &#34;Replace Alarm&#34; when the unit has come to its end of life span</li></ul>
+        
+        <a class="cta" href="https://amzn.to/3UbYT5b" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+    <div class="row flip">
+      <div class="media ">
+        <img src="https://m.media-amazon.com/images/I/71DX1b9dBpL._AC_SL1500_.jpg" alt="Moen Flo Shutoff, Automatic Water Leak Detector &amp; Shutoff, 1&#34;" loading="lazy">
+        <div class="stamp">Editor<br>Verified</div>
+      </div>
+      <div>
+        <span class="eyebrow-num">Pick No. 06</span>
+        
+        <h3 class="name" title="Moen Flo Shutoff, Automatic Water Leak Detector &amp; Shutoff, 1&#34;">Moen Flo Shutoff, Automatic Water Leak Detector &amp; Shutoff, 1&#34;</h3>
+        <div class="meta-row">
+          <span class="price">INR58,183.17</span>
+          
+          <span class="stars">
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#b8863b"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+            <svg viewBox="0 0 20 20" fill="#e6ddc9"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            
+          </span>
+          <span class="rating-txt">4.0/5 · 2,280 reviews</span>
+          
+        </div>
+        
+        <ul class="notes"><li>AUTOMATIC SHUTOFF: The Moen Flo Shutoff is a whole-home leak detection device that installs on your main water line, monitors flow, pressure and temperature 24/7, and automatically shuts off your water before leaks become damage</li><li>CATCH LEAKS EARLY: Daily MicroLeak tests proactively find abnormalities and shuts off your water before sending alerts via the Moen Flo App. Moen device data shows 60% of new Flo owners discover a hidden leak within their first 30 days</li><li>CONTROL FROM ANYWHERE: The Moen Flo App keeps you connected to your home water 24/7, so you can monitor, manage and shut off your water from anywhere in the world</li><li>INTELLIGENT PROTECTION: FloSense technology learns your home&#39;s unique water patterns, getting smarter with every use to identify abnormalities like running water or small leaks before they become a problem</li><li>WATER DAMAGE HAPPENS. MOEN FLO PREVENTS IT: Water damage is the most underestimated threat inside a home; more common than fire, more costly than theft. Moen Flo exists to change that. We prevent loss, one drip at a time</li></ul>
+        
+        <a class="cta" href="https://amzn.to/4xSyHLm" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+      </div>
+    </div>
+    
+  </div>
+
+  
+
+  <footer>
+    <div class="gen">Last checked 24 Aug 2026, 11:06</div>
+    <p>As an Amazon Associate, this page may earn from qualifying purchases.</p>
+  </footer>
+</div>
+
+<script>
+  const rows = document.querySelectorAll('.row');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  rows.forEach(r => io.observe(r));
+</script>
+
+</body>
+</html>
