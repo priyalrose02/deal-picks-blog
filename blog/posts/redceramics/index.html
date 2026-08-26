@@ -1,1 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Red Ceramic Vases &amp; Decorative Home Accents — Full Lineup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#faf9f7;
+    --card:#ffffff;
+    --ink:#1c1a18;
+    --muted:#726c65;
+    --line:#e6e1d9;
+    --accent:#8a5a4a;
+    --accent-soft:#f1e6e1;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{ margin:0; background:var(--bg); color:var(--ink); font-family:'Inter', sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+  }
 
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 28px; }
+
+  header.hero{ padding:76px 0 46px; border-bottom:1px solid var(--line); }
+  .eyebrow{ font-size:11.5px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); margin-bottom:20px; display:block; }
+  h1.title{
+    font-family:'Fraunces', serif; font-optical-sizing:auto; font-weight:600;
+    font-size:clamp(2rem, 4.4vw, 3rem); line-height:1.15; margin:0 0 18px; max-width:680px;
+    opacity:0; transform:translateY(10px); animation:rise 0.6s ease forwards 0.1s;
+  }
+  @keyframes rise{ to{ opacity:1; transform:translateY(0); } }
+  p.subtitle{ font-size:1.05rem; color:var(--muted); max-width:560px; margin:0; }
+
+  .intro{ padding:34px 0 8px; max-width:680px; }
+  .intro p{ font-size:1rem; margin:0; }
+
+  .features{ display:grid; grid-template-columns:repeat(4, 1fr); border:1px solid var(--line); border-radius:10px; overflow:hidden; margin:36px 0 8px; }
+  @media (max-width:700px){ .features{ grid-template-columns:repeat(2, 1fr); } }
+  .feature{ padding:20px 18px; text-align:center; border-right:1px solid var(--line); }
+  .feature:last-child{ border-right:none; }
+  @media (max-width:700px){
+    .feature:nth-child(2n){ border-right:none; }
+    .feature:nth-child(-n+2){ border-bottom:1px solid var(--line); }
+  }
+  .feature .label{ font-size:12px; font-weight:600; color:var(--ink); display:block; }
+  .feature .sub{ font-size:11px; color:var(--muted); display:block; margin-top:2px; }
+
+  h2.section-h{ font-family:'Fraunces', serif; font-weight:600; font-size:1.5rem; margin:60px 0 6px; }
+  p.section-sub{ color:var(--muted); margin:0 0 32px; font-size:0.95rem; }
+
+  .grid{ display:grid; grid-template-columns:repeat(4, 1fr); gap:24px; padding-bottom:20px; }
+  @media (max-width:860px){ .grid{ grid-template-columns:repeat(3, 1fr); } }
+  @media (max-width:600px){ .grid{ grid-template-columns:repeat(2, 1fr); } }
+
+  .item-card{
+    background:var(--card); border:1px solid var(--line); border-radius:10px; overflow:hidden;
+    opacity:0; transform:translateY(16px);
+    transition:opacity 0.5s ease, transform 0.5s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .item-card.is-visible{ opacity:1; transform:translateY(0); }
+  .item-card:hover{ box-shadow:0 12px 28px rgba(28,26,24,0.08); border-color:transparent; }
+
+  .item-media{
+    aspect-ratio:1/1; display:flex; align-items:center; justify-content:center;
+    border-bottom:1px solid var(--line); background:var(--accent-soft); overflow:hidden;
+  }
+  .item-media img{ width:100%; height:100%; object-fit:contain; padding:14px; background:#fff; }
+  .item-media .shape{ width:60%; height:60%; border-radius:16px; }
+
+  .item-body{ padding:16px 16px 18px; }
+  .swatch-row{ display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+  .swatch-dot{ width:12px; height:12px; border-radius:50%; border:1px solid rgba(0,0,0,0.08); flex-shrink:0; }
+  .item-kind{ font-size:11px; font-weight:600; letter-spacing:0.03em; text-transform:uppercase; color:var(--muted); }
+  h3.item-title{
+    font-family:'Fraunces', serif; font-weight:600; font-size:1rem; margin:0 0 8px; color:var(--ink);
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+  }
+  .item-price{ font-size:0.86rem; color:var(--muted); margin:0 0 14px; }
+  .item-price strong{ color:var(--ink); }
+
+  .flag{ display:inline-block; font-size:10.5px; color:var(--accent); background:var(--accent-soft); border-radius:6px; padding:3px 8px; margin-bottom:8px; }
+
+  .item-btn{
+    display:block; width:100%; text-align:center; background:var(--ink); color:#fff; text-decoration:none;
+    padding:11px 0; border-radius:6px; font-weight:600; font-size:12.5px; letter-spacing:0.02em;
+    transition:background 0.2s ease;
+  }
+  .item-btn:hover{ background:var(--accent); }
+
+  .callout{ padding:56px 0 60px; border-top:1px solid var(--line); margin-top:56px; }
+  .callout-inner{ display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:center; }
+  @media (max-width:700px){ .callout-inner{ grid-template-columns:1fr; } }
+  .callout-media{ aspect-ratio:5/4; background:var(--accent-soft); border-radius:10px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  .callout-media img{ width:100%; height:100%; object-fit:contain; padding:16px; background:#fff; }
+  .callout h3{ font-family:'Fraunces', serif; font-weight:600; font-size:1.4rem; margin:0 0 12px; }
+  .callout p{ color:var(--muted); font-size:0.96rem; margin:0 0 16px; }
+
+  footer{ padding:30px 0 60px; border-top:1px solid var(--line); color:var(--muted); font-size:0.85rem; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <span class="eyebrow">Shopping Guide</span>
+    <h1 class="title">Red Ceramic Vases &amp; Decorative Home Accents</h1>
+    <p class="subtitle">Every kitchen accumulates gear it never asked for. This is the opposite list: 7 picks in red ceramic vases &amp; decorative home accents, chosen because each one earns its counter space rather than just occupying it.</p>
+  </header>
+
+  <div class="features">
+    <div class="feature"><span class="label">7 Options</span><span class="sub">Compared side by side</span></div>
+    <div class="feature"><span class="label">Checked</span><span class="sub">Line by line</span></div>
+    <div class="feature"><span class="label">Prices</span><span class="sub">Verified at listing</span></div>
+    <div class="feature"><span class="label">Updated</span><span class="sub">26 Aug 2026, 11:01</span></div>
+  </div>
+
+  <section>
+    <h2 class="section-h">Shop the Full Lineup</h2>
+    <p class="section-sub">Each option below links straight to its current Amazon listing.</p>
+
+    <div class="grid">
+      
+      
+      
+      <div class="item-card">
+        <div class="item-media">
+          
+          <img src="https://m.media-amazon.com/images/I/61IAQBE4yEL._AC_SL1500_.jpg" alt="Sunddo Small Red Ceramic Vase, 4 Inch" loading="lazy">
+          
+        </div>
+        <div class="item-body">
+          
+          <div class="swatch-row"><span class="swatch-dot" style="background:#8a5a4a;"></span><span class="item-kind">Pick No. 01</span></div>
+          <h3 class="item-title" title="Sunddo Small Red Ceramic Vase, 4 Inch">Sunddo Small Red Ceramic Vase, 4 Inch</h3>
+          <p class="item-price"><strong>NOK149.21</strong> · 4.3/5 (43)</p>
+          <a class="item-btn" href="https://amzn.to/4y1NV0J" target="_blank" rel="noopener sponsored">Check Price on Amazon</a>
+        </div>
+      </div>
+      
+      
+      <div class="item-card">
+        <div class="item-media">
+          
+          <img src="https://m.media-amazon.com/images/I/71vpuCoklAL._AC_SL1254_.jpg" alt="hjn hjn Farmhouse Pitcher Vase for Flowers- Ceramic Pitcher Vase Red Decorative Pitcher for Your Kitchen/Home Decor/Office/Living Room/Bookshelf/Mantel/-Red" loading="lazy">
+          
+        </div>
+        <div class="item-body">
+          
+          <div class="swatch-row"><span class="swatch-dot" style="background:#5c7666;"></span><span class="item-kind">Pick No. 02</span></div>
+          <h3 class="item-title" title="hjn hjn Farmhouse Pitcher Vase for Flowers- Ceramic Pitcher Vase Red Decorative Pitcher for Your Kitchen/Home Decor/Office/Living Room/Bookshelf/Mantel/-Red">hjn hjn Farmhouse Pitcher Vase for Flowers- Ceramic Pitcher Vase Red Decorative Pitcher for Your Kitchen/Home Decor/Office/Living Room/Bookshelf/Mantel/-Red</h3>
+          <p class="item-price"><strong>Price unavailable — check listing</strong> · 4.9/5 (374)</p>
+          <a class="item-btn" href="https://amzn.to/4qAcShb" target="_blank" rel="noopener sponsored">Check Price on Amazon</a>
+        </div>
+      </div>
+      
+      
+      <div class="item-card">
+        <div class="item-media">
+          
+          <img src="https://m.media-amazon.com/images/I/71tgkvfXzZL._AC_SL1500_.jpg" alt="Red Vase, 8 Inch Modern Ceramic Vase for Centerpieces, Decorative Flower Vases Home Decor, Valentines Table, Dining Room, Outdoor Table Decor, Bathroom, Mantel Decoration" loading="lazy">
+          
+        </div>
+        <div class="item-body">
+          
+          <div class="swatch-row"><span class="swatch-dot" style="background:#5c7699;"></span><span class="item-kind">Pick No. 03</span></div>
+          <h3 class="item-title" title="Red Vase, 8 Inch Modern Ceramic Vase for Centerpieces, Decorative Flower Vases Home Decor, Valentines Table, Dining Room, Outdoor Table Decor, Bathroom, Mantel Decoration">Red Vase, 8 Inch Modern Ceramic Vase for Centerpieces, Decorative Flower Vases Home Decor, Valentines Table, Dining Room, Outdoor Table Decor, Bathroom, Mantel Decoration</h3>
+          <p class="item-price"><strong>NOK172.64</strong> · 4.2/5 (34)</p>
+          <a class="item-btn" href="https://amzn.to/45MBGJq" target="_blank" rel="noopener sponsored">Check Price on Amazon</a>
+        </div>
+      </div>
+      
+      
+      <div class="item-card">
+        <div class="item-media">
+          
+          <img src="https://m.media-amazon.com/images/I/71OsOFGufCL._AC_SL1500_.jpg" alt="Red and White Ceramic Vase with Handle, Nordic Boho Small Vases Side Table Flower Centerpiece, Wide Mouth Single Flower Vase Pampas Grass Decorative - for Home Window Sill Living Dining Room Kitchen" loading="lazy">
+          
+        </div>
+        <div class="item-body">
+          
+          <div class="swatch-row"><span class="swatch-dot" style="background:#a5322a;"></span><span class="item-kind">Pick No. 04</span></div>
+          <h3 class="item-title" title="Red and White Ceramic Vase with Handle, Nordic Boho Small Vases Side Table Flower Centerpiece, Wide Mouth Single Flower Vase Pampas Grass Decorative - for Home Window Sill Living Dining Room Kitchen">Red and White Ceramic Vase with Handle, Nordic Boho Small Vases Side Table Flower Centerpiece, Wide Mouth Single Flower Vase Pampas Grass Decorative - for Home Window Sill Living Dining Room Kitchen</h3>
+          <p class="item-price"><strong>NOK205.20</strong> · 4.6/5 (149)</p>
+          <a class="item-btn" href="https://amzn.to/3SoP0k8" target="_blank" rel="noopener sponsored">Check Price on Amazon</a>
+        </div>
+      </div>
+      
+      
+      <div class="item-card">
+        <div class="item-media">
+          
+          <img src="https://m.media-amazon.com/images/I/610zP41oOoL._AC_SL1500_.jpg" alt="hjn Ceramic Vase Set of 3 Red Flower Vase for Home Decor, Modern Decorative Vase for Flowers Vases for Your Ideal Shelf Decor/Table/Living Room/Kitchen/Office-Red" loading="lazy">
+          
+        </div>
+        <div class="item-body">
+          
+          <div class="swatch-row"><span class="swatch-dot" style="background:#7a6428;"></span><span class="item-kind">Pick No. 05</span></div>
+          <h3 class="item-title" title="hjn Ceramic Vase Set of 3 Red Flower Vase for Home Decor, Modern Decorative Vase for Flowers Vases for Your Ideal Shelf Decor/Table/Living Room/Kitchen/Office-Red">hjn Ceramic Vase Set of 3 Red Flower Vase for Home Decor, Modern Decorative Vase for Flowers Vases for Your Ideal Shelf Decor/Table/Living Room/Kitchen/Office-Red</h3>
+          <p class="item-price"><strong>NOK326.52</strong> · 4.8/5 (767)</p>
+          <a class="item-btn" href="https://amzn.to/4gxyI0n" target="_blank" rel="noopener sponsored">Check Price on Amazon</a>
+        </div>
+      </div>
+      
+      
+      <div class="item-card">
+        <div class="item-media">
+          
+          <img src="https://m.media-amazon.com/images/I/710bnusoTWL._AC_SL1440_.jpg" alt="9&#39;&#39; Red Oriental Ceramic Vase, Chinese Peony Flower Vase for Home Living Room Decor, Tall Wax Gourd Shape Vase with Gold Painting, Wedding Gift for Housewarming or New Year" loading="lazy">
+          
+        </div>
+        <div class="item-body">
+          
+          <div class="swatch-row"><span class="swatch-dot" style="background:#6b5a8a;"></span><span class="item-kind">Pick No. 06</span></div>
+          <h3 class="item-title" title="9&#39;&#39; Red Oriental Ceramic Vase, Chinese Peony Flower Vase for Home Living Room Decor, Tall Wax Gourd Shape Vase with Gold Painting, Wedding Gift for Housewarming or New Year">9&#39;&#39; Red Oriental Ceramic Vase, Chinese Peony Flower Vase for Home Living Room Decor, Tall Wax Gourd Shape Vase with Gold Painting, Wedding Gift for Housewarming or New Year</h3>
+          <p class="item-price"><strong>NOK531.81</strong> · 5.0/5 (1)</p>
+          <a class="item-btn" href="https://amzn.to/4hNtW0V" target="_blank" rel="noopener sponsored">Check Price on Amazon</a>
+        </div>
+      </div>
+      
+      
+      <div class="item-card">
+        <div class="item-media">
+          
+          <img src="https://m.media-amazon.com/images/I/41jUXxuyKqL._AC_SY300_SX300_QL70_FMwebp_.jpg" alt="Ceramic Flower Vase Home Decor Pomegranate Shape,Small Farmhouse Table Vases Rustic Vintage Living Room Kitchen Bedroom Decorations for House Book Shelf Office Coffee Desk Dining Fireplace (Burgundy)" loading="lazy">
+          
+        </div>
+        <div class="item-body">
+          
+          <div class="swatch-row"><span class="swatch-dot" style="background:#8a5a4a;"></span><span class="item-kind">Pick No. 07</span></div>
+          <h3 class="item-title" title="Ceramic Flower Vase Home Decor Pomegranate Shape,Small Farmhouse Table Vases Rustic Vintage Living Room Kitchen Bedroom Decorations for House Book Shelf Office Coffee Desk Dining Fireplace (Burgundy)">Ceramic Flower Vase Home Decor Pomegranate Shape,Small Farmhouse Table Vases Rustic Vintage Living Room Kitchen Bedroom Decorations for House Book Shelf Office Coffee Desk Dining Fireplace (Burgundy)</h3>
+          <p class="item-price"><strong>NOK121.22</strong> · 5.0/5 (4)</p>
+          <a class="item-btn" href="https://amzn.to/4caR3yS" target="_blank" rel="noopener sponsored">Check Price on Amazon</a>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  
+
+  <footer>As an Amazon Associate, this page may earn from qualifying purchases.</footer>
+</div>
+
+<script>
+  const cards = document.querySelectorAll('.item-card');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('is-visible'), (i % 4) * 60);
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  cards.forEach(c => io.observe(c));
+</script>
+
+</body>
+</html>
