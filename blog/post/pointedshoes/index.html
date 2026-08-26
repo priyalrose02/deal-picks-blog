@@ -1,1 +1,311 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>premium pointed-toe boots — A Curated Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Karla:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#faf7f3;
+    --card:#ffffff;
+    --mat:#f3ede3;
+    --ink:#332a24;
+    --muted:#8c7f72;
+    --accent:#a5322a;
+    --accent-dark:#7f241e;
+    --accent-soft:#f3ddd9;
+    --pin:#c8a15a;
+    --line:#ece3d6;
+    --radius:6px;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{ margin:0; background:var(--bg); color:var(--ink); font-family:'Karla', sans-serif; line-height:1.65; }
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+  }
+
+  .wrap{ max-width:1120px; margin:0 auto; padding:0 24px; }
+
+  header.hero{ padding:70px 0 40px; text-align:center; }
+  .eyebrow{ display:inline-block; font-size:12px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent); margin-bottom:18px; }
+  h1.title{
+    font-family:'Playfair Display', serif; font-weight:600; line-height:1.15;
+    font-size:clamp(2rem, 5vw, 3.2rem); margin:0 0 16px;
+    opacity:0; transform:translateY(12px); animation:rise 0.7s ease forwards 0.1s;
+  }
+  @keyframes rise{ to{ opacity:1; transform:translateY(0); } }
+  p.subtitle{ font-size:1.05rem; color:var(--muted); max-width:600px; margin:0 auto; }
+  .intro{ max-width:640px; margin:32px auto 10px; text-align:center; font-size:1rem; }
+
+  .board{ columns:4 260px; column-gap:22px; padding:44px 0 60px; }
+  @media (max-width:980px){ .board{ columns:3 220px; } }
+  @media (max-width:680px){ .board{ columns:2 180px; } }
+  @media (max-width:420px){ .board{ columns:1; } }
+
+  .frame{
+    break-inside:avoid; margin-bottom:22px; background:var(--card);
+    border-radius:var(--radius); padding:14px 14px 18px; position:relative;
+    box-shadow:0 10px 26px rgba(51,42,36,0.09);
+    opacity:0; transform:translateY(22px);
+    transition:opacity 0.6s ease, transform 0.6s cubic-bezier(.2,.7,.2,1), box-shadow 0.3s ease;
+  }
+  .frame.is-visible{ opacity:1; transform:translateY(0); }
+  .frame:hover{ box-shadow:0 18px 36px rgba(51,42,36,0.15); }
+  .pin-nail{
+    position:absolute; top:-7px; left:50%; transform:translateX(-50%);
+    width:14px; height:14px; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #f0d9a0, var(--pin));
+    box-shadow:0 2px 4px rgba(0,0,0,0.25); z-index:2;
+  }
+  .frame-media{
+    background:var(--mat); border-radius:3px; overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+    aspect-ratio:var(--ar, 4/5); position:relative;
+  }
+  .frame-media img{ width:100%; height:100%; object-fit:contain; padding:14px; }
+  .frame-media .swatch{ width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:34px; }
+
+  .frame-body{ padding:14px 4px 2px; text-align:center; }
+  h3.frame-title{
+    font-family:'Playfair Display', serif; font-weight:600; font-size:1.02rem; margin:0 0 6px;
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+  }
+  .frame-tag{ font-size:11.5px; color:var(--muted); }
+  .frame-tag .price{ color:var(--accent); font-weight:700; }
+
+  .flag{ display:inline-block; font-size:10.5px; color:var(--accent-dark); background:var(--accent-soft); border-radius:6px; padding:3px 8px; margin-bottom:8px; }
+
+  .shop-btn{
+    display:inline-block; margin-top:12px; background:var(--accent); color:#fff; text-decoration:none;
+    font-size:12px; font-weight:700; letter-spacing:0.03em; padding:9px 18px; border-radius:100px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.15);
+    transition:background 0.2s ease, transform 0.2s ease;
+  }
+  .shop-btn:hover{ background:var(--accent-dark); transform:translateY(-1px); }
+
+  .note{ padding:20px 0 40px; }
+  .note-card{ background:var(--accent-soft); border-radius:16px; padding:28px 32px; max-width:720px; margin:0 auto; text-align:center; }
+  .note-card h3{ font-family:'Playfair Display', serif; font-weight:600; font-size:1.2rem; margin:0 0 10px; color:var(--accent-dark); }
+  .note-card p{ margin:0; color:var(--ink); font-size:0.95rem; opacity:0.85; }
+
+  /* custom-swap banner */
+  .custom-cta{ padding:0 0 60px; }
+  .custom-card{
+    display:flex; gap:26px; align-items:center; background:var(--card);
+    border:2px dashed var(--accent); border-radius:14px; padding:28px; max-width:820px; margin:0 auto;
+  }
+  .custom-media{ flex:0 0 130px; aspect-ratio:1/1; border-radius:10px; overflow:hidden; background:var(--mat); display:flex; align-items:center; justify-content:center; }
+  .custom-media img{ width:100%; height:100%; object-fit:contain; padding:10px; }
+  .custom-copy h3{ font-family:'Playfair Display', serif; font-weight:600; font-size:1.2rem; margin:0 0 8px; }
+  .custom-copy p{ font-size:0.92rem; color:var(--muted); margin:0 0 14px; }
+  @media (max-width:600px){ .custom-card{ flex-direction:column; text-align:center; } }
+
+  footer{ text-align:center; padding:0 0 60px; color:var(--muted); font-size:0.85rem; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <span class="eyebrow">Curated Picks</span>
+    <h1 class="title">premium pointed-toe boots</h1>
+    <p class="subtitle">premium pointed-toe boots is one of those categories where the difference between &#39;fine&#39; and &#39;genuinely good&#39; rarely shows up in the photos. Below is a systems check on 10 pieces of kit — pulled apart, priced, and put back together here so you don&#39;t have to dig through spec sheets yourself.</p>
+  </header>
+
+  <section class="board">
+    
+    
+    
+    <div class="frame" style="--ar:4/5;">
+      <span class="pin-nail"></span>
+      <div class="frame-media">
+        
+        <img src="https://m.media-amazon.com/images/I/81jz-vnJchL._AC_SL1500_.jpg" alt="CUSHIONAIRE Belinda Lace Detail Casual Sneakers for Girls – Ribbon Lace-Up Girls Shoes with Soft Cushion Support" loading="lazy">
+        
+      </div>
+      <div class="frame-body">
+        
+        <h3 class="frame-title" title="CUSHIONAIRE Belinda Lace Detail Casual Sneakers for Girls – Ribbon Lace-Up Girls Shoes with Soft Cushion Support">CUSHIONAIRE Belinda Lace Detail Casual Sneakers for Girls – Ribbon Lace-Up Girls Shoes with Soft Cushion Support</h3>
+        <p class="frame-tag"><span class="price">RON 83.27</span> · 4.5/5</p>
+        <a class="shop-btn" href="https://amzn.to/4wOV3MW" target="_blank" rel="noopener sponsored">Shop This Pick →</a>
+      </div>
+    </div>
+    
+    
+    <div class="frame" style="--ar:4/5;">
+      <span class="pin-nail"></span>
+      <div class="frame-media">
+        
+        <img src="https://m.media-amazon.com/images/I/613V-t328LL._AC_SL1500_.jpg" alt="adidas Women&#39;s Barreda Mary Jane" loading="lazy">
+        
+      </div>
+      <div class="frame-body">
+        
+        <h3 class="frame-title" title="adidas Women&#39;s Barreda Mary Jane">adidas Women&#39;s Barreda Mary Jane</h3>
+        <p class="frame-tag"><span class="price">RON 99.47</span> · 4.2/5</p>
+        <a class="shop-btn" href="https://amzn.to/3SfgjgJ" target="_blank" rel="noopener sponsored">Shop This Pick →</a>
+      </div>
+    </div>
+    
+    
+    <div class="frame" style="--ar:4/5;">
+      <span class="pin-nail"></span>
+      <div class="frame-media">
+        
+        <img src="https://m.media-amazon.com/images/I/61FnxDBh1QL._AC_SL1500_.jpg" alt="Tigeridea Sneakers for Women Comfortable Business Casual Slip on Tennis Shoes Lightweight Footwear Women&#39;s Fashion Retro Mary Jane Sneakers" loading="lazy">
+        
+      </div>
+      <div class="frame-body">
+        
+        <h3 class="frame-title" title="Tigeridea Sneakers for Women Comfortable Business Casual Slip on Tennis Shoes Lightweight Footwear Women&#39;s Fashion Retro Mary Jane Sneakers">Tigeridea Sneakers for Women Comfortable Business Casual Slip on Tennis Shoes Lightweight Footwear Women&#39;s Fashion Retro Mary Jane Sneakers</h3>
+        <p class="frame-tag"><span class="price">RON162.09</span> · 4.0/5</p>
+        <a class="shop-btn" href="https://amzn.to/4cZScti" target="_blank" rel="noopener sponsored">Shop This Pick →</a>
+      </div>
+    </div>
+    
+    
+    <div class="frame" style="--ar:4/5;">
+      <span class="pin-nail"></span>
+      <div class="frame-media">
+        
+        <img src="https://m.media-amazon.com/images/I/51SWKLK9n+L._AC_SL1365_.jpg" alt="Wnshonzy Cow Print High Heels for Women Heeled Sandals Stiletto Pumps Mule Pointed Closed Toe Slip on Slides Sandal Summer Party Dressy Heel Casual" loading="lazy">
+        
+      </div>
+      <div class="frame-body">
+        
+        <h3 class="frame-title" title="Wnshonzy Cow Print High Heels for Women Heeled Sandals Stiletto Pumps Mule Pointed Closed Toe Slip on Slides Sandal Summer Party Dressy Heel Casual">Wnshonzy Cow Print High Heels for Women Heeled Sandals Stiletto Pumps Mule Pointed Closed Toe Slip on Slides Sandal Summer Party Dressy Heel Casual</h3>
+        <p class="frame-tag"><span class="price">RON270.18</span> · 4.4/5</p>
+        <a class="shop-btn" href="https://amzn.to/4ioIUuw" target="_blank" rel="noopener sponsored">Shop This Pick →</a>
+      </div>
+    </div>
+    
+    
+    <div class="frame" style="--ar:4/5;">
+      <span class="pin-nail"></span>
+      <div class="frame-media">
+        
+        <img src="https://m.media-amazon.com/images/I/61o6jc48rHL._AC_SL1500_.jpg" alt="Women&#39;s Mesh Woven Ballet Flats Foldable Square Toe Mary Jane Shoe" loading="lazy">
+        
+      </div>
+      <div class="frame-body">
+        
+        <h3 class="frame-title" title="Women&#39;s Mesh Woven Ballet Flats Foldable Square Toe Mary Jane Shoe">Women&#39;s Mesh Woven Ballet Flats Foldable Square Toe Mary Jane Shoe</h3>
+        <p class="frame-tag"><span class="price">RON 138.81</span> · 4.3/5</p>
+        <a class="shop-btn" href="https://amzn.to/45P6yc9" target="_blank" rel="noopener sponsored">Shop This Pick →</a>
+      </div>
+    </div>
+    
+    
+    <div class="frame" style="--ar:4/5;">
+      <span class="pin-nail"></span>
+      <div class="frame-media">
+        
+        <img src="https://m.media-amazon.com/images/I/81lelnnB2rL._AC_SL1500_.jpg" alt="STALOV Mesh Ballet Flats for Women Polka Dot Round Toe Mary Jane Flats Strap Buckle Casual Ballerina Shoes" loading="lazy">
+        
+      </div>
+      <div class="frame-body">
+        
+        <h3 class="frame-title" title="STALOV Mesh Ballet Flats for Women Polka Dot Round Toe Mary Jane Flats Strap Buckle Casual Ballerina Shoes">STALOV Mesh Ballet Flats for Women Polka Dot Round Toe Mary Jane Flats Strap Buckle Casual Ballerina Shoes</h3>
+        <p class="frame-tag"><span class="price">RON225.14</span> · 4.7/5</p>
+        <a class="shop-btn" href="https://amzn.to/468hsdn" target="_blank" rel="noopener sponsored">Shop This Pick →</a>
+      </div>
+    </div>
+    
+    
+    <div class="frame" style="--ar:4/5;">
+      <span class="pin-nail"></span>
+      <div class="frame-media">
+        
+        <img src="https://m.media-amazon.com/images/I/71703uJ8jsL._AC_SL1500_.jpg" alt="FITORY Mary Jane Shoes Women, Non Slip Work Ballet Flats Business Casual" loading="lazy">
+        
+      </div>
+      <div class="frame-body">
+        
+        <h3 class="frame-title" title="FITORY Mary Jane Shoes Women, Non Slip Work Ballet Flats Business Casual">FITORY Mary Jane Shoes Women, Non Slip Work Ballet Flats Business Casual</h3>
+        <p class="frame-tag"><span class="price">RON112.55</span> · 4.3/5</p>
+        <a class="shop-btn" href="https://amzn.to/4y6wRqw" target="_blank" rel="noopener sponsored">Shop This Pick →</a>
+      </div>
+    </div>
+    
+    
+    <div class="frame" style="--ar:4/5;">
+      <span class="pin-nail"></span>
+      <div class="frame-media">
+        
+        <img src="https://m.media-amazon.com/images/I/71703uJ8jsL._AC_SL1500_.jpg" alt="FITORY Mary Jane Shoes Women, Non Slip Work Ballet Flats Business Casual" loading="lazy">
+        
+      </div>
+      <div class="frame-body">
+        
+        <h3 class="frame-title" title="FITORY Mary Jane Shoes Women, Non Slip Work Ballet Flats Business Casual">FITORY Mary Jane Shoes Women, Non Slip Work Ballet Flats Business Casual</h3>
+        <p class="frame-tag"><span class="price">RON112.55</span> · 4.3/5</p>
+        <a class="shop-btn" href="https://amzn.to/4gS59aX" target="_blank" rel="noopener sponsored">Shop This Pick →</a>
+      </div>
+    </div>
+    
+    
+    <div class="frame" style="--ar:4/5;">
+      <span class="pin-nail"></span>
+      <div class="frame-media">
+        
+        <img src="https://m.media-amazon.com/images/I/7177RwnO5pL._AC_SL1500_.jpg" alt="Womens Mary Jane Flats Square Closed Toe Adjustable Buckle Ballet Flats" loading="lazy">
+        
+      </div>
+      <div class="frame-body">
+        
+        <h3 class="frame-title" title="Womens Mary Jane Flats Square Closed Toe Adjustable Buckle Ballet Flats">Womens Mary Jane Flats Square Closed Toe Adjustable Buckle Ballet Flats</h3>
+        <p class="frame-tag"><span class="price">RON153.08</span> · 4.3/5</p>
+        <a class="shop-btn" href="https://amzn.to/4xEBLLD" target="_blank" rel="noopener sponsored">Shop This Pick →</a>
+      </div>
+    </div>
+    
+    
+    <div class="frame" style="--ar:4/5;">
+      <span class="pin-nail"></span>
+      <div class="frame-media">
+        
+        <img src="https://m.media-amazon.com/images/I/81lelnnB2rL._AC_SL1500_.jpg" alt="STALOV Mesh Ballet Flats for Women Polka Dot Round Toe Mary Jane Flats Strap Buckle Casual Ballerina Shoes" loading="lazy">
+        
+      </div>
+      <div class="frame-body">
+        
+        <h3 class="frame-title" title="STALOV Mesh Ballet Flats for Women Polka Dot Round Toe Mary Jane Flats Strap Buckle Casual Ballerina Shoes">STALOV Mesh Ballet Flats for Women Polka Dot Round Toe Mary Jane Flats Strap Buckle Casual Ballerina Shoes</h3>
+        <p class="frame-tag"><span class="price">RON225.14</span> · 4.7/5</p>
+        <a class="shop-btn" href="https://amzn.to/4isVoBg" target="_blank" rel="noopener sponsored">Shop This Pick →</a>
+      </div>
+    </div>
+    
+  </section>
+
+  <section class="note">
+    <div class="note-card">
+      <h3>Not Sure Which to Pick?</h3>
+      <p>Compare price and rating above, then check the full listing for current availability, color options, and the most recent reviews before buying.</p>
+    </div>
+  </section>
+
+  
+
+  <footer>As an Amazon Associate, this page may earn from qualifying purchases. Updated 26 Aug 2026, 13:20.</footer>
+</div>
+
+<script>
+  const frames = document.querySelectorAll('.frame');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('is-visible'), (i % 4) * 80);
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  frames.forEach(f => io.observe(f));
+</script>
+
+</body>
+</html>
