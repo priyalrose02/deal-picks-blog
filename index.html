@@ -1,12 +1,425 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="p:domain_verify" content="d95431025aa3b0b077557549af682834">
-  <title>Deal Picks Blog</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EVELia — Home Edit</title>
+<meta name="description" content="EVELia — curated home, beauty, and self-care finds, organized room by room.">
+
+<!-- ================================================================
+     PINTEREST VERIFICATION
+     Replace the content value below with YOUR real verification code
+     (the one Pinterest gave you). Do not delete this tag.
+==================================================================== -->
+<meta name="p:domain_verify" content="REPLACE_WITH_YOUR_PINTEREST_CODE">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg: #EEF0E6;
+    --paper: #FBFBF8;
+    --ink: #232920;
+    --ink-soft: #5C6355;
+    --sage: #62755A;
+    --sage-deep: #3F4E39;
+    --brass: #C8A263;
+    --line: rgba(35,41,32,0.12);
+    --radius: 3px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{ color: inherit; text-decoration: none; }
+
+  h1, h2, h3, .display{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    color: var(--sage-deep);
+    letter-spacing: -0.01em;
+  }
+
+  .wrap{
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    padding: 26px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  header .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .logo{
+    font-family:'Fraunces', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--sage-deep);
+  }
+  .logo span{ color: var(--brass); }
+
+  nav ul{
+    list-style:none;
+    display:flex;
+    gap: 28px;
+    margin:0; padding:0;
+  }
+  nav a{
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    transition: color .15s ease;
+  }
+  nav a:hover{ color: var(--sage-deep); }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding: 84px 0 72px;
+  }
+  .hero .kicker{
+    color: var(--sage);
+    font-size: 0.95rem;
+    margin-bottom: 14px;
+  }
+  .hero h1{
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    max-width: 15ch;
+    line-height: 1.08;
+    margin: 0 0 22px;
+  }
+  .hero p{
+    max-width: 46ch;
+    color: var(--ink-soft);
+    font-size: 1.08rem;
+    margin: 0 0 30px;
+  }
+  .hero-actions{
+    display:flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding: 13px 24px;
+    border-radius: var(--radius);
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: transform .15s ease, background .15s ease;
+  }
+  .btn-primary{
+    background: var(--sage-deep);
+    color: #fff;
+  }
+  .btn-primary:hover{ background: var(--sage); }
+  .btn-ghost{
+    border: 1px solid var(--line);
+    color: var(--ink);
+  }
+  .btn-ghost:hover{ border-color: var(--sage-deep); }
+
+  .disclosure{
+    margin: 22px 0 0;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    max-width: 52ch;
+    line-height: 1.5;
+  }
+
+  /* ---------- Category grid ---------- */
+  .section-head{
+    display:flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 34px;
+    gap: 20px;
+  }
+  .section-head h2{
+    font-size: 1.9rem;
+    margin: 0;
+  }
+  .section-head p{
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    margin:0;
+    max-width: 32ch;
+    text-align: right;
+  }
+
+  .categories{
+    padding: 20px 0 80px;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+
+  .card{
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 26px 22px;
+    display:flex;
+    flex-direction:column;
+    gap: 14px;
+    min-height: 170px;
+    transition: border-color .15s ease, transform .15s ease;
+  }
+  .card:hover{
+    border-color: var(--sage);
+    transform: translateY(-2px);
+  }
+  .card .tag{
+    width: 34px;
+    height: 6px;
+    border-radius: 2px;
+    background: var(--tag-color, var(--brass));
+  }
+  .card h3{
+    font-size: 1.2rem;
+    margin: 0;
+  }
+  .card p{
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    margin: 0;
+    flex-grow:1;
+  }
+  .card .go{
+    font-size: 0.85rem;
+    color: var(--sage-deep);
+    font-weight: 500;
+  }
+
+  /* ---------- About strip ---------- */
+  .about{
+    background: var(--sage-deep);
+    color: #EFEFE7;
+    padding: 64px 0;
+  }
+  .about .wrap{
+    display:grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 50px;
+    align-items:center;
+  }
+  .about h2{
+    color: #fff;
+    font-size: 1.9rem;
+    margin: 0 0 16px;
+  }
+  .about p{
+    color: rgba(239,239,231,0.82);
+    font-size: 1rem;
+    margin: 0 0 10px;
+  }
+  .about-note{
+    border-left: 2px solid var(--brass);
+    padding-left: 20px;
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: #fff;
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    padding: 44px 0;
+  }
+  footer .wrap{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  footer .foot-links{
+    display:flex;
+    gap: 22px;
+    list-style:none;
+    padding:0; margin:0;
+  }
+  footer .foot-links a{
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+  }
+  footer .foot-links a:hover{ color: var(--sage-deep); }
+  .copy{
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 860px){
+    .grid{ grid-template-columns: repeat(2, 1fr); }
+    .about .wrap{ grid-template-columns: 1fr; }
+    .section-head{ flex-direction: column; align-items:flex-start; }
+    .section-head p{ text-align:left; }
+  }
+  @media (max-width: 560px){
+    nav ul{ display:none; }
+    .grid{ grid-template-columns: 1fr; }
+    .hero{ padding: 56px 0 48px; }
+  }
+</style>
 </head>
 <body>
-  <h1>Deal Picks Blog</h1>
+
+<header>
+  <div class="wrap">
+    <a href="/" class="logo">EVEL<span>ia</span></a>
+    <nav>
+      <ul>
+        <li><a href="#categories">Categories</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="https://pinterest.com/" target="_blank" rel="noopener">Pinterest</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="kicker">Smart Amazon finds for easier everyday living ✨</p>
+    <h1>A quieter way to shop for the home you already have.</h1>
+    <p>Small-space organization, time-saving kitchen tools, beauty, self-care, and beginner-friendly wellness — honest comparisons and practical ideas, room by room.</p>
+    <div class="hero-actions">
+      <a href="#categories" class="btn btn-primary">Browse the edit</a>
+      <a href="https://pinterest.com/" target="_blank" rel="noopener" class="btn btn-ghost">Follow on Pinterest</a>
+    </div>
+    <p class="disclosure">This site contains affiliate links, including to Amazon. As an Amazon Associate, I may earn a commission on qualifying purchases — at no extra cost to you.</p>
+  </div>
+</section>
+
+<section class="categories" id="categories">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Shop by room</h2>
+      <p>Every category links to the full, regularly-updated post for that space.</p>
+    </div>
+
+    <div class="grid">
+
+      <a class="card" href="/blog/posts/bathroomfinds/" style="--tag-color:#7C9C8C">
+        <div class="tag"></div>
+        <h3>Bathroom Finds</h3>
+        <p>Smart, spa-leaning products for a calmer bathroom routine.</p>
+        <span class="go">View posts →</span>
+      </a>
+
+      <a class="card" href="/blog/posts/bedroom/" style="--tag-color:#B08968">
+        <div class="tag"></div>
+        <h3>Bedroom</h3>
+        <p>Cozy, low-effort upgrades for better sleep and softer mornings.</p>
+        <span class="go">View posts →</span>
+      </a>
+
+      <a class="card" href="/blog/posts/cleaningtools/" style="--tag-color:#6B8E6B">
+        <div class="tag"></div>
+        <h3>Cleaning Tools</h3>
+        <p>Tools that actually make tidying up faster, not more complicated.</p>
+        <span class="go">View posts →</span>
+      </a>
+
+      <a class="card" href="/blog/posts/closet/" style="--tag-color:#A98467">
+        <div class="tag"></div>
+        <h3>Closet</h3>
+        <p>Organizing edits and small buys for a closet that stays calm.</p>
+        <span class="go">View posts →</span>
+      </a>
+
+      <a class="card" href="/blog/posts/hydrationessentials/" style="--tag-color:#5C8B93">
+        <div class="tag"></div>
+        <h3>Hydration Essentials</h3>
+        <p>Bottles, filters, and drinkware worth keeping on the counter.</p>
+        <span class="go">View posts →</span>
+      </a>
+
+      <a class="card" href="/blog/posts/kitchen-essentials/" style="--tag-color:#C8A263">
+        <div class="tag"></div>
+        <h3>Kitchen Essentials</h3>
+        <p>Everyday tools that earn their counter and drawer space.</p>
+        <span class="go">View posts →</span>
+      </a>
+
+      <a class="card" href="/blog/posts/koreanskincare/" style="--tag-color:#D6A6A6">
+        <div class="tag"></div>
+        <h3>Korean Skincare</h3>
+        <p>K-beauty favorites, routines, and the products behind them.</p>
+        <span class="go">View posts →</span>
+      </a>
+
+      <a class="card" href="/blog/posts/laundry/" style="--tag-color:#8892A6">
+        <div class="tag"></div>
+        <h3>Laundry</h3>
+        <p>Small buys that make laundry day feel a little lighter.</p>
+        <span class="go">View posts →</span>
+      </a>
+
+      <a class="card" href="/blog/posts/pantry/" style="--tag-color:#B98B5E">
+        <div class="tag"></div>
+        <h3>Pantry</h3>
+        <p>Storage and staples for a pantry you can actually see into.</p>
+        <span class="go">View posts →</span>
+      </a>
+
+      <a class="card" href="/blog/posts/self%20care/" style="--tag-color:#9C8AA5">
+        <div class="tag"></div>
+        <h3>Self Care</h3>
+        <p>Rituals and finds for slowing down on purpose.</p>
+        <span class="go">View posts →</span>
+      </a>
+
+      <a class="card" href="/blog/posts/undersink/" style="--tag-color:#6E7F6B">
+        <div class="tag"></div>
+        <h3>Under the Sink</h3>
+        <p>Smart storage solutions for the most overlooked cabinet in the house.</p>
+        <span class="go">View posts →</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div>
+      <h2>What EVELia is</h2>
+      <p>EVELia is a running list of smart Amazon finds for easier everyday living — small-space organization, time-saving kitchen tools, beauty, self-care, and beginner-friendly wellness picks.</p>
+      <p>Every post is an honest comparison, not a hype list, and it's sorted by room so you can find what you actually need without scrolling past everything else.</p>
+    </div>
+    <p class="about-note">"Buy less, choose better, keep what works."</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="copy">© 2026 EVELia. All rights reserved. Affiliate links may earn a commission.</span>
+    <ul class="foot-links">
+      <li><a href="#categories">Categories</a></li>
+      <li><a href="https://pinterest.com/" target="_blank" rel="noopener">Pinterest</a></li>
+    </ul>
+  </div>
+</footer>
+
 </body>
 </html>
