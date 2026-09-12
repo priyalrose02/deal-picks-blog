@@ -324,7 +324,7 @@
       <p>Every category links to the full, regularly-updated post for that space.</p>
     </div>
 
-    <div class="grid">
+    <div class="grid" id="categoryGrid">
 
       <a class="card" href="/blog/posts/bathroomfinds/" style="--tag-color:#7C9C8C">
         <div class="tag"></div>
@@ -427,6 +427,101 @@
     </ul>
   </div>
 </footer>
+
+<script>
+(function(){
+  // ---- EDIT THESE TWO IF YOU EVER RENAME THE REPO OR MOVE YOUR ACCOUNT ----
+  var REPO_OWNER = 'priyalrose02';
+  var REPO_NAME  = 'deal-picks-blog';
+  var POSTS_PATH = 'blog/posts';
+  // --------------------------------------------------------------------
+
+  // Known blurbs, keyed by exact folder name (lowercase). Add a line here
+  // any time you want a custom description instead of the generic fallback.
+  var BLURBS = {
+    'bathroomfinds': "Smart, spa-leaning products for a calmer bathroom routine.",
+    'bedroom': "Cozy, low-effort upgrades for better sleep and softer mornings.",
+    'cleaningtools': "Tools that actually make tidying up faster, not more complicated.",
+    'closet': "Organizing edits and small buys for a closet that stays calm.",
+    'hydrationessentials': "Bottles, filters, and drinkware worth keeping on the counter.",
+    'kitchen-essentials': "Everyday tools that earn their counter and drawer space.",
+    'koreanskincare': "K-beauty favorites, routines, and the products behind them.",
+    'laundry': "Small buys that make laundry day feel a little lighter.",
+    'pantry': "Storage and staples for a pantry you can actually see into.",
+    'self care': "Rituals and finds for slowing down on purpose.",
+    'undersink': "Smart storage solutions for the most overlooked cabinet in the house."
+  };
+
+  // Known nicer titles for folder names that don't split into words cleanly.
+  // Add a line here any time a new folder's auto-generated title looks off.
+  var TITLES = {
+    'bathroomfinds': 'Bathroom Finds',
+    'cleaningtools': 'Cleaning Tools',
+    'hydrationessentials': 'Hydration Essentials',
+    'koreanskincare': 'Korean Skincare',
+    'undersink': 'Under the Sink',
+    'self care': 'Self Care',
+    'kitchen-essentials': 'Kitchen Essentials'
+  };
+
+  var COLORS = ["#7C9C8C","#B08968","#6B8E6B","#A98467","#5C8B93","#C8A263","#D6A6A6","#8892A6","#B98B5E","#9C8AA5","#6E7F6B"];
+
+  function titleCase(folder){
+    var key = folder.toLowerCase();
+    if (TITLES[key]) return TITLES[key];
+    var words = folder.replace(/[-_]+/g, ' ').trim();
+    return words.replace(/\w\S*/g, function(t){
+      return t.charAt(0).toUpperCase() + t.substr(1).toLowerCase();
+    });
+  }
+
+  function buildCard(folder, index){
+    var key = folder.toLowerCase();
+    var title = titleCase(folder);
+    var blurb = BLURBS[key] || ("Curated finds for " + title.toLowerCase() + ".");
+    var color = COLORS[index % COLORS.length];
+    var href = "/blog/posts/" + encodeURIComponent(folder) + "/";
+
+    var a = document.createElement('a');
+    a.className = 'card';
+    a.href = href;
+    a.style.setProperty('--tag-color', color);
+    a.innerHTML =
+      '<div class="tag"></div>' +
+      '<h3>' + title + '</h3>' +
+      '<p>' + blurb + '</p>' +
+      '<span class="go">View posts →</span>';
+    return a;
+  }
+
+  var apiUrl = 'https://api.github.com/repos/' + REPO_OWNER + '/' + REPO_NAME + '/contents/' + POSTS_PATH;
+
+  fetch(apiUrl)
+    .then(function(res){
+      if (!res.ok) throw new Error('GitHub API returned ' + res.status);
+      return res.json();
+    })
+    .then(function(items){
+      var folders = items
+        .filter(function(item){ return item.type === 'dir'; })
+        .map(function(item){ return item.name; })
+        .sort(function(a, b){ return a.localeCompare(b); });
+
+      if (!folders.length) return; // keep the hardcoded fallback if nothing comes back
+
+      var grid = document.getElementById('categoryGrid');
+      grid.innerHTML = '';
+      folders.forEach(function(folder, idx){
+        grid.appendChild(buildCard(folder, idx));
+      });
+    })
+    .catch(function(err){
+      // Fails silently to the hardcoded cards already in the HTML —
+      // e.g. if GitHub's API rate limit is hit or the network is offline.
+      console.warn('Category auto-sync skipped, showing fallback list:', err);
+    });
+})();
+</script>
 
 </body>
 </html>
