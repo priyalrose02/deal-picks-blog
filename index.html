@@ -12,7 +12,7 @@
      Replace the content value below with YOUR real verification code
      (the one Pinterest gave you). Do not delete this tag.
 ==================================================================== -->
-<meta name="p:domain_verify" content="REPLACE_WITH_YOUR_PINTEREST_CODE">
+<meta name="p:domain_verify" content="d95431025aa3b0b077557549af682834"/>
 
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9404379221390219"
@@ -34,7 +34,8 @@
     --sage-deep: #3F4E39;
     --brass: #C8A263;
     --line: rgba(35,41,32,0.12);
-    --radius: 3px;
+    --radius: 14px;
+    --shadow: 0 18px 50px rgba(35,41,32,0.08);
   }
 
   *{ box-sizing: border-box; }
@@ -42,7 +43,9 @@
 
   body{
     margin:0;
-    background: var(--bg);
+    background:
+      radial-gradient(circle at 12% 0%, rgba(200,162,99,0.12), transparent 28rem),
+      var(--bg);
     color: var(--ink);
     font-family: 'Work Sans', sans-serif;
     font-size: 16px;
@@ -51,6 +54,11 @@
   }
 
   a{ color: inherit; text-decoration: none; }
+
+  :focus-visible{
+    outline: 3px solid var(--brass);
+    outline-offset: 4px;
+  }
 
   h1, h2, h3, .display{
     font-family: 'Fraunces', serif;
@@ -67,7 +75,12 @@
 
   /* ---------- Header ---------- */
   header{
-    padding: 26px 0;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    padding: 18px 0;
+    background: rgba(238,240,230,0.92);
+    backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--line);
   }
   header .wrap{
@@ -80,6 +93,7 @@
     font-size: 1.5rem;
     font-weight: 600;
     color: var(--sage-deep);
+    letter-spacing: -0.04em;
   }
   .logo span{ color: var(--brass); }
 
@@ -92,17 +106,32 @@
   nav a{
     font-size: 0.92rem;
     color: var(--ink-soft);
-    transition: color .15s ease;
+    transition: color .15s ease, background .15s ease;
+    padding: 8px 0;
   }
   nav a:hover{ color: var(--sage-deep); }
 
+  nav li:last-child a{
+    color: var(--sage-deep);
+    border-bottom: 1px solid var(--brass);
+  }
+
   /* ---------- Hero ---------- */
   .hero{
-    padding: 84px 0 72px;
+    padding: 88px 0 82px;
+  }
+  .hero-layout{
+    display:grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr);
+    gap: clamp(42px, 8vw, 100px);
+    align-items:center;
   }
   .hero .kicker{
     color: var(--sage);
     font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
     margin-bottom: 14px;
   }
   .hero h1{
@@ -117,6 +146,68 @@
     font-size: 1.08rem;
     margin: 0 0 30px;
   }
+  .hero-panel{
+    position:relative;
+    overflow:hidden;
+    padding: 30px;
+    border: 1px solid rgba(63,78,57,0.16);
+    border-radius: calc(var(--radius) + 6px);
+    background:
+      linear-gradient(145deg, rgba(251,251,248,0.97), rgba(230,233,222,0.8));
+    box-shadow: var(--shadow);
+  }
+  .hero-panel::after{
+    content:'';
+    position:absolute;
+    width:180px;
+    height:180px;
+    right:-70px;
+    top:-70px;
+    border: 1px solid rgba(200,162,99,0.45);
+    border-radius:50%;
+    box-shadow: 0 0 0 18px rgba(200,162,99,0.08), 0 0 0 36px rgba(200,162,99,0.05);
+  }
+  .hero-panel-label{
+    position:relative;
+    z-index:1;
+    display:block;
+    color:var(--sage);
+    font-size:.72rem;
+    font-weight:600;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    margin-bottom:34px;
+  }
+  .hero-panel h2{
+    position:relative;
+    z-index:1;
+    font-size:clamp(1.55rem, 3vw, 2.2rem);
+    line-height:1.12;
+    max-width:10ch;
+    margin:0 0 28px;
+  }
+  .hero-panel-list{
+    position:relative;
+    z-index:1;
+    list-style:none;
+    margin:0;
+    padding:0;
+    border-top:1px solid var(--line);
+  }
+  .hero-panel-list li{
+    display:flex;
+    justify-content:space-between;
+    gap:18px;
+    padding:13px 0;
+    border-bottom:1px solid var(--line);
+    color:var(--ink-soft);
+    font-size:.88rem;
+  }
+  .hero-panel-list strong{
+    color:var(--sage-deep);
+    font-weight:600;
+    text-align:right;
+  }
   .hero-actions{
     display:flex;
     gap: 14px;
@@ -127,11 +218,12 @@
     align-items:center;
     gap:8px;
     padding: 13px 24px;
-    border-radius: var(--radius);
+    border-radius: 999px;
     font-size: 0.95rem;
     font-weight: 500;
     transition: transform .15s ease, background .15s ease;
   }
+  .btn:hover{ transform:translateY(-2px); }
   .btn-primary{
     background: var(--sage-deep);
     color: #fff;
@@ -172,7 +264,7 @@
   }
 
   .categories{
-    padding: 20px 0 80px;
+    padding: 14px 0 88px;
   }
 
   .grid{
@@ -190,10 +282,12 @@
     flex-direction:column;
     gap: 14px;
     min-height: 170px;
-    transition: border-color .15s ease, transform .15s ease;
+    box-shadow: 0 4px 14px rgba(35,41,32,0.03);
+    transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease;
   }
   .card:hover{
     border-color: var(--sage);
+    box-shadow: 0 10px 24px rgba(35,41,32,0.08);
     transform: translateY(-2px);
   }
   .card .tag{
@@ -216,6 +310,139 @@
     font-size: 0.85rem;
     color: var(--sage-deep);
     font-weight: 500;
+  }
+
+  /* ---------- Article archive ---------- */
+  .articles{
+    padding: 0 0 84px;
+  }
+
+  .article-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+
+  .article-card{
+    display:flex;
+    flex-direction:column;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow:hidden;
+    transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease;
+  }
+
+  .article-card:hover{
+    border-color: var(--sage);
+    box-shadow: 0 8px 22px rgba(35,41,32,0.08);
+    transform: translateY(-2px);
+  }
+
+  .article-media{
+    aspect-ratio: 16 / 10;
+    background: #E6E9DE;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color: var(--sage-deep);
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+  }
+
+  .article-media img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition: transform .3s ease;
+  }
+
+  .article-card:hover .article-media img{
+    transform:scale(1.03);
+  }
+
+  .article-body{
+    display:flex;
+    flex-direction:column;
+    gap: 10px;
+    padding: 20px 20px 22px;
+    flex:1;
+  }
+
+  .article-category{
+    color: var(--sage);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .article-card h3{
+    font-size: 1.25rem;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .article-card p{
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+    line-height: 1.55;
+    margin: 0;
+    display:-webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow:hidden;
+    flex:1;
+  }
+
+  .article-link{
+    color: var(--sage-deep);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 4px;
+  }
+
+  .article-loading{
+    grid-column: 1 / -1;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .article-card:first-child{
+    grid-column: span 2;
+    display:grid;
+    grid-template-columns: 1.05fr 1fr;
+  }
+  .article-card:first-child .article-media{
+    height:100%;
+    aspect-ratio:auto;
+    min-height:260px;
+  }
+  .article-card:first-child .article-body{
+    padding:28px;
+  }
+  .article-card:first-child h3{
+    font-size:clamp(1.45rem, 2.5vw, 2rem);
+  }
+  .article-meta{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    color:var(--ink-soft);
+    font-size:.78rem;
+  }
+  .article-meta::after{
+    content:'↗';
+    display:grid;
+    place-items:center;
+    width:28px;
+    height:28px;
+    border:1px solid var(--line);
+    border-radius:50%;
+    color:var(--sage-deep);
+    font-size:1rem;
   }
 
   /* ---------- About strip ---------- */
@@ -251,7 +478,8 @@
 
   /* ---------- Footer ---------- */
   footer{
-    padding: 44px 0;
+    padding: 52px 0;
+    border-top:1px solid var(--line);
   }
   footer .wrap{
     display:flex;
@@ -278,6 +506,10 @@
 
   @media (max-width: 860px){
     .grid{ grid-template-columns: repeat(2, 1fr); }
+    .article-grid{ grid-template-columns: repeat(2, 1fr); }
+    .hero-layout{ grid-template-columns: 1fr; }
+    .hero-panel{ max-width:560px; }
+    .article-card:first-child{ grid-column:span 2; }
     .about .wrap{ grid-template-columns: 1fr; }
     .section-head{ flex-direction: column; align-items:flex-start; }
     .section-head p{ text-align:left; }
@@ -285,7 +517,24 @@
   @media (max-width: 560px){
     nav ul{ display:none; }
     .grid{ grid-template-columns: 1fr; }
-    .hero{ padding: 56px 0 48px; }
+    .article-grid{ grid-template-columns: 1fr; }
+    .wrap{ padding:0 20px; }
+    .hero{ padding: 58px 0 54px; }
+    .hero h1{ font-size:clamp(2.25rem, 12vw, 3rem); }
+    .hero-panel{ padding:24px; }
+    .hero-panel h2{ margin-bottom:22px; }
+    .article-card:first-child{
+      grid-column:auto;
+      display:flex;
+    }
+    .article-card:first-child .article-media{
+      min-height:0;
+      aspect-ratio:16 / 10;
+    }
+    .article-card:first-child .article-body{ padding:20px; }
+    .section-head{ margin-bottom:24px; }
+    .categories, .articles{ padding-bottom:64px; }
+    footer .foot-links{ width:100%; justify-content:space-between; gap:12px; }
   }
 </style>
 </head>
@@ -297,6 +546,7 @@
     <nav>
       <ul>
         <li><a href="#categories">Categories</a></li>
+        <li><a href="#articles">Journal</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="https://pinterest.com/" target="_blank" rel="noopener">Pinterest</a></li>
       </ul>
@@ -306,14 +556,27 @@
 
 <section class="hero">
   <div class="wrap">
-    <p class="kicker">Smart Amazon finds for easier everyday living ✨</p>
-    <h1>A quieter way to shop for the home you already have.</h1>
-    <p>Small-space organization, time-saving kitchen tools, beauty, self-care, and beginner-friendly wellness — honest comparisons and practical ideas, room by room.</p>
-    <div class="hero-actions">
-      <a href="#categories" class="btn btn-primary">Browse the edit</a>
-      <a href="https://pinterest.com/" target="_blank" rel="noopener" class="btn btn-ghost">Follow on Pinterest</a>
+    <div class="hero-layout">
+      <div>
+        <p class="kicker">The EVELia journal</p>
+        <h1>A quieter way to shop for the home you already have.</h1>
+        <p>Small-space organization, time-saving kitchen tools, beauty, self-care, and beginner-friendly wellness — honest comparisons and practical ideas, room by room.</p>
+        <div class="hero-actions">
+          <a href="#articles" class="btn btn-primary">Read the journal <span aria-hidden="true">↓</span></a>
+          <a href="#categories" class="btn btn-ghost">Browse by room</a>
+        </div>
+        <p class="disclosure">This site contains affiliate links, including to Amazon. As an Amazon Associate, I may earn a commission on qualifying purchases — at no extra cost to you.</p>
+      </div>
+      <aside class="hero-panel" aria-label="About the EVELia journal">
+        <span class="hero-panel-label">A considered edit</span>
+        <h2>Useful finds, without the noise.</h2>
+        <ul class="hero-panel-list">
+          <li><span>Journal articles</span><strong id="heroArticleCount">27 and growing</strong></li>
+          <li><span>Organized by</span><strong>Room &amp; routine</strong></li>
+          <li><span>Article pages</span><strong>Always the real source</strong></li>
+        </ul>
+      </aside>
     </div>
-    <p class="disclosure">This site contains affiliate links, including to Amazon. As an Amazon Associate, I may earn a commission on qualifying purchases — at no extra cost to you.</p>
   </div>
 </section>
 
@@ -407,6 +670,21 @@
   </div>
 </section>
 
+<section class="articles" id="articles">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>From the journal</h2>
+      <p id="articleCount">Browse the real EVELia articles, room by room.</p>
+    </div>
+    <div class="article-grid" id="articleGrid">
+      <p class="article-loading">Loading the latest articles…</p>
+    </div>
+    <noscript>
+      <p class="article-loading">Please enable JavaScript to browse the EVELia article index.</p>
+    </noscript>
+  </div>
+</section>
+
 <section class="about" id="about">
   <div class="wrap">
     <div>
@@ -423,6 +701,7 @@
     <span class="copy">© 2026 EVELia. All rights reserved. Affiliate links may earn a commission.</span>
     <ul class="foot-links">
       <li><a href="#categories">Categories</a></li>
+      <li><a href="#articles">Journal</a></li>
       <li><a href="https://pinterest.com/" target="_blank" rel="noopener">Pinterest</a></li>
     </ul>
   </div>
@@ -430,95 +709,178 @@
 
 <script>
 (function(){
-  // ---- EDIT THESE TWO IF YOU EVER RENAME THE REPO OR MOVE YOUR ACCOUNT ----
-  var REPO_OWNER = 'priyalrose02';
-  var REPO_NAME  = 'deal-picks-blog';
-  var POSTS_PATH = 'blog/posts';
-  // --------------------------------------------------------------------
+  var grid = document.getElementById('articleGrid');
+  var count = document.getElementById('articleCount');
+  var heroCount = document.getElementById('heroArticleCount');
+  if (!grid) return;
 
-  // Known blurbs, keyed by exact folder name (lowercase). Add a line here
-  // any time you want a custom description instead of the generic fallback.
-  var BLURBS = {
-    'bathroomfinds': "Smart, spa-leaning products for a calmer bathroom routine.",
-    'bedroom': "Cozy, low-effort upgrades for better sleep and softer mornings.",
-    'cleaningtools': "Tools that actually make tidying up faster, not more complicated.",
-    'closet': "Organizing edits and small buys for a closet that stays calm.",
-    'hydrationessentials': "Bottles, filters, and drinkware worth keeping on the counter.",
-    'kitchen-essentials': "Everyday tools that earn their counter and drawer space.",
-    'koreanskincare': "K-beauty favorites, routines, and the products behind them.",
-    'laundry': "Small buys that make laundry day feel a little lighter.",
-    'pantry': "Storage and staples for a pantry you can actually see into.",
-    'self care': "Rituals and finds for slowing down on purpose.",
-    'undersink': "Smart storage solutions for the most overlooked cabinet in the house."
-  };
+  var repoApi = 'https://api.github.com/repos/priyalrose02/deal-picks-blog';
+  var rawBase = 'https://raw.githubusercontent.com/priyalrose02/deal-picks-blog/';
+  var localArticles = [];
 
-  // Known nicer titles for folder names that don't split into words cleanly.
-  // Add a line here any time a new folder's auto-generated title looks off.
-  var TITLES = {
-    'bathroomfinds': 'Bathroom Finds',
-    'cleaningtools': 'Cleaning Tools',
-    'hydrationessentials': 'Hydration Essentials',
-    'koreanskincare': 'Korean Skincare',
-    'undersink': 'Under the Sink',
-    'self care': 'Self Care',
-    'kitchen-essentials': 'Kitchen Essentials'
-  };
-
-  var COLORS = ["#7C9C8C","#B08968","#6B8E6B","#A98467","#5C8B93","#C8A263","#D6A6A6","#8892A6","#B98B5E","#9C8AA5","#6E7F6B"];
-
-  function titleCase(folder){
-    var key = folder.toLowerCase();
-    if (TITLES[key]) return TITLES[key];
-    var words = folder.replace(/[-_]+/g, ' ').trim();
-    return words.replace(/\w\S*/g, function(t){
-      return t.charAt(0).toUpperCase() + t.substr(1).toLowerCase();
+  function escapeHtml(value){
+    return String(value || '').replace(/[&<>"']/g, function(char){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char];
     });
   }
 
-  function buildCard(folder, index){
-    var key = folder.toLowerCase();
-    var title = titleCase(folder);
-    var blurb = BLURBS[key] || ("Curated finds for " + title.toLowerCase() + ".");
-    var color = COLORS[index % COLORS.length];
-    var href = "/blog/posts/" + encodeURIComponent(folder) + "/";
-
-    var a = document.createElement('a');
-    a.className = 'card';
-    a.href = href;
-    a.style.setProperty('--tag-color', color);
-    a.innerHTML =
-      '<div class="tag"></div>' +
-      '<h3>' + title + '</h3>' +
-      '<p>' + blurb + '</p>' +
-      '<span class="go">View posts →</span>';
-    return a;
+  function cleanText(value){
+    return String(value || '').replace(/\s+/g, ' ').trim();
   }
 
-  var apiUrl = 'https://api.github.com/repos/' + REPO_OWNER + '/' + REPO_NAME + '/contents/' + POSTS_PATH;
+  function shorten(value, limit){
+    var text = cleanText(value);
+    return text.length > limit ? text.slice(0, limit - 1).trim() + '…' : text;
+  }
 
-  fetch(apiUrl)
+  function encodePath(path){
+    return path.split('/').map(encodeURIComponent).join('/');
+  }
+
+  function articleUrl(path){
+    if (/\/index\.html$/i.test(path)) {
+      return '/' + encodePath(path.slice(0, -'index.html'.length));
+    }
+    return '/' + encodePath(path);
+  }
+
+  function categoryFromPath(path){
+    var parts = path.split('/');
+    var folder = parts[parts.length - 1] === 'index.html'
+      ? parts[parts.length - 2]
+      : parts[parts.length - 1].replace(/\.html$/i, '');
+    return decodeURIComponent(folder || 'Journal')
+      .replace(/[-_]+/g, ' ')
+      .replace(/\b\w/g, function(letter){ return letter.toUpperCase(); });
+  }
+
+  function buildArticleCard(article){
+    var card = document.createElement('a');
+    card.className = 'article-card';
+    card.href = article.url;
+    card.innerHTML =
+      (article.image
+        ? '<div class="article-media"><img src="' + escapeHtml(article.image) + '" alt="' + escapeHtml(article.imageAlt || article.title) + '" loading="lazy"></div>'
+        : '<div class="article-media article-media-empty">EVELia journal</div>') +
+      '<div class="article-body">' +
+        '<span class="article-category">' + escapeHtml(article.category || 'EVELia journal') + '</span>' +
+        '<h3>' + escapeHtml(article.title || 'EVELia journal') + '</h3>' +
+        '<p>' + escapeHtml(article.excerpt || 'Explore this edit from the EVELia journal.') + '</p>' +
+        '<span class="article-meta">Read article</span>' +
+      '</div>';
+    var image = card.querySelector('img');
+    if (image) {
+      image.addEventListener('error', function(){
+        image.parentElement.classList.add('article-media-empty');
+        image.parentElement.textContent = 'EVELia journal';
+      });
+    }
+    return card;
+  }
+
+  function renderArticles(articles, synced){
+    if (!Array.isArray(articles) || !articles.length) return;
+    grid.innerHTML = '';
+    articles.forEach(function(article){
+      grid.appendChild(buildArticleCard(article));
+    });
+    count.textContent = articles.length + ' real articles' + (synced ? ' • synced from GitHub.' : ' in the EVELia archive.');
+    if (heroCount) heroCount.textContent = articles.length + ' and growing';
+  }
+
+  function metadataFromHtml(html, path, branch, fallback){
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    var h1 = doc.querySelector('h1');
+    var titleMeta = doc.querySelector('meta[property="og:title"]');
+    var descriptionMeta = doc.querySelector('meta[name="description"], meta[property="og:description"]');
+    var imageMeta = doc.querySelector('meta[property="og:image"]');
+    var imageNode = doc.querySelector('main img, article img, img');
+    var title = cleanText(h1 && h1.textContent) ||
+      cleanText(titleMeta && titleMeta.getAttribute('content')) ||
+      cleanText(doc.title) ||
+      (fallback && fallback.title);
+    var excerpt = cleanText(descriptionMeta && descriptionMeta.getAttribute('content'));
+    if (!excerpt) {
+      var paragraph = doc.querySelector('main p, article p, .intro p, p');
+      excerpt = cleanText(paragraph && paragraph.textContent);
+    }
+    var image = cleanText(imageMeta && imageMeta.getAttribute('content')) ||
+      cleanText(imageNode && imageNode.getAttribute('src'));
+    try {
+      if (image) image = new URL(image, rawBase + branch + '/' + encodePath(path)).href;
+    } catch (error) {}
+    return {
+      title: title || (fallback && fallback.title) || 'EVELia journal',
+      category: (fallback && fallback.category) || categoryFromPath(path),
+      excerpt: shorten(excerpt || (fallback && fallback.excerpt) || '', 220),
+      image: image || (fallback && fallback.image) || '',
+      imageAlt: cleanText(imageNode && imageNode.getAttribute('alt')) || (fallback && fallback.imageAlt) || '',
+      url: articleUrl(path),
+      source: path
+    };
+  }
+
+  function remoteArticles(branch, tree, fallbackArticles){
+    var fallbackByUrl = {};
+    fallbackArticles.forEach(function(article){ fallbackByUrl[article.url] = article; });
+    var paths = tree
+      .filter(function(item){
+        return item.type === 'blob' &&
+          /^blog\//i.test(item.path) &&
+          item.path !== 'blog/index.html' &&
+          (/(^|\/)index\.html$/i.test(item.path) || /\.html$/i.test(item.path));
+      })
+      .map(function(item){ return item.path; });
+    return Promise.all(paths.map(function(path){
+      return fetch(rawBase + branch + '/' + encodePath(path))
+        .then(function(res){ if (!res.ok) throw new Error('Article returned ' + res.status); return res.text(); })
+        .then(function(html){
+          var url = articleUrl(path);
+          return metadataFromHtml(html, path, branch, fallbackByUrl[url]);
+        })
+        .catch(function(){ return fallbackByUrl[articleUrl(path)] || null; });
+    })).then(function(articles){
+      var order = {};
+      fallbackArticles.forEach(function(article, index){ order[article.url] = index; });
+      return articles.filter(Boolean).sort(function(a, b){
+        var aOrder = Object.prototype.hasOwnProperty.call(order, a.url) ? order[a.url] : 9999;
+        var bOrder = Object.prototype.hasOwnProperty.call(order, b.url) ? order[b.url] : 9999;
+        return aOrder - bOrder || a.title.localeCompare(b.title);
+      });
+    });
+  }
+
+  function syncFromGitHub(){
+    return fetch(repoApi, {headers:{'Accept':'application/vnd.github+json'}})
+      .then(function(res){ if (!res.ok) throw new Error('Repository returned ' + res.status); return res.json(); })
+      .then(function(repo){
+        var branch = repo.default_branch || 'main';
+        return fetch(repoApi + '/git/trees/' + encodeURIComponent(branch) + '?recursive=1', {headers:{'Accept':'application/vnd.github+json'}})
+          .then(function(res){ if (!res.ok) throw new Error('Repository tree returned ' + res.status); return res.json(); })
+          .then(function(tree){ return remoteArticles(branch, tree.tree || [], localArticles); });
+      });
+  }
+
+  fetch('blog-index.json', {cache: 'no-store'})
     .then(function(res){
-      if (!res.ok) throw new Error('GitHub API returned ' + res.status);
+      if (!res.ok) throw new Error('Article index returned ' + res.status);
       return res.json();
     })
-    .then(function(items){
-      var folders = items
-        .filter(function(item){ return item.type === 'dir'; })
-        .map(function(item){ return item.name; })
-        .sort(function(a, b){ return a.localeCompare(b); });
-
-      if (!folders.length) return; // keep the hardcoded fallback if nothing comes back
-
-      var grid = document.getElementById('categoryGrid');
-      grid.innerHTML = '';
-      folders.forEach(function(folder, idx){
-        grid.appendChild(buildCard(folder, idx));
-      });
+    .then(function(articles){
+      if (!Array.isArray(articles) || !articles.length) throw new Error('Article index is empty');
+      localArticles = articles;
+      renderArticles(localArticles, false);
+      return syncFromGitHub();
+    })
+    .then(function(articles){
+      if (articles && articles.length) renderArticles(articles, true);
     })
     .catch(function(err){
-      // Fails silently to the hardcoded cards already in the HTML —
-      // e.g. if GitHub's API rate limit is hit or the network is offline.
-      console.warn('Category auto-sync skipped, showing fallback list:', err);
+      if (!localArticles.length) {
+        count.textContent = 'Browse the current EVELia articles below.';
+        grid.innerHTML = '<p class="article-loading">The article index could not be loaded right now.</p>';
+      }
+      console.warn('Article index could not be refreshed:', err);
     });
 })();
 </script>
