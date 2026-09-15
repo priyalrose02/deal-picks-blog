@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="p:domain_verify" content="d95431025aa3b0b077557549af682834">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EVELia — Home Edit</title>
-  <meta name="description" content="EVELia — curated home, beauty, and self-care finds, organized room by room.">
+     <meta name="p:domain_verify" content="d95431025aa3b0b077557549af682834"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EVELia — Home Edit</title>
+<meta name="description" content="EVELia — curated home, beauty, and self-care finds, organized room by room.">
 
 <!-- ================================================================
      PINTEREST VERIFICATION
@@ -18,453 +18,583 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9404379221390219"
      crossorigin="anonymous"></script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <style>
-    :root{
-      --white:#ffffff;
-      --off:#faf9fb;
-      --ink:#18161a;
-      --muted:#69646e;
-      --line:#e7e4e9;
-      --line-strong:#d3cfd7;
-      --dark:#141216;
-      --dark-soft:#221f26;
-      --pink:#c02166;
-      --pink-deep:#8e1650;
-      --pink-soft:#e0709e;
-      --grad:linear-gradient(135deg,#8e1650 0%,#c02166 45%,#5b1245 100%);
-      --radius:10px;
-      --shell:1180px;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      background:var(--white);
-      color:var(--ink);
-      font-family:'Inter',sans-serif;
-      font-size:16px;
-      line-height:1.6;
-      -webkit-font-smoothing:antialiased;
-    }
-    a{color:inherit;text-decoration:none}
-    button,input{font:inherit}
-    button{cursor:pointer;background:none;border:none}
-    img{display:block;max-width:100%}
-    :focus-visible{outline:2px solid var(--pink);outline-offset:2px}
-    h1,h2,h3,h4{margin:0;font-weight:700;letter-spacing:-.02em;color:var(--ink)}
-    .shell{width:min(var(--shell),calc(100% - 48px));margin:0 auto}
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-    .eyebrow{margin:0 0 10px;color:var(--pink);font-size:.82rem;font-weight:600}
 
-    /* Header */
-    .site-header{position:sticky;top:0;z-index:50;background:var(--dark);border-bottom:1px solid rgba(255,255,255,.08)}
-    .header-inner{display:flex;align-items:center;justify-content:space-between;min-height:64px;gap:24px}
-    .brand{color:#fff;font-size:1.15rem;font-weight:800;letter-spacing:-.02em}
-    .brand span{color:var(--pink-soft)}
-    .main-nav{display:flex;align-items:center;gap:26px}
-    .main-nav a{color:rgba(255,255,255,.68);font-size:.88rem;font-weight:500;transition:color .18s ease}
-    .main-nav a:hover{color:#fff}
-    .nav-cta{padding:8px 16px;border:1px solid rgba(255,255,255,.35);border-radius:999px;color:#fff!important}
-    .nav-cta:hover{background:#fff;color:var(--dark)!important;border-color:#fff}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
-    /* Hero */
-    .hero{position:relative;padding:96px 0 88px;background:var(--grad);overflow:hidden;color:#fff}
-    .hero:before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 85% 15%,rgba(255,255,255,.14),transparent 45%),radial-gradient(circle at 10% 90%,rgba(0,0,0,.18),transparent 50%)}
-    .hero-inner{position:relative;max-width:640px}
-    .hero .eyebrow{color:#f6c9dc}
-    .hero h1{font-size:clamp(2.4rem,5.4vw,3.9rem);line-height:1.06;letter-spacing:-.03em}
-    .hero p.sub{margin:20px 0 0;max-width:52ch;color:rgba(255,255,255,.86);font-size:1.05rem}
-    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-    .button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 20px;border-radius:999px;font-size:.88rem;font-weight:600;border:1px solid transparent;transition:transform .18s ease,background .18s ease}
-    .button:hover{transform:translateY(-2px)}
-    .button-primary{background:#fff;color:var(--pink-deep)}
-    .button-primary:hover{background:#f6d7e5}
-    .button-secondary{border-color:rgba(255,255,255,.5);color:#fff}
-    .button-secondary:hover{background:rgba(255,255,255,.12)}
-    .disclosure{position:relative;max-width:56ch;margin:26px 0 0;color:rgba(255,255,255,.72);font-size:.78rem;line-height:1.6}
+<style>
+  :root{
+    --bg: #EEF0E6;
+    --paper: #FBFBF8;
+    --ink: #232920;
+    --ink-soft: #5C6355;
+    --sage: #62755A;
+    --sage-deep: #3F4E39;
+    --brass: #C8A263;
+    --line: rgba(35,41,32,0.12);
+    --radius: 3px;
+  }
 
-    /* Trust strip */
-    .trust-strip{border-bottom:1px solid var(--line)}
-    .trust-cols{display:grid;grid-template-columns:repeat(3,1fr)}
-    .trust-col{padding:22px 28px;font-size:.85rem;color:var(--muted)}
-    .trust-col:not(:last-child){border-right:1px solid var(--line)}
-    .trust-col strong{display:block;margin-bottom:4px;color:var(--ink);font-size:.92rem;font-weight:600}
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
 
-    /* Section framing */
-    .section{padding:76px 0}
-    .section-heading{display:flex;align-items:end;justify-content:space-between;gap:32px;margin-bottom:30px}
-    .section-heading h2{font-size:clamp(1.7rem,3.2vw,2.3rem)}
-    .section-heading>p{max-width:34ch;margin:0;color:var(--muted);font-size:.9rem;text-align:right}
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
 
-    /* Category tabs */
-    .categories-section{padding-bottom:8px}
-    .category-tabs{display:flex;flex-wrap:wrap;gap:0;border-bottom:1px solid var(--line)}
-    .category-tab{padding:12px 18px 14px;font-size:.9rem;font-weight:500;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .18s ease,border-color .18s ease}
-    .category-tab span{color:var(--muted);font-size:.78rem;margin-left:4px}
-    .category-tab:hover{color:var(--ink)}
-    .category-tab.active{color:var(--ink);border-color:var(--pink)}
-    .category-tab.active span{color:var(--pink)}
+  a{ color: inherit; text-decoration: none; }
 
-    /* Journal / search */
-    .journal-section{padding-top:64px}
-    .library-toolbar{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:44px;padding-bottom:18px;border-bottom:1px solid var(--line)}
-    .toolbar-left{display:flex;align-items:center;gap:12px}
-    .library-count{margin:0;color:var(--muted);font-size:.85rem}
-    .sync-note{display:inline-flex;align-items:center;gap:6px;color:var(--pink);font-size:.72rem;font-weight:500}
-    .sync-note:before{content:'';width:6px;height:6px;border-radius:50%;background:var(--pink)}
-    .search-wrap{position:relative;width:min(100%,280px)}
-    .search-wrap:before{content:'⌕';position:absolute;top:50%;left:2px;color:var(--muted);font-size:1.1rem;transform:translateY(-54%)}
-    .search-input{width:100%;height:38px;padding:0 4px 4px 26px;border:none;border-bottom:1px solid var(--line-strong);outline:none;background:transparent;color:var(--ink);font-size:.88rem}
-    .search-input:focus{border-color:var(--pink)}
+  h1, h2, h3, .display{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    color: var(--sage-deep);
+    letter-spacing: -0.01em;
+  }
 
-    .journal-group{margin-top:56px}
-    .journal-group:first-child{margin-top:0}
-    .group-heading{display:flex;align-items:baseline;justify-content:space-between;gap:20px;margin-bottom:22px}
-    .group-heading h3{font-size:1.3rem}
-    .group-count{color:var(--muted);font-size:.78rem}
+  .wrap{
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
 
-    /* Post grid (Astro-style: image, then title below) */
-    .post-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 24px}
-    .post-card{display:flex;flex-direction:column}
-    .post-card.featured{grid-column:1/-1;display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:center}
-    .post-thumb{position:relative;overflow:hidden;border-radius:var(--radius);aspect-ratio:16/10;background:var(--grad);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1rem}
-    .featured .post-thumb{aspect-ratio:4/3}
-    .post-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .35s ease}
-    .post-card:hover .post-thumb img{transform:scale(1.03)}
-    .post-meta{display:flex;align-items:center;gap:8px;margin-top:14px;color:var(--pink);font-size:.72rem;font-weight:600}
-    .post-card h4{margin-top:8px;font-size:1.08rem;line-height:1.3}
-    .featured h4{font-size:clamp(1.4rem,2.4vw,1.85rem)}
-    .post-excerpt{display:-webkit-box;margin:8px 0 0;overflow:hidden;color:var(--muted);font-size:.86rem;line-height:1.6;-webkit-box-orient:vertical;-webkit-line-clamp:3}
-    .featured .post-excerpt{-webkit-line-clamp:4}
-    .post-link{margin-top:14px;color:var(--ink);font-size:.8rem;font-weight:600;border-bottom:1px solid var(--ink)}
-    .empty-state,.loading-state{grid-column:1/-1;padding:32px;border:1px dashed var(--line-strong);border-radius:var(--radius);color:var(--muted);text-align:center}
+  /* ---------- Header ---------- */
+  header{
+    padding: 26px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  header .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .logo{
+    font-family:'Fraunces', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--sage-deep);
+  }
+  .logo span{ color: var(--brass); }
 
-    /* About */
-    .about-section{padding:80px 0;background:var(--dark);color:#fff}
-    .about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
-    .about-section h2{color:#fff;font-size:clamp(1.8rem,3.4vw,2.4rem)}
-    .about-section p{margin:16px 0 0;color:rgba(255,255,255,.7);font-size:.95rem}
-    .about-quote{padding-left:22px;border-left:2px solid var(--pink-soft);color:#fff;font-size:clamp(1.3rem,2.4vw,1.7rem);font-weight:600;line-height:1.3}
+  nav ul{
+    list-style:none;
+    display:flex;
+    gap: 28px;
+    margin:0; padding:0;
+  }
+  nav a{
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    transition: color .15s ease;
+  }
+  nav a:hover{ color: var(--sage-deep); }
 
-    footer{padding:32px 0;border-top:1px solid var(--line)}
-    .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}
-    .copyright{color:var(--muted);font-size:.76rem}
-    .footer-links{display:flex;gap:20px;list-style:none;margin:0;padding:0}
-    .footer-links a{color:var(--muted);font-size:.79rem}
-    .footer-links a:hover{color:var(--pink)}
+  /* ---------- Hero ---------- */
+  .hero{
+    padding: 84px 0 72px;
+  }
+  .hero .kicker{
+    color: var(--sage);
+    font-size: 0.95rem;
+    margin-bottom: 14px;
+  }
+  .hero h1{
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    max-width: 15ch;
+    line-height: 1.08;
+    margin: 0 0 22px;
+  }
+  .hero p{
+    max-width: 46ch;
+    color: var(--ink-soft);
+    font-size: 1.08rem;
+    margin: 0 0 30px;
+  }
+  .hero-actions{
+    display:flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding: 13px 24px;
+    border-radius: var(--radius);
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: transform .15s ease, background .15s ease;
+  }
+  .btn-primary{
+    background: var(--sage-deep);
+    color: #fff;
+  }
+  .btn-primary:hover{ background: var(--sage); }
+  .btn-ghost{
+    border: 1px solid var(--line);
+    color: var(--ink);
+  }
+  .btn-ghost:hover{ border-color: var(--sage-deep); }
 
-    @media (max-width:980px){
-      .post-grid{grid-template-columns:repeat(2,1fr)}
-      .post-card.featured{grid-template-columns:1fr;grid-column:1/-1}
-      .about-grid{grid-template-columns:1fr;gap:36px}
-      .trust-cols{grid-template-columns:1fr}
-      .trust-col:not(:last-child){border-right:none;border-bottom:1px solid var(--line)}
-    }
-    @media (max-width:600px){
-      .shell{width:min(var(--shell),calc(100% - 32px))}
-      .main-nav{gap:12px}
-      .main-nav a:not(.nav-cta){display:none}
-      .hero{padding:64px 0 56px}
-      .section{padding:52px 0}
-      .section-heading{display:block}
-      .section-heading>p{margin-top:14px;text-align:left}
-      .library-toolbar{display:block}
-      .toolbar-left{margin-bottom:12px}
-      .search-wrap{width:100%}
-      .post-grid{grid-template-columns:1fr}
-      .journal-section{padding-top:52px}
-      .footer-inner{display:block}
-      .footer-links{margin-top:14px}
-    }
-  </style>
+  .disclosure{
+    margin: 22px 0 0;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    max-width: 52ch;
+    line-height: 1.5;
+  }
+
+  /* ---------- Category grid ---------- */
+  .section-head{
+    display:flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 34px;
+    gap: 20px;
+  }
+  .section-head h2{
+    font-size: 1.9rem;
+    margin: 0;
+  }
+  .section-head p{
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    margin:0;
+    max-width: 32ch;
+    text-align: right;
+  }
+
+  .categories{
+    padding: 20px 0 80px;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+
+  .card{
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 26px 22px;
+    display:flex;
+    flex-direction:column;
+    gap: 14px;
+    min-height: 170px;
+    transition: border-color .15s ease, transform .15s ease;
+  }
+  .card:hover{
+    border-color: var(--sage);
+    transform: translateY(-2px);
+  }
+  .card .tag{
+    width: 34px;
+    height: 6px;
+    border-radius: 2px;
+    background: var(--tag-color, var(--brass));
+  }
+  .card h3{
+    font-size: 1.2rem;
+    margin: 0;
+  }
+  .card p{
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    margin: 0;
+    flex-grow:1;
+  }
+  .card .go{
+    font-size: 0.85rem;
+    color: var(--sage-deep);
+    font-weight: 500;
+  }
+
+  /* ---------- Article archive ---------- */
+  .articles{
+    padding: 0 0 84px;
+  }
+
+  .article-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+
+  .article-card{
+    display:flex;
+    flex-direction:column;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow:hidden;
+    transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease;
+  }
+
+  .article-card:hover{
+    border-color: var(--sage);
+    box-shadow: 0 8px 22px rgba(35,41,32,0.08);
+    transform: translateY(-2px);
+  }
+
+  .article-media{
+    aspect-ratio: 16 / 10;
+    background: #E6E9DE;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color: var(--sage-deep);
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+  }
+
+  .article-media img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition: transform .3s ease;
+  }
+
+  .article-card:hover .article-media img{
+    transform:scale(1.03);
+  }
+
+  .article-body{
+    display:flex;
+    flex-direction:column;
+    gap: 10px;
+    padding: 20px 20px 22px;
+    flex:1;
+  }
+
+  .article-category{
+    color: var(--sage);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .article-card h3{
+    font-size: 1.25rem;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .article-card p{
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+    line-height: 1.55;
+    margin: 0;
+    display:-webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow:hidden;
+    flex:1;
+  }
+
+  .article-link{
+    color: var(--sage-deep);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 4px;
+  }
+
+  .article-loading{
+    grid-column: 1 / -1;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  /* ---------- About strip ---------- */
+  .about{
+    background: var(--sage-deep);
+    color: #EFEFE7;
+    padding: 64px 0;
+  }
+  .about .wrap{
+    display:grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 50px;
+    align-items:center;
+  }
+  .about h2{
+    color: #fff;
+    font-size: 1.9rem;
+    margin: 0 0 16px;
+  }
+  .about p{
+    color: rgba(239,239,231,0.82);
+    font-size: 1rem;
+    margin: 0 0 10px;
+  }
+  .about-note{
+    border-left: 2px solid var(--brass);
+    padding-left: 20px;
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: #fff;
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    padding: 44px 0;
+  }
+  footer .wrap{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  footer .foot-links{
+    display:flex;
+    gap: 22px;
+    list-style:none;
+    padding:0; margin:0;
+  }
+  footer .foot-links a{
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+  }
+  footer .foot-links a:hover{ color: var(--sage-deep); }
+  .copy{
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 860px){
+    .grid{ grid-template-columns: repeat(2, 1fr); }
+    .article-grid{ grid-template-columns: repeat(2, 1fr); }
+    .about .wrap{ grid-template-columns: 1fr; }
+    .section-head{ flex-direction: column; align-items:flex-start; }
+    .section-head p{ text-align:left; }
+  }
+  @media (max-width: 560px){
+    nav ul{ display:none; }
+    .grid{ grid-template-columns: 1fr; }
+    .article-grid{ grid-template-columns: 1fr; }
+    .hero{ padding: 56px 0 48px; }
+  }
+</style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="shell header-inner">
-      <a class="brand" href="/" aria-label="EVELia home">EVEL<span>ia</span></a>
-      <nav class="main-nav" aria-label="Main navigation">
-        <a href="#categories">Categories</a>
-        <a href="#journal">Journal</a>
-        <a href="#about">About</a>
-        <a class="nav-cta" href="https://pinterest.com/" target="_blank" rel="noopener">Pinterest</a>
-      </nav>
-    </div>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="shell hero-inner">
-        <p class="eyebrow">The EVELia journal</p>
-        <h1>Build a home that feels like yours.</h1>
-        <p class="sub">Room-by-room organization, time-saving kitchen tools, beauty, self-care, and everyday upgrades — gathered one article at a time.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#journal">Explore the journal</a>
-          <a class="button button-secondary" href="#categories">Browse categories</a>
-        </div>
-        <p class="disclosure">This site contains affiliate links, including to Amazon. As an Amazon Associate, I may earn a commission on qualifying purchases — at no extra cost to you.</p>
-      </div>
-    </section>
-
-    <section class="trust-strip">
-      <div class="shell trust-cols">
-        <div class="trust-col"><strong>Written by one person</strong>Not a content farm — every pick is a real recommendation.</div>
-        <div class="trust-col"><strong>Links always labeled</strong>Affiliate links are disclosed up front, on every page.</div>
-        <div class="trust-col"><strong>Straight to the article</strong>Every card leads to the full write-up, not a dead end.</div>
-      </div>
-    </section>
-
-    <section class="section categories-section" id="categories">
-      <div class="shell">
-        <div class="section-heading">
-          <div><p class="eyebrow">Browse the edit</p><h2>Find your next useful thing.</h2></div>
-          <p>Every category below is built from the real article library.</p>
-        </div>
-        <div class="category-tabs" id="categoryList" aria-label="Article categories"></div>
-      </div>
-    </section>
-
-    <section class="section journal-section" id="journal">
-      <div class="shell">
-        <div class="section-heading">
-          <div><p class="eyebrow">The full library</p><h2>From the journal.</h2></div>
-          <p>Search the complete EVELia archive or choose a category above.</p>
-        </div>
-        <div class="library-toolbar">
-          <div class="toolbar-left">
-            <p class="library-count" id="articleCount" aria-live="polite">Loading the article library…</p>
-            <span class="sync-note" id="syncStatus">Local archive</span>
-          </div>
-          <label class="search-wrap">
-            <span class="sr-only">Search articles</span>
-            <input class="search-input" id="articleSearch" type="search" placeholder="Search articles…" autocomplete="off">
-          </label>
-        </div>
-        <div id="articleLibrary">
-          <p class="loading-state">Loading the real EVELia articles…</p>
-        </div>
-        <noscript><p class="empty-state">Please enable JavaScript to browse the EVELia article library.</p></noscript>
-      </div>
-    </section>
-
-    <section class="about-section" id="about">
-      <div class="shell about-grid">
-        <div>
-          <p class="eyebrow" style="color:#f0a9c6">About EVELia</p>
-          <h2>A running list of things worth making room for.</h2>
-          <p>EVELia brings together useful Amazon finds and practical ideas for home, beauty, self-care, style, and everyday routines.</p>
-          <p>Each card leads to the original article page, so you can see the full comparison, product details, and links in context.</p>
-        </div>
-        <p class="about-quote">"Buy less, choose better, keep what works."</p>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="shell footer-inner">
-      <span class="copyright">© 2026 EVELia. All rights reserved. Affiliate links may earn a commission.</span>
-      <ul class="footer-links">
+<header>
+  <div class="wrap">
+    <a href="/" class="logo">EVEL<span>ia</span></a>
+    <nav>
+      <ul>
         <li><a href="#categories">Categories</a></li>
-        <li><a href="#journal">Journal</a></li>
+        <li><a href="#articles">Journal</a></li>
+        <li><a href="#about">About</a></li>
         <li><a href="https://pinterest.com/" target="_blank" rel="noopener">Pinterest</a></li>
       </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="kicker">Smart Amazon finds for easier everyday living ✨</p>
+    <h1>A quieter way to shop for the home you already have.</h1>
+    <p>Small-space organization, time-saving kitchen tools, beauty, self-care, and beginner-friendly wellness — honest comparisons and practical ideas, room by room.</p>
+    <div class="hero-actions">
+      <a href="#categories" class="btn btn-primary">Browse the edit</a>
+      <a href="https://pinterest.com/" target="_blank" rel="noopener" class="btn btn-ghost">Follow on Pinterest</a>
     </div>
-  </footer>
+    <p class="disclosure">This site contains affiliate links, including to Amazon. As an Amazon Associate, I may earn a commission on qualifying purchases — at no extra cost to you.</p>
+  </div>
+</section>
 
-  <script>
-    (function(){
-      var repoApi = 'https://api.github.com/repos/priyalrose02/deal-picks-blog';
-      var rawBase = 'https://raw.githubusercontent.com/priyalrose02/deal-picks-blog/';
-      var state = {articles: [], category: 'All articles', query: ''};
-      var categoryDefinitions = [
-        {name:'Home & Organization', match:/bathroom|bedroom|closet|cozy|desk|dorm|organization|storage|sink|cleaning|laundry|pantry|ceramic|water leak|everday/},
-        {name:'Kitchen & Everyday', match:/kitchen|hydration/},
-        {name:'Beauty & Self-Care', match:/beauty|skin|self care|self-care|teeth|hair|curls/},
-        {name:'Style & Accessories', match:/fashion|shoe|platform|earing|earring|jewel/},
-        {name:'Other Finds', match:/.*/}
-      ];
-      var categoryList = document.getElementById('categoryList');
-      var library = document.getElementById('articleLibrary');
-      var articleCount = document.getElementById('articleCount');
-      var articleSearch = document.getElementById('articleSearch');
-      var syncStatus = document.getElementById('syncStatus');
+<section class="categories" id="categories">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Shop by room</h2>
+      <p>Every category links to the full, regularly-updated post for that space.</p>
+    </div>
 
-      function text(value){return typeof value === 'string' ? value.replace(/\s+/g,' ').trim() : ''}
-      function shorten(value, limit){var result = text(value);return result.length > limit ? result.slice(0, limit - 1).trim() + '…' : result}
-      function escapeHtml(value){
-        return text(value).replace(/[&<>"']/g, function(char){
-          return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char];
-        });
-      }
-      function encodePath(path){return path.split('/').map(encodeURIComponent).join('/')}
-      function urlFromPath(path){
-        if (/\/index\.html$/i.test(path)) return '/' + encodePath(path.slice(0, -'index.html'.length));
-        return '/' + encodePath(path);
-      }
-      function categoryFromPath(path){
-        var parts = path.split('/');
-        var name = parts[parts.length - 1] === 'index.html' ? parts[parts.length - 2] : parts[parts.length - 1].replace(/\.html$/i,'');
-        return decodeURIComponent(name || 'Other Finds').replace(/[-_]+/g,' ').replace(/\b\w/g,function(letter){return letter.toUpperCase()});
-      }
-      function categoryFor(article){
-        var haystack = (text(article.title) + ' ' + text(article.category) + ' ' + text(article.url)).toLowerCase();
-        for (var index = 0; index < categoryDefinitions.length; index += 1) {
-          if (categoryDefinitions[index].match.test(haystack)) return categoryDefinitions[index].name;
-        }
-        return 'Other Finds';
-      }
-      function setStatus(value){if (syncStatus) syncStatus.textContent = value}
-      function countsForArticles(){
-        var counts = {'All articles':state.articles.length};
-        categoryDefinitions.forEach(function(definition){counts[definition.name] = 0});
-        state.articles.forEach(function(article){counts[categoryFor(article)] += 1});
-        return counts;
-      }
-      function renderCategoryList(){
-        var counts = countsForArticles();
-        var names = ['All articles'].concat(categoryDefinitions.filter(function(definition){return counts[definition.name] > 0}).map(function(definition){return definition.name}));
-        categoryList.innerHTML = names.map(function(name){
-          return '<button class="category-tab' + (state.category === name ? ' active' : '') + '" type="button" data-category="' + escapeHtml(name) + '">' +
-            escapeHtml(name) + '<span>' + counts[name] + '</span>' +
-          '</button>';
-        }).join('');
-      }
-      function postCard(article, featured){
-        return '<a class="post-card' + (featured ? ' featured' : '') + '" href="' + escapeHtml(article.url) + '">' +
-          '<div class="post-thumb">' +
-            (article.image
-              ? '<img src="' + escapeHtml(article.image) + '" alt="' + escapeHtml(article.imageAlt || article.title) + '" loading="lazy">'
-              : 'EVELia') +
-          '</div>' +
-          '<div>' +
-            '<div class="post-meta">' + escapeHtml(categoryFor(article)) + '</div>' +
-            '<h4>' + escapeHtml(article.title || 'EVELia journal') + '</h4>' +
-            '<p class="post-excerpt">' + escapeHtml(article.excerpt || 'Explore this edit from the EVELia journal.') + '</p>' +
-            '<span class="post-link">Read article</span>' +
-          '</div>' +
-        '</a>';
-      }
-      function renderLibrary(){
-        var query = state.query.toLowerCase();
-        var filtered = state.articles.filter(function(article){
-          var matchesCategory = state.category === 'All articles' || categoryFor(article) === state.category;
-          var haystack = (text(article.title) + ' ' + text(article.category) + ' ' + text(article.excerpt)).toLowerCase();
-          return matchesCategory && (!query || haystack.indexOf(query) !== -1);
-        });
-        articleCount.textContent = filtered.length + ' of ' + state.articles.length + ' articles';
-        if (!filtered.length) {
-          library.innerHTML = '<p class="empty-state">No articles match that search yet. Try another phrase or choose All articles.</p>';
-          return;
-        }
-        var groups = {};
-        categoryDefinitions.forEach(function(definition){groups[definition.name] = []});
-        filtered.forEach(function(article){groups[categoryFor(article)].push(article)});
-        library.innerHTML = categoryDefinitions.map(function(definition){
-          var articles = groups[definition.name];
-          if (!articles.length) return '';
-          var cards = articles.map(function(article, index){return postCard(article, index === 0)}).join('');
-          var headingId = 'group-' + definition.name.replace(/\W+/g,'-').toLowerCase();
-          return '<section class="journal-group" aria-labelledby="' + headingId + '">' +
-            '<div class="group-heading">' +
-              '<h3 id="' + headingId + '">' + escapeHtml(definition.name) + '</h3>' +
-              '<span class="group-count">' + articles.length + ' ' + (articles.length === 1 ? 'article' : 'articles') + '</span>' +
-            '</div>' +
-            '<div class="post-grid">' + cards + '</div>' +
-          '</section>';
-        }).join('');
-      }
-      function render(){renderCategoryList();renderLibrary()}
-      function parseRemoteArticle(html, path, branch){
-        var doc = new DOMParser().parseFromString(html,'text/html');
-        var heading = doc.querySelector('h1');
-        var description = doc.querySelector('meta[name="description"], meta[property="og:description"]');
-        var imageMeta = doc.querySelector('meta[property="og:image"]');
-        var imageNode = doc.querySelector('main img, article img, img');
-        var title = text(heading && heading.textContent) || text(doc.title).replace(/\s+[|—-].*$/,'');
-        var excerpt = text(description && description.getAttribute('content'));
-        if (!excerpt) {
-          var paragraph = doc.querySelector('.intro, .subtitle, main p, article p, p');
-          excerpt = text(paragraph && paragraph.textContent);
-        }
-        var image = text(imageMeta && imageMeta.getAttribute('content')) || text(imageNode && imageNode.getAttribute('src'));
-        try { if (image) image = new URL(image, rawBase + branch + '/' + encodePath(path)).href; } catch (error) {}
-        return {
-          title:title || categoryFromPath(path),
-          category:categoryFromPath(path),
-          excerpt:shorten(excerpt,220),
-          image:image,
-          imageAlt:text(imageNode && imageNode.getAttribute('alt')),
-          url:urlFromPath(path),
-          source:path
-        };
-      }
-      function syncNewArticles(localArticles){
-        return fetch(repoApi,{headers:{'Accept':'application/vnd.github+json'}})
-          .then(function(response){if (!response.ok) throw new Error('Repository unavailable');return response.json()})
-          .then(function(repository){
-            var branch = repository.default_branch || 'main';
-            return fetch(repoApi + '/git/trees/' + encodeURIComponent(branch) + '?recursive=1',{headers:{'Accept':'application/vnd.github+json'}})
-              .then(function(response){if (!response.ok) throw new Error('Repository tree unavailable');return response.json()})
-              .then(function(tree){
-                var known = {};
-                localArticles.forEach(function(article){known[article.url] = true});
-                var paths = (tree.tree || []).filter(function(item){
-                  return item.type === 'blob' &&
-                    /^blog\//i.test(item.path) &&
-                    item.path !== 'blog/index.html' &&
-                    (/(^|\/)index\.html$/i.test(item.path) || /\.html$/i.test(item.path));
-                }).filter(function(item){return !known[urlFromPath(item.path)]});
-                return Promise.all(paths.map(function(item){
-                  return fetch(rawBase + branch + '/' + encodePath(item.path))
-                    .then(function(response){if (!response.ok) throw new Error('Article unavailable');return response.text()})
-                    .then(function(html){return parseRemoteArticle(html,item.path,branch)})
-                    .catch(function(){return null});
-                })).then(function(newArticles){return newArticles.filter(Boolean)});
-              });
-          });
-      }
+    <div class="grid" id="categoryGrid">
 
-      categoryList.addEventListener('click',function(event){
-        var button = event.target.closest('[data-category]');
-        if (!button) return;
-        state.category = button.getAttribute('data-category');
-        render();
-        document.getElementById('journal').scrollIntoView({behavior:'smooth',block:'start'});
+      <a class="card" href="/blog/posts/bathroomfinds/" style="--tag-color:#7C9C8C">
+        <div class="tag"></div>
+        <h3>Bathroom Finds</h3>
+        <p>Smart, spa-leaning products for a calmer bathroom routine.</p>
+        <span class="go">View posts →</span>
+      </a>
+
+      <a class="card" href="/blog/posts/bedroom/" style="--tag-color:#B08968">
+        <div class="tag"></div>
+        <h3>Bedroom</h3>
+        <p>Cozy, low-effort upgrades for better sleep and softer mornings.</p>
+        <span class="go">View posts →</span>
+      </a>
+
+      <a class="card" href="/blog/posts/cleaningtools/" style="--tag-color:#6B8E6B">
+        <div class="tag"></div>
+        <h3>Cleaning Tools</h3>
+        <p>Tools that actually make tidying up faster, not more complicated.</p>
+        <span class="go">View posts →</span>
+      </a>
+
+      <a class="card" href="/blog/posts/closet/" style="--tag-color:#A98467">
+        <div class="tag"></div>
+        <h3>Closet</h3>
+        <p>Organizing edits and small buys for a closet that stays calm.</p>
+        <span class="go">View posts →</span>
+      </a>
+
+      <a class="card" href="/blog/posts/hydrationessentials/" style="--tag-color:#5C8B93">
+        <div class="tag"></div>
+        <h3>Hydration Essentials</h3>
+        <p>Bottles, filters, and drinkware worth keeping on the counter.</p>
+        <span class="go">View posts →</span>
+      </a>
+
+      <a class="card" href="/blog/posts/kitchen-essentials/" style="--tag-color:#C8A263">
+        <div class="tag"></div>
+        <h3>Kitchen Essentials</h3>
+        <p>Everyday tools that earn their counter and drawer space.</p>
+        <span class="go">View posts →</span>
+      </a>
+
+      <a class="card" href="/blog/posts/koreanskincare/" style="--tag-color:#D6A6A6">
+        <div class="tag"></div>
+        <h3>Korean Skincare</h3>
+        <p>K-beauty favorites, routines, and the products behind them.</p>
+        <span class="go">View posts →</span>
+      </a>
+
+      <a class="card" href="/blog/posts/laundry/" style="--tag-color:#8892A6">
+        <div class="tag"></div>
+        <h3>Laundry</h3>
+        <p>Small buys that make laundry day feel a little lighter.</p>
+        <span class="go">View posts →</span>
+      </a>
+
+      <a class="card" href="/blog/posts/pantry/" style="--tag-color:#B98B5E">
+        <div class="tag"></div>
+        <h3>Pantry</h3>
+        <p>Storage and staples for a pantry you can actually see into.</p>
+        <span class="go">View posts →</span>
+      </a>
+
+      <a class="card" href="/blog/posts/self%20care/" style="--tag-color:#9C8AA5">
+        <div class="tag"></div>
+        <h3>Self Care</h3>
+        <p>Rituals and finds for slowing down on purpose.</p>
+        <span class="go">View posts →</span>
+      </a>
+
+      <a class="card" href="/blog/posts/undersink/" style="--tag-color:#6E7F6B">
+        <div class="tag"></div>
+        <h3>Under the Sink</h3>
+        <p>Smart storage solutions for the most overlooked cabinet in the house.</p>
+        <span class="go">View posts →</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section class="articles" id="articles">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>From the journal</h2>
+      <p id="articleCount">Browse the real EVELia articles, room by room.</p>
+    </div>
+    <div class="article-grid" id="articleGrid">
+      <p class="article-loading">Loading the latest articles…</p>
+    </div>
+    <noscript>
+      <p class="article-loading">Please enable JavaScript to browse the EVELia article index.</p>
+    </noscript>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div>
+      <h2>What EVELia is</h2>
+      <p>EVELia is a running list of smart Amazon finds for easier everyday living — small-space organization, time-saving kitchen tools, beauty, self-care, and beginner-friendly wellness picks.</p>
+      <p>Every post is an honest comparison, not a hype list, and it's sorted by room so you can find what you actually need without scrolling past everything else.</p>
+    </div>
+    <p class="about-note">"Buy less, choose better, keep what works."</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="copy">© 2026 EVELia. All rights reserved. Affiliate links may earn a commission.</span>
+    <ul class="foot-links">
+      <li><a href="#categories">Categories</a></li>
+      <li><a href="#articles">Journal</a></li>
+      <li><a href="https://pinterest.com/" target="_blank" rel="noopener">Pinterest</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var grid = document.getElementById('articleGrid');
+  var count = document.getElementById('articleCount');
+  if (!grid) return;
+
+  function escapeHtml(value){
+    return String(value || '').replace(/[&<>"']/g, function(char){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char];
+    });
+  }
+
+  function buildArticleCard(article){
+    var card = document.createElement('a');
+    card.className = 'article-card';
+    card.href = article.url;
+    card.innerHTML =
+      (article.image
+        ? '<div class="article-media"><img src="' + escapeHtml(article.image) + '" alt="' + escapeHtml(article.imageAlt || article.title) + '" loading="lazy"></div>'
+        : '<div class="article-media article-media-empty">EVELia journal</div>') +
+      '<div class="article-body">' +
+        '<span class="article-category">' + escapeHtml(article.category) + '</span>' +
+        '<h3>' + escapeHtml(article.title) + '</h3>' +
+        '<p>' + escapeHtml(article.excerpt) + '</p>' +
+        '<span class="article-link">Read article →</span>' +
+      '</div>';
+    return card;
+  }
+
+  fetch('blog-index.json', {cache: 'no-store'})
+    .then(function(res){
+      if (!res.ok) throw new Error('Article index returned ' + res.status);
+      return res.json();
+    })
+    .then(function(articles){
+      if (!Array.isArray(articles) || !articles.length) {
+        throw new Error('Article index is empty');
+      }
+      grid.innerHTML = '';
+      articles.forEach(function(article){
+        grid.appendChild(buildArticleCard(article));
       });
-      articleSearch.addEventListener('input',function(event){
-        state.query = event.target.value;
-        renderLibrary();
-      });
+      count.textContent = articles.length + ' real articles from the EVELia archive.';
+    })
+    .catch(function(err){
+      count.textContent = 'Browse the current EVELia articles below.';
+      grid.innerHTML = '<p class="article-loading">The article index could not be loaded right now.</p>';
+      console.warn('Article index could not be loaded:', err);
+    });
+})();
+</script>
 
-      fetch('blog-index.json',{cache:'no-store'})
-        .then(function(response){if (!response.ok) throw new Error('Article index unavailable');return response.json()})
-        .then(function(articles){
-          state.articles = Array.isArray(articles) ? articles : [];
-          render();
-          setStatus('Checking GitHub');
-          return syncNewArticles(state.articles);
-        })
-        .then(function(newArticles){
-          if (newArticles && newArticles.length) {
-            var existing = {};
-            state.articles.forEach(function(article){existing[article.url] = true});
-            newArticles.forEach(function(article){if (!existing[article.url]) state.articles.push(article)});
-            render();
-          }
-          setStatus('Synced from GitHub');
-        })
-        .catch(function(error){
-          if (!state.articles.length) {
-            articleCount.textContent = 'The article library could not be loaded';
-            library.innerHTML = '<p class="empty-state">Please try refreshing the page.</p>';
-          }
-          setStatus('Local archive');
-          console.warn('EVELia article library:',error);
-        });
-    })();
-  </script>
 </body>
 </html>
