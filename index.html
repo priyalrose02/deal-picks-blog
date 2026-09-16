@@ -89,11 +89,15 @@
     @media (max-width:860px){ .main-nav{display:none} .menu-toggle{display:flex} }
 
     /* Hero */
-    .hero{padding:96px 0 76px;border-bottom:1px solid var(--line);background:radial-gradient(circle at 85% 0%,var(--blush) 0%,transparent 45%),var(--cream)}
+    .hero{padding:96px 0 76px;border-bottom:1px solid var(--line);background:radial-gradient(circle at 85% 0%,var(--blush) 0%,transparent 45%),var(--cream);overflow:hidden}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
     .hero-inner{max-width:700px}
     .hero h1{font-size:clamp(2.4rem,5vw,3.8rem);line-height:1.08;letter-spacing:-.02em;margin-bottom:22px}
     .hero-p{max-width:62ch;color:var(--espresso-soft);font-size:1.02rem;margin:0 0 14px}
     .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+    .hero-media{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/5;background:linear-gradient(160deg,var(--blush) 0%,var(--gold-soft) 100%);box-shadow:var(--shadow-md)}
+    .hero-media img{width:100%;height:100%;object-fit:cover}
+    @media (max-width:900px){ .hero-grid{grid-template-columns:1fr} .hero-media{aspect-ratio:16/9;max-width:480px} }
 
     /* Boards (Pinterest-inspired masonry) */
     .boards-section{background:#fff}
@@ -104,7 +108,8 @@
     .board-card{display:block;break-inside:avoid;margin:0 0 22px;border-radius:var(--radius);overflow:hidden;background:#fff;box-shadow:var(--shadow-sm);transition:box-shadow .2s ease,transform .2s ease;border:1px solid var(--line)}
     .board-card:hover{box-shadow:var(--shadow-md);transform:translateY(-3px)}
     .board-cover{aspect-ratio:4/5;background:linear-gradient(160deg,var(--blush) 0%,var(--gold-soft) 100%);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
-    .board-cover:before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.35),transparent 55%)}
+    .board-cover:before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.35),transparent 55%);pointer-events:none}
+    .board-cover-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
     .board-icon{width:52px;height:52px;color:#fff;opacity:.92;position:relative;filter:drop-shadow(0 4px 10px rgba(43,36,31,.18))}
     .board-body{padding:16px 18px 20px}
     .board-body h3{font-size:1.02rem;margin-bottom:6px}
@@ -148,7 +153,8 @@
     .product-card{border-radius:var(--radius);overflow:hidden;background:#fff;box-shadow:var(--shadow-sm);transition:box-shadow .2s ease;border:1px solid var(--line)}
     .product-card:hover{box-shadow:var(--shadow-md)}
     .product-thumb{aspect-ratio:1/1;background:linear-gradient(160deg,var(--gold-soft),var(--blush));position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
-    .product-thumb:before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.35),transparent 55%)}
+    .product-thumb:before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.35),transparent 55%);pointer-events:none}
+    .product-thumb-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
     .product-body{padding:16px 18px 20px}
     .product-category{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--gold)}
     .product-body h3{font-size:1rem;margin:6px 0}
@@ -222,15 +228,20 @@
 
   <main>
     <section class="hero">
-      <div class="shell hero-inner">
-        <p class="eyebrow">Evelia Home &amp; Fashion</p>
-        <h1>Style your world. Elevate your mood.</h1>
-        <p class="hero-p">The little things we think affect our mood — from the way we dress and express our personality to the way our surroundings look and feel — can shape our everyday experience.</p>
-        <p class="hero-p">Welcome to Evelia Home &amp; Fashion, where we find the best Amazon.com products to improve your daily-life aesthetics for a better and enhanced mood and productivity.</p>
-        <p class="hero-p">Evelia is about discovering beautiful, useful things that help you improve your fashion aesthetics, personal style, home aesthetics, organization, and everyday lifestyle.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#latest">Explore Latest Finds</a>
-          <a class="button button-secondary" href="#boards">Explore Our Boards</a>
+      <div class="shell hero-grid">
+        <div class="hero-inner">
+          <p class="eyebrow">Evelia Home &amp; Fashion</p>
+          <h1>Style your world. Elevate your mood.</h1>
+          <p class="hero-p">The little things we think affect our mood — from the way we dress and express our personality to the way our surroundings look and feel — can shape our everyday experience.</p>
+          <p class="hero-p">Welcome to Evelia Home &amp; Fashion, where we find the best Amazon.com products to improve your daily-life aesthetics for a better and enhanced mood and productivity.</p>
+          <p class="hero-p">Evelia is about discovering beautiful, useful things that help you improve your fashion aesthetics, personal style, home aesthetics, organization, and everyday lifestyle.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#latest">Explore Latest Finds</a>
+            <a class="button button-secondary" href="#boards">Explore Our Boards</a>
+          </div>
+        </div>
+        <div class="hero-media">
+          <img src="images/hero/hero.jpg" alt="Evelia styled flatlay of fashion and home aesthetic finds" loading="eager" onerror="this.remove()">
         </div>
       </div>
     </section>
@@ -333,53 +344,57 @@
       // ======================================================================
       // CATEGORY CONFIG — the single place to edit board names, Pinterest URLs,
       // and the keyword match used to file a real blog post into a board.
+      // Each category has an `image` path. Drop a real photo at that path in
+      // your repo (create the images/boards/ folder) and it will replace the
+      // icon automatically. Until the file exists, the icon + gradient show.
       // ======================================================================
       var categories = [
-        { name: "Blue Aesthetic Essentials", slug: "blue-aesthetic-essentials", group: "Home & Lifestyle", pinterestUrl: "https://pinterest.com/evelia/blue-aesthetic-essentials", description: "Calming blue-toned decor for a serene home.", match: /blue/ },
-        { name: "Modern Home Decor", slug: "modern-home-decor", group: "Home & Lifestyle", pinterestUrl: "https://pinterest.com/evelia/modern-home-decor", description: "Clean-lined, contemporary decor pieces.", match: /decor|modern home/ },
-        { name: "Bathroom Organization", slug: "bathroom-organization", group: "Home & Lifestyle", pinterestUrl: "https://pinterest.com/evelia/bathroom-organization", description: "Smart storage for small bathrooms.", match: /bathroom|undersink|sink/ },
-        { name: "Home Organization Ideas", slug: "home-organization-ideas", group: "Home & Lifestyle", pinterestUrl: "https://pinterest.com/evelia/home-organization-ideas", description: "Room-by-room systems for a tidier home.", match: /organization|closet|storage|laundry|pantry|desk|dorm|everday|cozy/ },
-        { name: "Viral Kitchen Gadgets", slug: "viral-kitchen-gadgets", group: "Home & Lifestyle", pinterestUrl: "https://pinterest.com/evelia/viral-kitchen-gadgets", description: "Trending kitchen tools worth the counter space.", match: /kitchen|kithcen|hydration/ },
-        { name: "Fall Decor, Halloween & Seasonal", slug: "fall-decor-halloween-seasonal", group: "Home & Lifestyle", pinterestUrl: "https://pinterest.com/evelia/fall-decor-halloween-seasonal", description: "Seasonal styling for fall and Halloween.", match: /fall|halloween|seasonal/ },
-        { name: "Car Accessories & Essentials", slug: "car-accessories-essentials", group: "Home & Lifestyle", pinterestUrl: "https://pinterest.com/evelia/car-accessories-essentials", description: "Practical, good-looking car upgrades.", match: /\bcar\b/ },
-        { name: "Teeth Whitening", slug: "teeth-whitening", group: "Home & Lifestyle", pinterestUrl: "https://pinterest.com/evelia/teeth-whitening", description: "At-home teeth whitening finds.", match: /teeth/ },
-        { name: "Women's Shoes & Footwear", slug: "womens-shoes", group: "Fashion", pinterestUrl: "https://pinterest.com/evelia/womens-shoes-footwear", description: "Standout shoes for every occasion.", match: /shoe|pointedshoes/ },
-        { name: "Women's Tops & Outfits", slug: "womens-tops-outfits", group: "Fashion", pinterestUrl: "https://pinterest.com/evelia/womens-tops-outfits", description: "Everyday and elevated tops.", match: /\btop\b|outfit/ },
-        { name: "Women's Dresses & Style", slug: "womens-dresses", group: "Fashion", pinterestUrl: "https://pinterest.com/evelia/womens-dresses-style", description: "Dresses worth building a look around.", match: /dress/ },
-        { name: "Women's Pants & Bottoms", slug: "womens-pants", group: "Fashion", pinterestUrl: "https://pinterest.com/evelia/womens-pants-bottoms", description: "Fits that work for everyday wear.", match: /pant/ },
-        { name: "Women's Bags & Handbags", slug: "womens-bags", group: "Fashion", pinterestUrl: "https://pinterest.com/evelia/womens-bags-handbags", description: "Bags that pull an outfit together.", match: /\bbag\b|handbag|purse/ },
-        { name: "Saree Styles & Indian Wear", slug: "saree-styles-indian-wear", group: "Fashion", pinterestUrl: "https://pinterest.com/evelia/saree-styles-indian-wear", description: "Saree draping and Indian-wear ideas.", match: /saree/ },
-        { name: "Women's Kurtas & Kurta Sets", slug: "womens-kurtas", group: "Fashion", pinterestUrl: "https://pinterest.com/evelia/womens-kurtas-kurta-sets", description: "Kurtas for everyday and festive wear.", match: /kurta/ },
-        { name: "Maroon Dress Edit", slug: "maroon-dress", group: "Fashion", pinterestUrl: "https://pinterest.com/evelia/maroon-dress", description: "A rich color that flatters every season.", match: /maroon/ },
-        { name: "T-Shirts", slug: "tshirts", group: "Fashion", pinterestUrl: "https://pinterest.com/evelia/tshirts", description: "The everyday tee, done well.", match: /tshirt|t-shirt/ },
-        { name: "Shoes", slug: "shoes", group: "Fashion", pinterestUrl: "https://pinterest.com/evelia/shoes", description: "A broader shoe edit.", match: /\bshoes\b/ },
-        { name: "Indian Dress Inspiration", slug: "indiandress", group: "Fashion", pinterestUrl: "https://pinterest.com/evelia/indiandress", description: "Indian dress styling across occasions.", match: /indiandress|indian dress/ },
-        { name: "Trendy Earrings & Jewelry", slug: "trendy-earrings-jewelry", group: "Jewelry & Accessories", pinterestUrl: "https://pinterest.com/evelia/trendy-earrings-jewelry", description: "Statement and everyday earrings.", match: /ear[i]?ng|earring/ },
-        { name: "Cute Bag Charms & Purses", slug: "cute-bag-charms-purses", group: "Jewelry & Accessories", pinterestUrl: "https://pinterest.com/evelia/cute-bag-charms-purses", description: "Charms and purses that add personality.", match: /charm/ },
-        { name: "Gold Necklaces & Dainty Jewelry", slug: "gold-necklaces-dainty-jewelry", group: "Jewelry & Accessories", pinterestUrl: "https://pinterest.com/evelia/gold-necklaces-dainty-jewelry", description: "Delicate, layerable gold pieces.", match: /necklace|jewel/ },
-        { name: "K-Beauty Skincare & Routines", slug: "k-beauty-skincare", group: "Beauty", pinterestUrl: "https://pinterest.com/evelia/k-beauty-skincare-routines", description: "Korean skincare staples and routines.", match: /skin|korean/ },
-        { name: "Hair Care Finds & Hair Tools", slug: "hair-care-finds", group: "Beauty", pinterestUrl: "https://pinterest.com/evelia/hair-care-finds-hair-tools", description: "Tools worth the bathroom shelf space.", match: /hair|curls/ },
-        { name: "Press-On Nails & Nail Art", slug: "press-on-nails-nail-art", group: "Beauty", pinterestUrl: "https://pinterest.com/evelia/press-on-nails-nail-art", description: "Salon-look nails without the salon visit.", match: /nail/ },
-        { name: "I Want", slug: "i-want", group: "Other", pinterestUrl: "https://pinterest.com/evelia/i-want", description: "A running wish list of things worth wanting.", match: /.*/ }
+        { name: "Blue Aesthetic Essentials", slug: "blue-aesthetic-essentials", group: "Home & Lifestyle", pinterestUrl: "https://pinterest.com/evelia/blue-aesthetic-essentials", description: "Calming blue-toned decor for a serene home.", match: /blue/, image: "images/boards/blue-aesthetic-essentials.jpg" },
+        { name: "Modern Home Decor", slug: "modern-home-decor", group: "Home & Lifestyle", pinterestUrl: "https://pinterest.com/evelia/modern-home-decor", description: "Clean-lined, contemporary decor pieces.", match: /decor|modern home/, image: "images/boards/modern-home-decor.jpg" },
+        { name: "Bathroom Organization", slug: "bathroom-organization", group: "Home & Lifestyle", pinterestUrl: "https://pinterest.com/evelia/bathroom-organization", description: "Smart storage for small bathrooms.", match: /bathroom|undersink|sink/, image: "images/boards/bathroom-organization.jpg" },
+        { name: "Home Organization Ideas", slug: "home-organization-ideas", group: "Home & Lifestyle", pinterestUrl: "https://pinterest.com/evelia/home-organization-ideas", description: "Room-by-room systems for a tidier home.", match: /organization|closet|storage|laundry|pantry|desk|dorm|everday|cozy/, image: "images/boards/home-organization-ideas.jpg" },
+        { name: "Viral Kitchen Gadgets", slug: "viral-kitchen-gadgets", group: "Home & Lifestyle", pinterestUrl: "https://pinterest.com/evelia/viral-kitchen-gadgets", description: "Trending kitchen tools worth the counter space.", match: /kitchen|kithcen|hydration/, image: "images/boards/viral-kitchen-gadgets.jpg" },
+        { name: "Fall Decor, Halloween & Seasonal", slug: "fall-decor-halloween-seasonal", group: "Home & Lifestyle", pinterestUrl: "https://pinterest.com/evelia/fall-decor-halloween-seasonal", description: "Seasonal styling for fall and Halloween.", match: /fall|halloween|seasonal/, image: "images/boards/fall-decor-halloween-seasonal.jpg" },
+        { name: "Car Accessories & Essentials", slug: "car-accessories-essentials", group: "Home & Lifestyle", pinterestUrl: "https://pinterest.com/evelia/car-accessories-essentials", description: "Practical, good-looking car upgrades.", match: /\bcar\b/, image: "images/boards/car-accessories-essentials.jpg" },
+        { name: "Teeth Whitening", slug: "teeth-whitening", group: "Home & Lifestyle", pinterestUrl: "https://pinterest.com/evelia/teeth-whitening", description: "At-home teeth whitening finds.", match: /teeth/, image: "images/boards/teeth-whitening.jpg" },
+        { name: "Women's Shoes & Footwear", slug: "womens-shoes", group: "Fashion", pinterestUrl: "https://pinterest.com/evelia/womens-shoes-footwear", description: "Standout shoes for every occasion.", match: /shoe|pointedshoes/, image: "images/boards/womens-shoes.jpg" },
+        { name: "Women's Tops & Outfits", slug: "womens-tops-outfits", group: "Fashion", pinterestUrl: "https://pinterest.com/evelia/womens-tops-outfits", description: "Everyday and elevated tops.", match: /\btop\b|outfit/, image: "images/boards/womens-tops-outfits.jpg" },
+        { name: "Women's Dresses & Style", slug: "womens-dresses", group: "Fashion", pinterestUrl: "https://pinterest.com/evelia/womens-dresses-style", description: "Dresses worth building a look around.", match: /dress/, image: "images/boards/womens-dresses.jpg" },
+        { name: "Women's Pants & Bottoms", slug: "womens-pants", group: "Fashion", pinterestUrl: "https://pinterest.com/evelia/womens-pants-bottoms", description: "Fits that work for everyday wear.", match: /pant/, image: "images/boards/womens-pants.jpg" },
+        { name: "Women's Bags & Handbags", slug: "womens-bags", group: "Fashion", pinterestUrl: "https://pinterest.com/evelia/womens-bags-handbags", description: "Bags that pull an outfit together.", match: /\bbag\b|handbag|purse/, image: "images/boards/womens-bags.jpg" },
+        { name: "Saree Styles & Indian Wear", slug: "saree-styles-indian-wear", group: "Fashion", pinterestUrl: "https://pinterest.com/evelia/saree-styles-indian-wear", description: "Saree draping and Indian-wear ideas.", match: /saree/, image: "images/boards/saree-styles-indian-wear.jpg" },
+        { name: "Women's Kurtas & Kurta Sets", slug: "womens-kurtas", group: "Fashion", pinterestUrl: "https://pinterest.com/evelia/womens-kurtas-kurta-sets", description: "Kurtas for everyday and festive wear.", match: /kurta/, image: "images/boards/womens-kurtas.jpg" },
+        { name: "Maroon Dress Edit", slug: "maroon-dress", group: "Fashion", pinterestUrl: "https://pinterest.com/evelia/maroon-dress", description: "A rich color that flatters every season.", match: /maroon/, image: "images/boards/maroon-dress.jpg" },
+        { name: "T-Shirts", slug: "tshirts", group: "Fashion", pinterestUrl: "https://pinterest.com/evelia/tshirts", description: "The everyday tee, done well.", match: /tshirt|t-shirt/, image: "images/boards/tshirts.jpg" },
+        { name: "Shoes", slug: "shoes", group: "Fashion", pinterestUrl: "https://pinterest.com/evelia/shoes", description: "A broader shoe edit.", match: /\bshoes\b/, image: "images/boards/shoes.jpg" },
+        { name: "Indian Dress Inspiration", slug: "indiandress", group: "Fashion", pinterestUrl: "https://pinterest.com/evelia/indiandress", description: "Indian dress styling across occasions.", match: /indiandress|indian dress/, image: "images/boards/indiandress.jpg" },
+        { name: "Trendy Earrings & Jewelry", slug: "trendy-earrings-jewelry", group: "Jewelry & Accessories", pinterestUrl: "https://pinterest.com/evelia/trendy-earrings-jewelry", description: "Statement and everyday earrings.", match: /ear[i]?ng|earring/, image: "images/boards/trendy-earrings-jewelry.jpg" },
+        { name: "Cute Bag Charms & Purses", slug: "cute-bag-charms-purses", group: "Jewelry & Accessories", pinterestUrl: "https://pinterest.com/evelia/cute-bag-charms-purses", description: "Charms and purses that add personality.", match: /charm/, image: "images/boards/cute-bag-charms-purses.jpg" },
+        { name: "Gold Necklaces & Dainty Jewelry", slug: "gold-necklaces-dainty-jewelry", group: "Jewelry & Accessories", pinterestUrl: "https://pinterest.com/evelia/gold-necklaces-dainty-jewelry", description: "Delicate, layerable gold pieces.", match: /necklace|jewel/, image: "images/boards/gold-necklaces-dainty-jewelry.jpg" },
+        { name: "K-Beauty Skincare & Routines", slug: "k-beauty-skincare", group: "Beauty", pinterestUrl: "https://pinterest.com/evelia/k-beauty-skincare-routines", description: "Korean skincare staples and routines.", match: /skin|korean/, image: "images/boards/k-beauty-skincare.jpg" },
+        { name: "Hair Care Finds & Hair Tools", slug: "hair-care-finds", group: "Beauty", pinterestUrl: "https://pinterest.com/evelia/hair-care-finds-hair-tools", description: "Tools worth the bathroom shelf space.", match: /hair|curls/, image: "images/boards/hair-care-finds.jpg" },
+        { name: "Press-On Nails & Nail Art", slug: "press-on-nails-nail-art", group: "Beauty", pinterestUrl: "https://pinterest.com/evelia/press-on-nails-nail-art", description: "Salon-look nails without the salon visit.", match: /nail/, image: "images/boards/press-on-nails-nail-art.jpg" },
+        { name: "I Want", slug: "i-want", group: "Other", pinterestUrl: "https://pinterest.com/evelia/i-want", description: "A running wish list of things worth wanting.", match: /.*/, image: "images/boards/i-want.jpg" }
       ];
       var groups = ["All", "Home & Lifestyle", "Fashion", "Jewelry & Accessories", "Beauty", "Other"];
 
       // ======================================================================
       // EVELIA FINDS — curated Amazon products. Replace amazonUrl with your
-      // real affiliate links.
+      // real affiliate links, and drop a real photo at each `image` path.
       // ======================================================================
       var finds = [
-        { name: "Ceramic Diffuser Set", description: "A quiet, good-looking diffuser that doesn't scream 'gadget' on a shelf.", category: "Modern Home Decor", amazonUrl: "https://www.amazon.com/", icon: "home" },
-        { name: "Stackable Drawer Organizers", description: "The clear, stackable bins that finally make a junk drawer make sense.", category: "Home Organization Ideas", amazonUrl: "https://www.amazon.com/", icon: "home" },
-        { name: "Gold Vermeil Huggie Earrings", description: "Small enough for every day, polished enough to notice.", category: "Trendy Earrings & Jewelry", amazonUrl: "https://www.amazon.com/", icon: "earring" },
-        { name: "Snail Mucin Essence", description: "The K-beauty staple that earned its reputation.", category: "K-Beauty Skincare", amazonUrl: "https://www.amazon.com/", icon: "skincare" },
-        { name: "Rotating Under-Sink Organizer", description: "Turns the most chaotic cabinet into usable space.", category: "Bathroom Organization", amazonUrl: "https://www.amazon.com/", icon: "bath" },
-        { name: "Press-On Nail Starter Kit", description: "Salon-look nails in fifteen minutes, no appointment required.", category: "Press-On Nails & Nail Art", amazonUrl: "https://www.amazon.com/", icon: "nail" }
+        { name: "Ceramic Diffuser Set", description: "A quiet, good-looking diffuser that doesn't scream 'gadget' on a shelf.", category: "Modern Home Decor", amazonUrl: "https://www.amazon.com/", icon: "home", image: "images/finds/ceramic-diffuser-set.jpg" },
+        { name: "Stackable Drawer Organizers", description: "The clear, stackable bins that finally make a junk drawer make sense.", category: "Home Organization Ideas", amazonUrl: "https://www.amazon.com/", icon: "home", image: "images/finds/stackable-drawer-organizers.jpg" },
+        { name: "Gold Vermeil Huggie Earrings", description: "Small enough for every day, polished enough to notice.", category: "Trendy Earrings & Jewelry", amazonUrl: "https://www.amazon.com/", icon: "earring", image: "images/finds/gold-vermeil-huggie-earrings.jpg" },
+        { name: "Snail Mucin Essence", description: "The K-beauty staple that earned its reputation.", category: "K-Beauty Skincare", amazonUrl: "https://www.amazon.com/", icon: "skincare", image: "images/finds/snail-mucin-essence.jpg" },
+        { name: "Rotating Under-Sink Organizer", description: "Turns the most chaotic cabinet into usable space.", category: "Bathroom Organization", amazonUrl: "https://www.amazon.com/", icon: "bath", image: "images/finds/rotating-under-sink-organizer.jpg" },
+        { name: "Press-On Nail Starter Kit", description: "Salon-look nails in fifteen minutes, no appointment required.", category: "Press-On Nails & Nail Art", amazonUrl: "https://www.amazon.com/", icon: "nail", image: "images/finds/press-on-nail-starter-kit.jpg" }
       ];
 
       // ======================================================================
       // BOARD COVER ICONS — clean custom line icons standing in for real
-      // photography. Swap coverImage per category below for real photos later.
+      // photography. These show automatically whenever a category's `image`
+      // file is missing or fails to load, so the grid never looks broken.
       // ======================================================================
       var ICONS = {
         home: '<path d="M4 11 12 4l8 7"/><path d="M6 10v9a1 1 0 0 0 1 1h4v-6h2v6h4a1 1 0 0 0 1-1v-9"/>',
@@ -498,6 +513,7 @@
         boardGrid.innerHTML = visible.map(function (c) {
           return '<a class="board-card" href="' + escapeHtml(c.pinterestUrl) + '" target="_blank" rel="noopener">' +
             '<div class="board-cover" style="background:' + GROUP_GRADIENT[c.group] + '">' +
+              (c.image ? '<img class="board-cover-img" src="' + escapeHtml(c.image) + '" alt="' + escapeHtml(c.name) + '" loading="lazy" onerror="this.remove()">' : '') +
               '<svg class="board-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">' + iconFor(c.slug) + '</svg>' +
             '</div>' +
             '<div class="board-body">' +
@@ -544,7 +560,10 @@
       function renderFinds() {
         findsGrid.innerHTML = finds.map(function (f) {
           return '<div class="product-card">' +
-            '<div class="product-thumb"><svg class="board-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">' + (ICONS[f.icon] || ICONS.heart) + '</svg></div>' +
+            '<div class="product-thumb">' +
+              (f.image ? '<img class="product-thumb-img" src="' + escapeHtml(f.image) + '" alt="' + escapeHtml(f.name) + '" loading="lazy" onerror="this.remove()">' : '') +
+              '<svg class="board-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">' + (ICONS[f.icon] || ICONS.heart) + '</svg>' +
+            '</div>' +
             '<div class="product-body">' +
               '<span class="product-category">' + escapeHtml(f.category) + '</span>' +
               '<h3>' + escapeHtml(f.name) + '</h3>' +
