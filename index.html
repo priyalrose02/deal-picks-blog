@@ -17,7 +17,6 @@
   <!-- Replace with your real Pinterest verification code -->
   <meta name="p:domain_verify" content="REPLACE_WITH_YOUR_PINTEREST_CODE">
 
-
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9404379221390219" crossorigin="anonymous"></script>
 
@@ -97,8 +96,11 @@
     .hero-p{max-width:62ch;color:var(--espresso-soft);font-size:1.02rem;margin:0 0 14px}
     .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
     .hero-visual{position:relative;aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:linear-gradient(160deg,#e7b9bf 0%,#d9c093 100%);box-shadow:var(--shadow-md)}
-    .hero-visual:before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.35),transparent 55%)}
-    .hero-visual .board-icon{width:88px;height:88px;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
+    .hero-visual:before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.35),transparent 55%);z-index:1}
+    .hero-visual .board-icon{width:88px;height:88px;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:1}
+    .hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s ease}
+    .hero-photo.is-loaded{opacity:1}
+    .hero-visual.has-photo .board-icon{display:none}
     @media (max-width:900px){ .hero-grid{grid-template-columns:1fr} .hero-visual{display:none} }
 
     /* Boards (Pinterest-inspired masonry) */
@@ -110,8 +112,16 @@
     .board-card{display:block;break-inside:avoid;margin:0 0 22px;border-radius:var(--radius);overflow:hidden;background:#fff;box-shadow:var(--shadow-sm);transition:box-shadow .2s ease,transform .2s ease;border:1px solid var(--line)}
     .board-card:hover{box-shadow:var(--shadow-md);transform:translateY(-3px)}
     .board-cover{aspect-ratio:4/5;background:linear-gradient(160deg,var(--blush) 0%,var(--gold-soft) 100%);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
-    .board-cover:before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.35),transparent 55%)}
-    .board-icon{width:52px;height:52px;color:#fff;opacity:.92;position:relative;filter:drop-shadow(0 4px 10px rgba(43,36,31,.18))}
+    .board-cover:before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.35),transparent 55%);z-index:1}
+    .board-icon{width:52px;height:52px;color:#fff;opacity:.92;position:relative;z-index:1;filter:drop-shadow(0 4px 10px rgba(43,36,31,.18))}
+    .board-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.04);transition:opacity .5s ease,transform .5s ease;z-index:0}
+    .board-photo.is-loaded{opacity:1}
+    .board-card:hover .board-photo{transform:scale(1.1)}
+    .board-cover:after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(20,15,15,.55) 0%,rgba(20,15,15,0) 42%);opacity:0;transition:opacity .3s ease;z-index:1;pointer-events:none}
+    .board-cover.has-photo:after{opacity:1}
+    .board-cover.has-photo .board-icon{display:none}
+    .board-tag{position:absolute;left:14px;bottom:14px;z-index:2;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.16);backdrop-filter:blur(6px);color:#fff;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;opacity:0;transition:opacity .3s ease}
+    .board-cover.has-photo .board-tag{opacity:1}
     .board-body{padding:16px 18px 20px}
     .board-body h3{font-size:1.02rem;margin-bottom:6px}
     .board-body p{margin:0;color:var(--muted);font-size:.83rem;line-height:1.55}
@@ -154,7 +164,11 @@
     .product-card{border-radius:var(--radius);overflow:hidden;background:#fff;box-shadow:var(--shadow-sm);transition:box-shadow .2s ease;border:1px solid var(--line)}
     .product-card:hover{box-shadow:var(--shadow-md)}
     .product-thumb{aspect-ratio:1/1;background:linear-gradient(160deg,var(--gold-soft),var(--blush));position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
-    .product-thumb:before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.35),transparent 55%)}
+    .product-thumb:before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.35),transparent 55%);z-index:1}
+    .product-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.04);transition:opacity .5s ease,transform .5s ease}
+    .product-photo.is-loaded{opacity:1}
+    .product-card:hover .product-photo{transform:scale(1.08)}
+    .product-thumb.has-photo .board-icon{display:none}
     .product-body{padding:16px 18px 20px}
     .product-category{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--gold)}
     .product-body h3{font-size:1rem;margin:6px 0}
@@ -241,6 +255,7 @@
           </div>
         </div>
         <div class="hero-visual" id="heroVisual">
+          <img class="hero-photo" id="heroPhoto" alt="" loading="lazy">
           <svg class="board-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.5-9.5-9C1 7.5 3 4 6.5 4c2 0 3.5 1.5 4.5 3 1-1.5 2.5-3 4.5-3C19 4 21 7.5 20.5 11 18 15.5 12 20 12 20Z"/></svg>
         </div>
       </div>
@@ -370,10 +385,9 @@
         { name: "Gold Necklaces & Dainty Jewelry", slug: "gold-necklaces-dainty-jewelry", group: "Jewelry & Accessories", pinterestUrl: "https://pinterest.com/evelia/gold-necklaces-dainty-jewelry", description: "Delicate, layerable gold pieces.", match: /necklace|jewel/ },
         { name: "K-Beauty Skincare & Routines", slug: "k-beauty-skincare", group: "Beauty", pinterestUrl: "https://pinterest.com/evelia/k-beauty-skincare-routines", description: "Korean skincare staples and routines.", match: /skin|korean/ },
         { name: "Hair Care Finds & Hair Tools", slug: "hair-care-finds", group: "Beauty", pinterestUrl: "https://pinterest.com/evelia/hair-care-finds-hair-tools", description: "Tools worth the bathroom shelf space.", match: /hair|curls/ },
-        { name: "Press-On Nails & Nail Art", slug: "press-on-nails-nail-art", group: "Beauty", pinterestUrl: "https://pinterest.com/evelia/press-on-nails-nail-art", description: "Salon-look nails without the salon visit.", match: /nail/ },
-        { name: "I Want", slug: "i-want", group: "Other", pinterestUrl: "https://pinterest.com/evelia/i-want", description: "A running wish list of things worth wanting.", match: /.*/ }
+        { name: "Press-On Nails & Nail Art", slug: "press-on-nails-nail-art", group: "Beauty", pinterestUrl: "https://pinterest.com/evelia/press-on-nails-nail-art", description: "Salon-look nails without the salon visit.", match: /nail/ }
       ];
-      var groups = ["All", "Home & Lifestyle", "Fashion", "Jewelry & Accessories", "Beauty", "Other"];
+      var groups = ["All", "Home & Lifestyle", "Fashion", "Jewelry & Accessories", "Beauty"];
 
       // ======================================================================
       // EVELIA FINDS — curated Amazon products. Replace amazonUrl with your
@@ -437,8 +451,7 @@
         'gold-necklaces-dainty-jewelry': 'jewelry',
         'k-beauty-skincare': 'skincare',
         'hair-care-finds': 'hair',
-        'press-on-nails-nail-art': 'nail',
-        'i-want': 'heart'
+        'press-on-nails-nail-art': 'nail'
       };
       function iconFor(slug) {
         return ICONS[ICON_FOR_SLUG[slug] || 'heart'];
@@ -477,12 +490,13 @@
         var name = parts[parts.length - 1] === 'index.html' ? parts[parts.length - 2] : parts[parts.length - 1].replace(/\.html$/i, '');
         return decodeURIComponent(name || '').replace(/[-_]+/g, ' ');
       }
+      var FALLBACK_CATEGORY = { name: "Editor's Picks", slug: "editors-picks", group: "Fashion", pinterestUrl: "https://pinterest.com/evelia/", description: "A little bit of everything Evelia loves.", match: /.*/ };
       function categoryFor(article) {
         var haystack = (text(article.title) + ' ' + text(article.category) + ' ' + text(article.url)).toLowerCase();
         for (var i = 0; i < categories.length; i++) {
           if (categories[i].match.test(haystack)) return categories[i];
         }
-        return categories[categories.length - 1];
+        return FALLBACK_CATEGORY;
       }
       function setStatus(v) { if (syncStatus) syncStatus.textContent = v; }
 
@@ -506,7 +520,7 @@
       // and paste it below. Until you do, every board and the hero simply
       // keep the icon/gradient look — nothing breaks either way.
       // ======================================================================
-      var PEXELS_API_KEY = "l5TJx98l7DuBWhGu91HajxQdYP8TShLTSAFjymncsgGcVrr8SiVB3ZqT"; // <-- paste your free Pexels API key here
+      var PEXELS_API_KEY = ""; // <-- paste your free Pexels API key here
 
       // Search terms tend to give better photo matches than the on-site
       // board names (e.g. "gold necklace jewelry" beats "Gold Necklaces &
@@ -536,8 +550,7 @@
         'gold-necklaces-dainty-jewelry': 'gold necklace jewelry',
         'k-beauty-skincare': 'skincare korean beauty',
         'hair-care-finds': 'hair care beauty',
-        'press-on-nails-nail-art': 'nail art manicure',
-        'i-want': 'aesthetic lifestyle'
+        'press-on-nails-nail-art': 'nail art manicure'
       };
 
       var photoCache = {};
@@ -550,7 +563,7 @@
           .then(function (r) { if (!r.ok) throw new Error('Pexels request failed'); return r.json(); })
           .then(function (data) {
             var photo = data.photos && data.photos[0];
-            var url = photo ? (photo.src.large || photo.src.medium) : null;
+            var url = photo ? (photo.src.large2x || photo.src.large || photo.src.medium) : null;
             photoCache[query] = url;
             return url;
           })
@@ -565,11 +578,10 @@
             if (!url) return;
             var cover = boardGrid.querySelector('.board-cover[data-slug="' + c.slug + '"]');
             if (!cover) return; // filtered out or re-rendered since the fetch started
-            cover.style.backgroundImage = 'linear-gradient(rgba(20,15,15,.18),rgba(20,15,15,.18)), url("' + url + '")';
-            cover.style.backgroundSize = 'cover';
-            cover.style.backgroundPosition = 'center';
-            var icon = cover.querySelector('.board-icon');
-            if (icon) icon.style.display = 'none';
+            var img = cover.querySelector('.board-photo');
+            if (!img) return;
+            img.onload = function () { img.classList.add('is-loaded'); cover.classList.add('has-photo'); };
+            img.src = url;
           });
         });
       }
@@ -578,12 +590,10 @@
         fetchPexelsPhoto('cozy home fashion lifestyle').then(function (url) {
           if (!url) return;
           var visual = document.getElementById('heroVisual');
-          if (!visual) return;
-          visual.style.backgroundImage = 'url("' + url + '")';
-          visual.style.backgroundSize = 'cover';
-          visual.style.backgroundPosition = 'center';
-          var icon = visual.querySelector('.board-icon');
-          if (icon) icon.style.display = 'none';
+          var img = document.getElementById('heroPhoto');
+          if (!visual || !img) return;
+          img.onload = function () { img.classList.add('is-loaded'); visual.classList.add('has-photo'); };
+          img.src = url;
         });
       }
 
@@ -596,7 +606,9 @@
         boardGrid.innerHTML = visible.map(function (c) {
           return '<a class="board-card" href="' + escapeHtml(c.pinterestUrl) + '" target="_blank" rel="noopener">' +
             '<div class="board-cover" data-slug="' + c.slug + '" style="background:' + GROUP_GRADIENT[c.group] + '">' +
+              '<img class="board-photo" alt="" loading="lazy">' +
               '<svg class="board-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">' + iconFor(c.slug) + '</svg>' +
+              '<span class="board-tag">' + escapeHtml(c.group) + '</span>' +
             '</div>' +
             '<div class="board-body">' +
               '<h3>' + escapeHtml(c.name) + '</h3>' +
@@ -643,7 +655,7 @@
       function renderFinds() {
         findsGrid.innerHTML = finds.map(function (f, i) {
           return '<div class="product-card">' +
-            '<div class="product-thumb" data-find-index="' + i + '"><svg class="board-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">' + (ICONS[f.icon] || ICONS.heart) + '</svg></div>' +
+            '<div class="product-thumb" data-find-index="' + i + '"><img class="product-photo" alt="" loading="lazy"><svg class="board-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">' + (ICONS[f.icon] || ICONS.heart) + '</svg></div>' +
             '<div class="product-body">' +
               '<span class="product-category">' + escapeHtml(f.category) + '</span>' +
               '<h3>' + escapeHtml(f.name) + '</h3>' +
@@ -662,11 +674,10 @@
             if (!url) return;
             var thumb = findsGrid.querySelector('.product-thumb[data-find-index="' + i + '"]');
             if (!thumb) return;
-            thumb.style.backgroundImage = 'url("' + url + '")';
-            thumb.style.backgroundSize = 'cover';
-            thumb.style.backgroundPosition = 'center';
-            var icon = thumb.querySelector('.board-icon');
-            if (icon) icon.style.display = 'none';
+            var img = thumb.querySelector('.product-photo');
+            if (!img) return;
+            img.onload = function () { img.classList.add('is-loaded'); thumb.classList.add('has-photo'); };
+            img.src = url;
           });
         });
       }
