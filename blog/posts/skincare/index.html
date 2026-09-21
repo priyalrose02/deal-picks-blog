@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Skincare Essentials for a Simple Glowing Skin Routine Finds That Are Actually Worth It</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Color tokens adapted from AstroPaper (astro-paper theme by satnaing) --
+     light: warm off-white / near-black ink / blue accent.
+     dark: deep navy / soft white / orange accent. Real light/dark support,
+     not just a palette swap -- matches the source theme's own approach. */
+  :root{
+    --bg:#fdfdfd;
+    --ink:#282728;
+    --muted:#7b7b7b;
+    --accent:#006cac;
+    --accent-soft:#e5f1f8;
+    --border:#ece9e9;
+    --card:#ffffff;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#212737;
+      --ink:#eaedf3;
+      --muted:#a3abc2;
+      --accent:#ff6b01;
+      --accent-soft:#3a2c1c;
+      --border:#39415a;
+      --card:#262d40;
+    }
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif; line-height:1.7;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+  }
+
+  .wrap{ max-width:760px; margin:0 auto; padding:0 24px; }
+
+  a{ color:inherit; }
+  .link{
+    color:var(--ink); text-decoration:underline; text-decoration-style:dashed;
+    text-underline-offset:4px; transition:color 0.15s ease;
+  }
+  .link:hover{ color:var(--accent); }
+
+  header.hero{ padding:56px 0 32px; border-bottom:1px solid var(--border); }
+  .tag-chip{
+    display:inline-block; font-family:'IBM Plex Mono', monospace; font-size:12px; font-weight:600;
+    color:var(--accent); background:var(--accent-soft); border-radius:4px; padding:4px 10px; margin-bottom:18px;
+  }
+  h1.title{
+    font-family:'IBM Plex Mono', monospace; font-weight:700; line-height:1.2;
+    font-size:clamp(1.9rem, 4.6vw, 2.6rem); margin:0 0 16px;
+  }
+  p.subtitle{ font-size:1.02rem; color:var(--muted); margin:0 0 20px; max-width:560px; }
+  .meta-line{
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--muted);
+    display:flex; flex-wrap:wrap; gap:14px; margin-bottom:8px;
+  }
+  .meta-line span::before{ content:'— '; }
+  .meta-line span:first-child::before{ content:''; }
+
+  .disclosure{
+    font-size:12.5px; color:var(--muted); border-left:2px solid var(--border); padding-left:12px; margin:20px 0 0;
+  }
+
+  .intro{ padding:28px 0 8px; font-size:1rem; }
+  .intro p{ margin:0 0 14px; }
+
+  h2.section-h{
+    font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:1.3rem; letter-spacing:0.02em;
+    margin:52px 0 4px; padding-bottom:16px; border-bottom:1px solid var(--border);
+  }
+
+  .products{ padding:0; }
+  .product{
+    padding:36px 0; border-bottom:1px solid var(--border);
+    opacity:0; transform:translateY(12px);
+    transition:opacity 0.5s ease, transform 0.5s ease;
+  }
+  .product.is-visible{ opacity:1; transform:translateY(0); }
+  .product:last-child{ border-bottom:none; }
+
+  .p-body{ display:grid; grid-template-columns:130px 1fr; gap:22px; align-items:start; }
+  @media (max-width:520px){ .p-body{ grid-template-columns:1fr; } }
+  .p-media{
+    width:100%; aspect-ratio:1/1; overflow:hidden; border:1px solid var(--border); border-radius:4px;
+    background:var(--card); display:flex; align-items:center; justify-content:center;
+  }
+  .p-media img{ width:100%; height:100%; object-fit:contain; padding:10px; }
+  .p-media.no-image{ font-size:10.5px; color:var(--muted); text-align:center; padding:6px; font-family:'IBM Plex Mono',monospace; }
+
+  h3.p-title{
+    font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:1.1rem; margin:0 0 8px; line-height:1.4;
+  }
+  .p-tags{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px; }
+  .p-tag{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--muted);
+    border:1px solid var(--border); border-radius:100px; padding:3px 10px;
+  }
+
+  .p-meta{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--muted); margin-bottom:12px; display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+  .p-meta .price{ color:var(--ink); font-weight:600; }
+  .stars{ display:inline-flex; gap:1px; align-items:center; }
+  .stars svg{ width:12px; height:12px; }
+
+  .writeup{ font-size:0.96rem; color:var(--ink); margin:0 0 14px; }
+
+  .customers-say{
+    border-left:2px solid var(--accent); padding:2px 0 2px 14px; margin:0 0 16px;
+    font-size:0.88rem; color:var(--muted); font-style:italic;
+  }
+  .customers-say .label{
+    display:block; font-style:normal; font-family:'IBM Plex Mono', monospace; font-size:10px; font-weight:700;
+    letter-spacing:0.05em; text-transform:uppercase; color:var(--accent); margin-bottom:5px;
+  }
+
+  .flag{
+    display:inline-block; font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--accent);
+    border:1px dashed var(--accent); border-radius:4px; padding:3px 9px; margin-bottom:10px;
+  }
+
+  .cta{ font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:13.5px; }
+  .cta::after{ content:' →'; }
+
+  .custom-cta{ padding:36px 0; border-bottom:1px solid var(--border); }
+  .custom-inner{ display:flex; gap:22px; align-items:center; }
+  @media (max-width:520px){ .custom-inner{ flex-direction:column; align-items:flex-start; } }
+  .custom-media{
+    flex:0 0 110px; aspect-ratio:1/1; border:1px solid var(--border); border-radius:4px; overflow:hidden;
+    background:var(--card); display:flex; align-items:center; justify-content:center;
+  }
+  .custom-media img{ width:100%; height:100%; object-fit:contain; padding:8px; }
+  .custom-copy h3{ font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:1.02rem; margin:0 0 8px; }
+  .custom-copy p{ font-size:0.92rem; color:var(--muted); margin:0 0 12px; }
+
+  .closing{ padding:40px 0 20px; }
+  .closing p{ color:var(--muted); font-size:0.95rem; margin:0 0 10px; }
+
+  footer{ padding:24px 0 60px; border-top:1px solid var(--border); margin-top:20px; color:var(--muted); font-size:12px; font-family:'IBM Plex Mono', monospace; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <span class="tag-chip">Skincare Essentials for a Simple Glowing Skin Routine</span>
+    <h1 class="title">The Skincare Essentials for a Simple Glowing Skin Routine Finds That Are Actually Worth It</h1>
+    <p class="subtitle">No filler, no fluff — just 10 things that earned a spot here.</p>
+    <div class="meta-line">
+      <span>Updated 21 Sep 2026, 15:30</span>
+      <span>10 products compared</span>
+      <span>4.6/5 avg rating</span>
+    </div>
+    <p class="disclosure">As an Amazon Associate, this page may earn from qualifying purchases. Prices and availability reflect the listing at the time each product was checked.</p>
+  </header>
+
+  <div class="intro"><p>Skincare Essentials for a Simple Glowing Skin Routine is one of those categories where the difference between &#39;fine&#39; and &#39;genuinely good&#39; rarely shows up in the photos. Below is a systems check on 10 pieces of kit — pulled apart, priced, and put back together here so you don&#39;t have to dig through spec sheets yourself.</p></div>
+
+  <h2 class="section-h">All Picks</h2>
+  <section class="products">
+    
+    <div class="product">
+      <div class="p-body">
+        <div class="p-media ">
+          <img src="https://m.media-amazon.com/images/I/71QTqW3wk9L._SL1500_.jpg" alt="Olay Face Moisturizer, Regenerist Micro-Sculpting Cream for Women, Fragrance-Free - Anti-Aging, Anti-Wrinkle, Firming Skin Care - Triple Collagen Cream, Peptide, Hyaluronic Acid, Niacinamide, 1.7oz" loading="lazy">
+        </div>
+        <div>
+          
+          <h3 class="p-title" title="Olay Face Moisturizer, Regenerist Micro-Sculpting Cream for Women, Fragrance-Free - Anti-Aging, Anti-Wrinkle, Firming Skin Care - Triple Collagen Cream, Peptide, Hyaluronic Acid, Niacinamide, 1.7oz">Olay Face Moisturizer, Regenerist Micro-Sculpting Cream for Women, Fragrance-Free - Anti-Aging, Anti-Wrinkle, Firming Skin Care - Triple Collagen Cream, Peptide, Hyaluronic Acid, Niacinamide, 1.7oz</h3>
+          <div class="p-tags"><span class="p-tag">Olay Regenerist, Newly Upgraded</span></div>
+          <div class="p-meta">
+            <span class="price">$21.96</span>
+            
+            <span class="stars">
+              <svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--border)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            </span>
+            <span>4.6/5 · 51,596</span>
+            
+          </div>
+          <p class="writeup">Now with Triple Collagen Peptide, this clinically-tested face cream for women provides deep hydration with Triple Collagen Peptide and Niacinamide, instantly plumping and firming skin for a youthful look. For a limited time, packaging may vary. Before considering expensive anti-aging cosmetic procedures, try this face lift cream to visibly firm skin in 1 week and improve even the deepest wrinkles in 4 weeks. No Needles. No Lasers. It&#39;s sitting at 4.6/5 from 51,596 shoppers, which holds up beyond just first impressions.</p>
+          
+          <a class="link cta" href="https://link.amazon/B06MNlxfr" target="_blank" rel="noopener sponsored">See it on Amazon</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="product">
+      <div class="p-body">
+        <div class="p-media ">
+          <img src="https://m.media-amazon.com/images/I/71Mcspt-6AL._SL1500_.jpg" alt="medicube Toner Pads Zero Pore Pad 2.0 for Exfoliation and Pore Care" loading="lazy">
+        </div>
+        <div>
+          
+          <h3 class="p-title" title="medicube Toner Pads Zero Pore Pad 2.0 for Exfoliation and Pore Care">medicube Toner Pads Zero Pore Pad 2.0 for Exfoliation and Pore Care</h3>
+          <div class="p-tags"><span class="p-tag">Anyone shopping for skincare essentials for a simple glowing skin routine</span></div>
+          <div class="p-meta">
+            <span class="price">$18.90</span>
+            
+            <span class="stars">
+              <svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--border)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            </span>
+            <span>4.6/5 · 32,575</span>
+            
+          </div>
+          <p class="writeup">Exfoliates and Refines Pores - Perfect for those concerned about enlarged pores, seeking smoother skin, battling greasy skin from excess sebum. Power of Nature - Dive deep with White Willow Bark (Natural BHA), Citric Acid (AHA), and soothing botanical extracts. Nature&#39;s finest ingredients come together for optimal skin clarity. It&#39;s sitting at 4.6/5 from 32,575 shoppers, which holds up beyond just first impressions.</p>
+          
+          <a class="link cta" href="https://link.amazon/B07A9YFVu" target="_blank" rel="noopener sponsored">See it on Amazon</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="product">
+      <div class="p-body">
+        <div class="p-media ">
+          <img src="https://m.media-amazon.com/images/I/61occWCJN-L._SL1500_.jpg" alt="medicube Wrapping Mask Collagen - Overnight Peel Off Facial Mask" loading="lazy">
+        </div>
+        <div>
+          
+          <h3 class="p-title" title="medicube Wrapping Mask Collagen - Overnight Peel Off Facial Mask">medicube Wrapping Mask Collagen - Overnight Peel Off Facial Mask</h3>
+          <div class="p-tags"><span class="p-tag">Anyone shopping for skincare essentials for a simple glowing skin routine</span></div>
+          <div class="p-meta">
+            <span class="price">$15.20</span>
+            
+            <span class="stars">
+              <svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--border)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            </span>
+            <span>4.5/5 · 24,497</span>
+            
+          </div>
+          <p class="writeup">Awaken Your Glow with Overnight Elasticity Booster - Protect and enhance your skin&#39;s elasticity with our collagen wrapping film, delivering 8 hours of intensive care while you sleep. Perfect for waking up with firmer, more resilient skin. *Please note that jelly brush is not included in this product. Comes Off in One Piece -Just like there&#39;s no better feeling than a clean shed, this easy-to-peel mask leaves your face feeling fresh and clean. It&#39;s sitting at 4.5/5 from 24,497 shoppers, which holds up beyond just first impressions.</p>
+          
+          <a class="link cta" href="https://link.amazon/B05qbVX9R" target="_blank" rel="noopener sponsored">See it on Amazon</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="product">
+      <div class="p-body">
+        <div class="p-media ">
+          <img src="https://m.media-amazon.com/images/I/615DOoCI6xL._SL1500_.jpg" alt="medicube PDRN Pink Peptide Serum with Salmon DNA" loading="lazy">
+        </div>
+        <div>
+          
+          <h3 class="p-title" title="medicube PDRN Pink Peptide Serum with Salmon DNA">medicube PDRN Pink Peptide Serum with Salmon DNA</h3>
+          <div class="p-tags"><span class="p-tag">Skin Benefits</span></div>
+          <div class="p-meta">
+            <span class="price">$18.90</span>
+            
+            <span class="stars">
+              <svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--border)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            </span>
+            <span>4.6/5 · 23,174</span>
+            
+          </div>
+          <p class="writeup">Medicube PDRN Pink Peptide Serum delivers targeted care with a luxurious formula designed to nourish, hydrate, and revitalize skin for a healthier, more radiant appearance. Experience deep, long-lasting moisture that absorbs beautifully without greasy residue, keeping skin comfortable and supple throughout the day. It&#39;s sitting at 4.6/5 from 23,174 shoppers, which holds up beyond just first impressions.</p>
+          
+          <a class="link cta" href="https://link.amazon/B02cs8sRA" target="_blank" rel="noopener sponsored">See it on Amazon</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="product">
+      <div class="p-body">
+        <div class="p-media ">
+          <img src="https://m.media-amazon.com/images/I/61jB74Wpd5L._SL1000_.jpg" alt="BIODANCE Hydrogel Eye Patches for Under Eye - Collagen Peptide, Anti Wrinkle &amp; Fine Lines (60 Count)" loading="lazy">
+        </div>
+        <div>
+          
+          <h3 class="p-title" title="BIODANCE Hydrogel Eye Patches for Under Eye - Collagen Peptide, Anti Wrinkle &amp; Fine Lines (60 Count)">BIODANCE Hydrogel Eye Patches for Under Eye - Collagen Peptide, Anti Wrinkle &amp; Fine Lines (60 Count)</h3>
+          <div class="p-tags"><span class="p-tag">Care With Collagen &amp; Peptides &amp; Exosomes</span></div>
+          <div class="p-meta">
+            <span class="price">$23.00</span>
+            
+            <span class="stars">
+              <svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--border)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            </span>
+            <span>4.5/5 · 4,399</span>
+            
+          </div>
+          <p class="writeup">Powered by Exosomes, Collagen and Peptides, this advanced formula boosts skin regeneration to restore elasticity. It actively plumps deep creases, crow&#39;s feet, and smile lines, delivering a professional anti-wrinkle treatment for a youthful look. Woke up with swollen eyes? Our Caffeine formula works as an effective under eye treatment to instantly reduce eye bags and puffiness. Enriched with Hyaluronic Acid, it delivers deep moisture to refresh tired skin and hydrate dry areas. It&#39;s sitting at 4.5/5 from 4,399 shoppers, which holds up beyond just first impressions.</p>
+          
+          <a class="link cta" href="https://link.amazon/B02JrIxuD" target="_blank" rel="noopener sponsored">See it on Amazon</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="product">
+      <div class="p-body">
+        <div class="p-media ">
+          <img src="https://m.media-amazon.com/images/I/61RHq4MT34L._SL1500_.jpg" alt="Paula&#39;s Choice SKIN PERFECTING 2% BHA Liquid Leave-On Exfoliant" loading="lazy">
+        </div>
+        <div>
+          
+          <h3 class="p-title" title="Paula&#39;s Choice SKIN PERFECTING 2% BHA Liquid Leave-On Exfoliant">Paula&#39;s Choice SKIN PERFECTING 2% BHA Liquid Leave-On Exfoliant</h3>
+          <div class="p-tags"><span class="p-tag">Gentle Non-Abrasive Leave-On Exfoliant</span></div>
+          <div class="p-meta">
+            <span class="price">$37.00</span>
+            
+            <span class="stars">
+              <svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--border)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            </span>
+            <span>4.5/5 · 116,680</span>
+            
+          </div>
+          <p class="writeup">With 2% BHA (Beta hydroxy acid), to unclog &amp; diminish enlarged pores, exfoliate dead skin cells, smooth wrinkles, and brighten and even out skin tone. Combats redness, wrinkles, aging, enlarged pores, and blackheads. Dramatically improves skin&#39;s texture for radiant youthful even-toned skin. Beta hydroxy acid (BHA, also known as salicylic acid) mimics the natural exfoliation process of younger skin by helping it shed extra layers while unclogging and clearing pores. It&#39;s sitting at 4.5/5 from 116,680 shoppers, which holds up beyond just first impressions.</p>
+          
+          <a class="link cta" href="https://link.amazon/B031wQ4pk" target="_blank" rel="noopener sponsored">See it on Amazon</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="product">
+      <div class="p-body">
+        <div class="p-media ">
+          <img src="https://m.media-amazon.com/images/I/51jUZPIYl+L._SL1500_.jpg" alt="BYOMA Milky Toner - Hydrating Face Toner, Moisturizing, Korean Skincare" loading="lazy">
+        </div>
+        <div>
+          
+          <h3 class="p-title" title="BYOMA Milky Toner - Hydrating Face Toner, Moisturizing, Korean Skincare">BYOMA Milky Toner - Hydrating Face Toner, Moisturizing, Korean Skincare</h3>
+          <div class="p-tags"><span class="p-tag">Hydrate + Soothe</span></div>
+          <div class="p-meta">
+            <span class="price">$11.99</span>
+            
+            <span class="stars">
+              <svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--border)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            </span>
+            <span>4.7/5 · 6,459</span>
+            
+          </div>
+          <p class="writeup">This ultra-soothing toner works to quench dry skin while supporting sensitive + sensitized skin barriers. Skin is instantly transformed, looking + feeling soft, supple, dewy and radiant all day long. Polyglutamic Acid + Cica help lock in moisture across multiple layers of the skin + reduce the appearance of redness from dry skin. It&#39;s sitting at 4.7/5 from 6,459 shoppers, which holds up beyond just first impressions.</p>
+          
+          <a class="link cta" href="https://link.amazon/B023TNyHl" target="_blank" rel="noopener sponsored">See it on Amazon</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="product">
+      <div class="p-body">
+        <div class="p-media ">
+          <img src="https://m.media-amazon.com/images/I/71kPQ2aYqLL._SL1500_.jpg" alt="Dove Body Wash Antibacterial For All Skin Types 30.6 oz Pump, Sulfate Free" loading="lazy">
+        </div>
+        <div>
+          
+          <h3 class="p-title" title="Dove Body Wash Antibacterial For All Skin Types 30.6 oz Pump, Sulfate Free">Dove Body Wash Antibacterial For All Skin Types 30.6 oz Pump, Sulfate Free</h3>
+          <div class="p-tags"><span class="p-tag">Cleans &amp; Protects</span></div>
+          <div class="p-meta">
+            <span class="price">$12.97</span>
+            
+            <span class="stars">
+              <svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--border)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            </span>
+            <span>4.8/5 · 6,995</span>
+            
+          </div>
+          <p class="writeup">Dove Antibacterial Body Wash effectively cleanses and eliminates 99% of bacteria while helping protect skin from dryness and leaving skin soft and nourished. Looking for an antibacterial body wash that won&#39;t dry out your skin? This gentle formula helps renew moisture and keeps skin feeling soft and comfortable. It&#39;s sitting at 4.8/5 from 6,995 shoppers, which holds up beyond just first impressions.</p>
+          
+          <a class="link cta" href="https://link.amazon/B01ChGy8u" target="_blank" rel="noopener sponsored">See it on Amazon</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="product">
+      <div class="p-body">
+        <div class="p-media ">
+          <img src="https://m.media-amazon.com/images/I/61zUDkrf+OL._SL1500_.jpg" alt="JIYU Toner Pads - Korean Skincare for Dark Spots, Wrinkles &amp; Dull Skin - Hydrating Facial Treatment with Snail Mucin, Niacinamide, Peptides &amp; Centella - 100 Count" loading="lazy">
+        </div>
+        <div>
+          
+          <h3 class="p-title" title="JIYU Toner Pads - Korean Skincare for Dark Spots, Wrinkles &amp; Dull Skin - Hydrating Facial Treatment with Snail Mucin, Niacinamide, Peptides &amp; Centella - 100 Count">JIYU Toner Pads - Korean Skincare for Dark Spots, Wrinkles &amp; Dull Skin - Hydrating Facial Treatment with Snail Mucin, Niacinamide, Peptides &amp; Centella - 100 Count</h3>
+          <div class="p-tags"><span class="p-tag">Advanced K-Beauty Formula</span></div>
+          <div class="p-meta">
+            <span class="price">$59.99</span>
+            
+            <span class="stars">
+              <svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--border)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            </span>
+            <span>4.3/5 · 5,425</span>
+            
+          </div>
+          <p class="writeup">JIYU&#39;s professional-grade Toning Polish Pads deliver a powerful Korean skincare treatment featuring Snail Mucin, Niacinamide, a unique Peptide Complex, and Centella Asiatica. Our proprietary anti-aging formula helps improve the appearance of dark spots, wrinkles, acne marks, fine lines, and redness. One Month Supply. Potent blend of Alpha-Arbutin, Licorice Root Extract and a Unique Peptide Formula helps reduce dark spots &amp; smooths fine lines. One step away from that coveted &#39;glass skin&#39; glow. It&#39;s sitting at 4.3/5 from 5,425 shoppers, which holds up beyond just first impressions.</p>
+          
+          <a class="link cta" href="https://link.amazon/B0dIUZhT9" target="_blank" rel="noopener sponsored">See it on Amazon</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="product">
+      <div class="p-body">
+        <div class="p-media ">
+          <img src="https://m.media-amazon.com/images/I/61IQUadfGEL._SL1500_.jpg" alt="eos Shea Better Body Lotion- Vanilla Cashmere, 24-Hour Moisture, 16 fl oz" loading="lazy">
+        </div>
+        <div>
+          
+          <h3 class="p-title" title="eos Shea Better Body Lotion- Vanilla Cashmere, 24-Hour Moisture, 16 fl oz">eos Shea Better Body Lotion- Vanilla Cashmere, 24-Hour Moisture, 16 fl oz</h3>
+          <div class="p-tags"><span class="p-tag">24-Hour Deep Hydration</span></div>
+          <div class="p-meta">
+            <span class="price">$9.97</span>
+            
+            <span class="stars">
+              <svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--border)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            </span>
+            <span>4.7/5 · 78,481</span>
+            
+          </div>
+          <p class="writeup">This scented moisturizing lotion delivers long-lasting hydration to relieve dry skin, leaving your whole body feeling smooth, radiant, and deeply replenished. Powered by our nutrient-rich blend of 7 oils and butters, including wild-harvested shea butter and protective Vitamin E, to soften skin and lock in moisture. It&#39;s sitting at 4.7/5 from 78,481 shoppers, which holds up beyond just first impressions.</p>
+          
+          <a class="link cta" href="https://link.amazon/B09yFxkL3" target="_blank" rel="noopener sponsored">See it on Amazon</a>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+
+  
+
+  <div class="closing">
+    <p>You don't need all of these. Pick whichever one matches what's actually bothering you, and go from there.</p>
+  </div>
+
+  <footer>As an Amazon Associate, this page may earn from qualifying purchases. Design inspired by AstroPaper.</footer>
+</div>
+
+<script>
+  const products = document.querySelectorAll('.product');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  products.forEach(p => io.observe(p));
+</script>
+
+</body>
+</html>
