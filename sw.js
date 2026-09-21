@@ -1,6 +1,19 @@
-self.options = {
-    "domain": "5gvci.com",
-    "zoneId": 11782339
-}
-self.lary = ""
-importScripts('https://5gvci.com/act/files/service-worker.min.js?r=sw')
+// Kill switch: this replaces the old ad-network service worker.
+// It clears any caches that worker created, unregisters itself,
+// and hands control back to a normal, cache-free page load.
+
+self.addEventListener('install', () => {
+  self.skipWaiting();
+});
+
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys()
+      .then((keys) => Promise.all(keys.map((key) => caches.delete(key))))
+      .then(() => self.registration.unregister())
+      .then(() => self.clients.matchAll())
+      .then((clients) => {
+        clients.forEach((client) => client.navigate(client.url));
+      })
+  );
+});
