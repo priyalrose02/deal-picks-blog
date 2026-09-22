@@ -425,7 +425,6 @@
   var REPO_NAME  = 'deal-picks-blog';
   var POSTS_PATH = 'blog/posts';
   var BRANCH     = 'main';
-  var IMAGE_EXT  = /\.(png|jpe?g|webp|gif)$/i;
   // --------------------------------------------------------------------
 
   var BLURBS = {
@@ -463,7 +462,7 @@
     });
   }
 
-  function buildCard(folder, index, imagePath){
+  function buildCard(folder, index, imageUrl){
     var key = folder.toLowerCase();
     var title = titleCase(folder);
     var blurb = BLURBS[key] || ("Curated finds for " + title.toLowerCase() + ".");
@@ -471,11 +470,9 @@
     var href = "/blog/posts/" + encodeURIComponent(folder) + "/";
 
     var thumbHtml;
-    if (imagePath){
-      var imgUrl = 'https://raw.githubusercontent.com/' + REPO_OWNER + '/' + REPO_NAME + '/' + BRANCH + '/' +
-        imagePath.split('/').map(encodeURIComponent).join('/');
+    if (imageUrl){
       thumbHtml = '<div class="thumb" style="background:' + color + '">' +
-        '<img src="' + imgUrl + '" alt="' + title + '" loading="lazy" onerror="this.parentElement.removeChild(this)">' +
+        '<img src="' + imageUrl + '" alt="' + title + '" loading="lazy" onerror="this.parentElement.removeChild(this)">' +
         '</div>';
     } else {
       thumbHtml = '<div class="thumb" style="background:' + color + '"></div>';
@@ -494,8 +491,26 @@
     return a;
   }
 
-  // One call fetches the whole repo file tree, so we can find each post's
-  // folder AND the first image inside it without a separate request per post.
+  // Pulls the first product image straight out of a post's HTML
+  // (posts embed images as <img src="https://m.media-amazon.com/..."> —
+  // there are no separate image files committed to the repo).
+  function extractFirstImage(html){
+    var m = html.match(/<img[^>]+src=["']([^"']+)["']/i);
+    return m ? m[1] : null;
+  }
+
+  function fetchPostImage(folder){
+    var path = POSTS_PATH + '/' + folder + '/index.html';
+    var rawUrl = 'https://raw.githubusercontent.com/' + REPO_OWNER + '/' + REPO_NAME + '/' + BRANCH + '/' +
+      path.split('/').map(encodeURIComponent).join('/');
+    return fetch(rawUrl)
+      .then(function(res){ return res.ok ? res.text() : null; })
+      .then(function(html){ return html ? extractFirstImage(html) : null; })
+      .catch(function(){ return null; });
+  }
+
+  // One call gets the whole repo's folder structure so we know every post,
+  // however it's named (slugged or spaced/capitalized).
   var treeUrl = 'https://api.github.com/repos/' + REPO_OWNER + '/' + REPO_NAME + '/git/trees/' + BRANCH + '?recursive=1';
 
   fetch(treeUrl)
@@ -505,7 +520,6 @@
     })
     .then(function(data){
       var tree = data.tree || [];
-      var prefix = POSTS_PATH + '/';
 
       // Top-level post folders: tree entries of the form "blog/posts/<folder>"
       var folderRe = new RegExp('^' + POSTS_PATH.replace(/\//g, '\\/') + '\\/([^\\/]+)$');
@@ -516,21 +530,13 @@
 
       if (!folders.length) return;
 
-      // First image file found inside each post folder (any nesting level within it)
-      function findImage(folder){
-        var folderPrefix = prefix + folder + '/';
-        var match = tree.find(function(item){
-          return item.type === 'blob' &&
-            item.path.indexOf(folderPrefix) === 0 &&
-            IMAGE_EXT.test(item.path);
+      // Fetch every post's page in parallel and pull its first image out
+      return Promise.all(folders.map(fetchPostImage)).then(function(images){
+        var grid = document.getElementById('categoryGrid');
+        grid.innerHTML = '';
+        folders.forEach(function(folder, idx){
+          grid.appendChild(buildCard(folder, idx, images[idx]));
         });
-        return match ? match.path : null;
-      }
-
-      var grid = document.getElementById('categoryGrid');
-      grid.innerHTML = '';
-      folders.forEach(function(folder, idx){
-        grid.appendChild(buildCard(folder, idx, findImage(folder)));
       });
     })
     .catch(function(err){
