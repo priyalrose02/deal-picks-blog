@@ -17,6 +17,8 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9404379221390219"
      crossorigin="anonymous"></script>
 
+<!-- Monetag -->
+<script src="https://quge5.com/88/tag.min.js" data-zone="279435" async data-cfasync="false"></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -140,7 +142,8 @@
     display:flex; flex-direction:column; transition: box-shadow .15s ease;
   }
   .card:hover{ box-shadow: 0 8px 20px rgba(13,14,22,0.08); }
-  .card .thumb{ aspect-ratio: 7/8; }
+  .card .thumb{ aspect-ratio: 7/8; overflow: hidden; }
+  .card .thumb img{ width: 100%; height: 100%; object-fit: cover; display: block; }
   .card .body{ padding: 18px; }
   .card h3{ font-size: 1.02rem; margin-bottom: 6px; }
   .card p{ font-size: 0.86rem; color: var(--ink-soft); margin: 0 0 10px; }
@@ -210,7 +213,7 @@
     <nav>
       <ul>
         <li><a href="#categories">Categories</a></li>
-       <li><a href="/digitalproducts/">Digital Products</a></li>
+        <li><a href="/digitalproducts/">Digital Products</a></li>
         <li><a href="/about/">About</a></li>
         <li><a href="/contact/">Contact</a></li>
         <li><a href="https://www.pinterest.com/priyalrose02/" target="_blank" rel="noopener">Pinterest</a></li>
@@ -421,6 +424,8 @@
   var REPO_OWNER = 'priyalrose02';
   var REPO_NAME  = 'deal-picks-blog';
   var POSTS_PATH = 'blog/posts';
+  var BRANCH     = 'main';
+  var IMAGE_EXT  = /\.(png|jpe?g|webp|gif)$/i;
   // --------------------------------------------------------------------
 
   var BLURBS = {
@@ -458,18 +463,29 @@
     });
   }
 
-  function buildCard(folder, index){
+  function buildCard(folder, index, imagePath){
     var key = folder.toLowerCase();
     var title = titleCase(folder);
     var blurb = BLURBS[key] || ("Curated finds for " + title.toLowerCase() + ".");
     var color = COLORS[index % COLORS.length];
     var href = "/blog/posts/" + encodeURIComponent(folder) + "/";
 
+    var thumbHtml;
+    if (imagePath){
+      var imgUrl = 'https://raw.githubusercontent.com/' + REPO_OWNER + '/' + REPO_NAME + '/' + BRANCH + '/' +
+        imagePath.split('/').map(encodeURIComponent).join('/');
+      thumbHtml = '<div class="thumb" style="background:' + color + '">' +
+        '<img src="' + imgUrl + '" alt="' + title + '" loading="lazy" onerror="this.parentElement.removeChild(this)">' +
+        '</div>';
+    } else {
+      thumbHtml = '<div class="thumb" style="background:' + color + '"></div>';
+    }
+
     var a = document.createElement('a');
     a.className = 'card';
     a.href = href;
     a.innerHTML =
-      '<div class="thumb" style="background:' + color + '"></div>' +
+      thumbHtml +
       '<div class="body">' +
         '<h3>' + title + '</h3>' +
         '<p>' + blurb + '</p>' +
@@ -478,25 +494,43 @@
     return a;
   }
 
-  var apiUrl = 'https://api.github.com/repos/' + REPO_OWNER + '/' + REPO_NAME + '/contents/' + POSTS_PATH;
+  // One call fetches the whole repo file tree, so we can find each post's
+  // folder AND the first image inside it without a separate request per post.
+  var treeUrl = 'https://api.github.com/repos/' + REPO_OWNER + '/' + REPO_NAME + '/git/trees/' + BRANCH + '?recursive=1';
 
-  fetch(apiUrl)
+  fetch(treeUrl)
     .then(function(res){
       if (!res.ok) throw new Error('GitHub API returned ' + res.status);
       return res.json();
     })
-    .then(function(items){
-      var folders = items
-        .filter(function(item){ return item.type === 'dir'; })
-        .map(function(item){ return item.name; })
+    .then(function(data){
+      var tree = data.tree || [];
+      var prefix = POSTS_PATH + '/';
+
+      // Top-level post folders: tree entries of the form "blog/posts/<folder>"
+      var folderRe = new RegExp('^' + POSTS_PATH.replace(/\//g, '\\/') + '\\/([^\\/]+)$');
+      var folders = tree
+        .filter(function(item){ return item.type === 'tree' && folderRe.test(item.path); })
+        .map(function(item){ return item.path.match(folderRe)[1]; })
         .sort(function(a, b){ return a.localeCompare(b); });
 
       if (!folders.length) return;
 
+      // First image file found inside each post folder (any nesting level within it)
+      function findImage(folder){
+        var folderPrefix = prefix + folder + '/';
+        var match = tree.find(function(item){
+          return item.type === 'blob' &&
+            item.path.indexOf(folderPrefix) === 0 &&
+            IMAGE_EXT.test(item.path);
+        });
+        return match ? match.path : null;
+      }
+
       var grid = document.getElementById('categoryGrid');
       grid.innerHTML = '';
       folders.forEach(function(folder, idx){
-        grid.appendChild(buildCard(folder, idx));
+        grid.appendChild(buildCard(folder, idx, findImage(folder)));
       });
     })
     .catch(function(err){
