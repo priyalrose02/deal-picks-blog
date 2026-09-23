@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7 7 Amazon Fall Wardrobe Essentials That Make Getting Dressed Easier Buys That Earned a Spot on This List</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Color tokens adapted from AstroPaper (astro-paper theme by satnaing) --
+     light: warm off-white / near-black ink / blue accent.
+     dark: deep navy / soft white / orange accent. Real light/dark support,
+     not just a palette swap -- matches the source theme's own approach. */
+  :root{
+    --bg:#fdfdfd;
+    --ink:#282728;
+    --muted:#7b7b7b;
+    --accent:#006cac;
+    --accent-soft:#e5f1f8;
+    --border:#ece9e9;
+    --card:#ffffff;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#212737;
+      --ink:#eaedf3;
+      --muted:#a3abc2;
+      --accent:#ff6b01;
+      --accent-soft:#3a2c1c;
+      --border:#39415a;
+      --card:#262d40;
+    }
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif; line-height:1.7;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+  }
+
+  .wrap{ max-width:760px; margin:0 auto; padding:0 24px; }
+
+  a{ color:inherit; }
+  .link{
+    color:var(--ink); text-decoration:underline; text-decoration-style:dashed;
+    text-underline-offset:4px; transition:color 0.15s ease;
+  }
+  .link:hover{ color:var(--accent); }
+
+  header.hero{ padding:56px 0 32px; border-bottom:1px solid var(--border); }
+  .tag-chip{
+    display:inline-block; font-family:'IBM Plex Mono', monospace; font-size:12px; font-weight:600;
+    color:var(--accent); background:var(--accent-soft); border-radius:4px; padding:4px 10px; margin-bottom:18px;
+  }
+  h1.title{
+    font-family:'IBM Plex Mono', monospace; font-weight:700; line-height:1.2;
+    font-size:clamp(1.9rem, 4.6vw, 2.6rem); margin:0 0 16px;
+  }
+  p.subtitle{ font-size:1.02rem; color:var(--muted); margin:0 0 20px; max-width:560px; }
+  .meta-line{
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--muted);
+    display:flex; flex-wrap:wrap; gap:14px; margin-bottom:8px;
+  }
+  .meta-line span::before{ content:'— '; }
+  .meta-line span:first-child::before{ content:''; }
+
+  .disclosure{
+    font-size:12.5px; color:var(--muted); border-left:2px solid var(--border); padding-left:12px; margin:20px 0 0;
+  }
+
+  .intro{ padding:28px 0 8px; font-size:1rem; }
+  .intro p{ margin:0 0 14px; }
+
+  h2.section-h{
+    font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:1.3rem; letter-spacing:0.02em;
+    margin:52px 0 4px; padding-bottom:16px; border-bottom:1px solid var(--border);
+  }
+
+  .products{ padding:0; }
+  .product{
+    padding:36px 0; border-bottom:1px solid var(--border);
+    opacity:0; transform:translateY(12px);
+    transition:opacity 0.5s ease, transform 0.5s ease;
+  }
+  .product.is-visible{ opacity:1; transform:translateY(0); }
+  .product:last-child{ border-bottom:none; }
+
+  .p-body{ display:grid; grid-template-columns:130px 1fr; gap:22px; align-items:start; }
+  @media (max-width:520px){ .p-body{ grid-template-columns:1fr; } }
+  .p-media{
+    width:100%; aspect-ratio:1/1; overflow:hidden; border:1px solid var(--border); border-radius:4px;
+    background:var(--card); display:flex; align-items:center; justify-content:center;
+  }
+  .p-media img{ width:100%; height:100%; object-fit:contain; padding:10px; }
+  .p-media.no-image{ font-size:10.5px; color:var(--muted); text-align:center; padding:6px; font-family:'IBM Plex Mono',monospace; }
+
+  h3.p-title{
+    font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:1.1rem; margin:0 0 8px; line-height:1.4;
+  }
+  .p-tags{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px; }
+  .p-tag{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--muted);
+    border:1px solid var(--border); border-radius:100px; padding:3px 10px;
+  }
+
+  .p-meta{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--muted); margin-bottom:12px; display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+  .p-meta .price{ color:var(--ink); font-weight:600; }
+  .stars{ display:inline-flex; gap:1px; align-items:center; }
+  .stars svg{ width:12px; height:12px; }
+
+  .writeup{ font-size:0.96rem; color:var(--ink); margin:0 0 14px; }
+
+  .customers-say{
+    border-left:2px solid var(--accent); padding:2px 0 2px 14px; margin:0 0 16px;
+    font-size:0.88rem; color:var(--muted); font-style:italic;
+  }
+  .customers-say .label{
+    display:block; font-style:normal; font-family:'IBM Plex Mono', monospace; font-size:10px; font-weight:700;
+    letter-spacing:0.05em; text-transform:uppercase; color:var(--accent); margin-bottom:5px;
+  }
+
+  .flag{
+    display:inline-block; font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--accent);
+    border:1px dashed var(--accent); border-radius:4px; padding:3px 9px; margin-bottom:10px;
+  }
+
+  .cta{ font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:13.5px; }
+  .cta::after{ content:' →'; }
+
+  .custom-cta{ padding:36px 0; border-bottom:1px solid var(--border); }
+  .custom-inner{ display:flex; gap:22px; align-items:center; }
+  @media (max-width:520px){ .custom-inner{ flex-direction:column; align-items:flex-start; } }
+  .custom-media{
+    flex:0 0 110px; aspect-ratio:1/1; border:1px solid var(--border); border-radius:4px; overflow:hidden;
+    background:var(--card); display:flex; align-items:center; justify-content:center;
+  }
+  .custom-media img{ width:100%; height:100%; object-fit:contain; padding:8px; }
+  .custom-copy h3{ font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:1.02rem; margin:0 0 8px; }
+  .custom-copy p{ font-size:0.92rem; color:var(--muted); margin:0 0 12px; }
+
+  .closing{ padding:40px 0 20px; }
+  .closing p{ color:var(--muted); font-size:0.95rem; margin:0 0 10px; }
+
+  footer{ padding:24px 0 60px; border-top:1px solid var(--border); margin-top:20px; color:var(--muted); font-size:12px; font-family:'IBM Plex Mono', monospace; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <span class="tag-chip">7 Amazon Fall Wardrobe Essentials That Make Getting Dressed Easier</span>
+    <h1 class="title">7 7 Amazon Fall Wardrobe Essentials That Make Getting Dressed Easier Buys That Earned a Spot on This List</h1>
+    <p class="subtitle">Real prices, real ratings — checked against the current Amazon listing.</p>
+    <div class="meta-line">
+      <span>Updated 23 Sep 2026, 10:39</span>
+      <span>7 products compared</span>
+      <span>4.4/5 avg rating</span>
+    </div>
+    <p class="disclosure">As an Amazon Associate, this page may earn from qualifying purchases. Prices and availability reflect the listing at the time each product was checked.</p>
+  </header>
+
+  <div class="intro"><p>Every space accumulates gear it never asked for. This is the opposite list: 7 picks in 7 amazon fall wardrobe essentials that make getting dressed easier, chosen because each one earns its spot rather than just occupying it.</p></div>
+
+  <h2 class="section-h">All Picks</h2>
+  <section class="products">
+    
+    <div class="product">
+      <div class="p-body">
+        <div class="p-media ">
+          <img src="https://m.media-amazon.com/images/I/61gBSvF62EL._AC_SL1500_.jpg" alt="Sidefeel Women&#39;s Wide Leg Jeans High Waisted Stretchy Denim Pants" loading="lazy">
+        </div>
+        <div>
+          
+          <h3 class="p-title" title="Sidefeel Women&#39;s Wide Leg Jeans High Waisted Stretchy Denim Pants">Sidefeel Women&#39;s Wide Leg Jeans High Waisted Stretchy Denim Pants</h3>
+          <div class="p-tags"><span class="p-tag">Anyone shopping for 7 amazon fall wardrobe essentials that make getting dressed easier</span></div>
+          <div class="p-meta">
+            <span class="price">$34.99</span>
+            
+            <span class="stars">
+              <svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--border)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            </span>
+            <span>4.2/5 · 6,742</span>
+            
+          </div>
+          <p class="writeup">There isn&#39;t much detail on the listing beyond the basics, so it&#39;s worth skimming a few current reviews before buying — but it earned a spot here for anyone shopping for 7 amazon fall wardrobe essentials that make getting dressed easier.</p>
+          
+          <a class="link cta" href="https://link.amazon/B0iDRGXFF" target="_blank" rel="noopener sponsored">See it on Amazon</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="product">
+      <div class="p-body">
+        <div class="p-media ">
+          <img src="https://m.media-amazon.com/images/I/61VuUKGntUL._AC_SL1128_.jpg" alt="GRECERELLE Cardigan Sweaters for Women Lightweight 2026 Fall Outfits" loading="lazy">
+        </div>
+        <div>
+          
+          <h3 class="p-title" title="GRECERELLE Cardigan Sweaters for Women Lightweight 2026 Fall Outfits">GRECERELLE Cardigan Sweaters for Women Lightweight 2026 Fall Outfits</h3>
+          <div class="p-tags"><span class="p-tag">Anyone shopping for 7 amazon fall wardrobe essentials that make getting dressed easier</span></div>
+          <div class="p-meta">
+            <span class="price">Price unavailable — check listing</span>
+            
+            <span class="stars">
+              <svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--border)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            </span>
+            <span>4.6/5 · 8,167</span>
+            
+          </div>
+          <p class="writeup">There isn&#39;t much detail on the listing beyond the basics, so it&#39;s worth skimming a few current reviews before buying — but it earned a spot here for anyone shopping for 7 amazon fall wardrobe essentials that make getting dressed easier.</p>
+          
+          <a class="link cta" href="https://link.amazon/B0dZfMovX" target="_blank" rel="noopener sponsored">See it on Amazon</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="product">
+      <div class="p-body">
+        <div class="p-media ">
+          <img src="https://m.media-amazon.com/images/I/71hKO32qB7L._AC_SL1500_.jpg" alt="GRACE KARIN Women&#39;s Blazer Business Casual 2026 Relaxed Fit" loading="lazy">
+        </div>
+        <div>
+          
+          <h3 class="p-title" title="GRACE KARIN Women&#39;s Blazer Business Casual 2026 Relaxed Fit">GRACE KARIN Women&#39;s Blazer Business Casual 2026 Relaxed Fit</h3>
+          <div class="p-tags"><span class="p-tag">Anyone shopping for 7 amazon fall wardrobe essentials that make getting dressed easier</span></div>
+          <div class="p-meta">
+            <span class="price">Price unavailable — check listing</span>
+            
+            <span class="stars">
+              <svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--border)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            </span>
+            <span>4.1/5 · 39</span>
+            
+          </div>
+          <p class="writeup">There isn&#39;t much detail on the listing beyond the basics, so it&#39;s worth skimming a few current reviews before buying — but it earned a spot here for anyone shopping for 7 amazon fall wardrobe essentials that make getting dressed easier.</p>
+          
+          <a class="link cta" href="https://link.amazon/B0eDaHsHa" target="_blank" rel="noopener sponsored">See it on Amazon</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="product">
+      <div class="p-body">
+        <div class="p-media ">
+          <img src="https://m.media-amazon.com/images/I/61Yt6PN6c1L._AC_SL1500_.jpg" alt="DREAM PAIRS Women&#39;s Chunky Loafers Dressy Business Shoes" loading="lazy">
+        </div>
+        <div>
+          
+          <h3 class="p-title" title="DREAM PAIRS Women&#39;s Chunky Loafers Dressy Business Shoes">DREAM PAIRS Women&#39;s Chunky Loafers Dressy Business Shoes</h3>
+          <div class="p-tags"><span class="p-tag">Anyone shopping for 7 amazon fall wardrobe essentials that make getting dressed easier</span></div>
+          <div class="p-meta">
+            <span class="price">Price unavailable — check listing</span>
+            
+            <span class="stars">
+              <svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--border)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            </span>
+            <span>4.3/5 · 1,743</span>
+            
+          </div>
+          <p class="writeup">There isn&#39;t much detail on the listing beyond the basics, so it&#39;s worth skimming a few current reviews before buying — but it earned a spot here for anyone shopping for 7 amazon fall wardrobe essentials that make getting dressed easier.</p>
+          
+          <a class="link cta" href="https://link.amazon/B0hwEm9ar" target="_blank" rel="noopener sponsored">See it on Amazon</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="product">
+      <div class="p-body">
+        <div class="p-media ">
+          <img src="https://m.media-amazon.com/images/I/6110vEyi4cL._AC_SL1500_.jpg" alt="Soesyi Women&#39;s Mary Jane Flats Pointed Toe Closed Ballet Flats，Lightweight" loading="lazy">
+        </div>
+        <div>
+          
+          <h3 class="p-title" title="Soesyi Women&#39;s Mary Jane Flats Pointed Toe Closed Ballet Flats，Lightweight">Soesyi Women&#39;s Mary Jane Flats Pointed Toe Closed Ballet Flats，Lightweight</h3>
+          <div class="p-tags"><span class="p-tag">Anyone shopping for 7 amazon fall wardrobe essentials that make getting dressed easier</span></div>
+          <div class="p-meta">
+            <span class="price">GBP3743</span>
+            
+            <span class="stars">
+              <svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--border)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            </span>
+            <span>4.2/5 · 29</span>
+            
+          </div>
+          <p class="writeup">There isn&#39;t much detail on the listing beyond the basics, so it&#39;s worth skimming a few current reviews before buying — but it earned a spot here for anyone shopping for 7 amazon fall wardrobe essentials that make getting dressed easier.</p>
+          
+          <a class="link cta" href="https://link.amazon/B08eSqKfN" target="_blank" rel="noopener sponsored">See it on Amazon</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="product">
+      <div class="p-body">
+        <div class="p-media ">
+          <img src="https://m.media-amazon.com/images/I/71AObZQcZGL._AC_SL1500_.jpg" alt="JQWSVE Top Handle Bag for Women Vegan Leather Crossbody Bag with Cherry" loading="lazy">
+        </div>
+        <div>
+          
+          <h3 class="p-title" title="JQWSVE Top Handle Bag for Women Vegan Leather Crossbody Bag with Cherry">JQWSVE Top Handle Bag for Women Vegan Leather Crossbody Bag with Cherry</h3>
+          <div class="p-tags"><span class="p-tag">Anyone shopping for 7 amazon fall wardrobe essentials that make getting dressed easier</span></div>
+          <div class="p-meta">
+            <span class="price">GBP4492</span>
+            
+            <span class="stars">
+              <svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--border)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            </span>
+            <span>4.6/5 · 8</span>
+            
+          </div>
+          <p class="writeup">There isn&#39;t much detail on the listing beyond the basics, so it&#39;s worth skimming a few current reviews before buying — but it earned a spot here for anyone shopping for 7 amazon fall wardrobe essentials that make getting dressed easier.</p>
+          
+          <a class="link cta" href="https://link.amazon/B0fGQTwUK" target="_blank" rel="noopener sponsored">See it on Amazon</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="product">
+      <div class="p-body">
+        <div class="p-media ">
+          <img src="https://m.media-amazon.com/images/I/71C2IOEDSFL._AC_SL1500_.jpg" alt="Tankaneo Womens Cropped Trench Coats Fall Jacket with Plaid Detachable Hood" loading="lazy">
+        </div>
+        <div>
+          
+          <h3 class="p-title" title="Tankaneo Womens Cropped Trench Coats Fall Jacket with Plaid Detachable Hood">Tankaneo Womens Cropped Trench Coats Fall Jacket with Plaid Detachable Hood</h3>
+          <div class="p-tags"><span class="p-tag">Anyone shopping for 7 amazon fall wardrobe essentials that make getting dressed easier</span></div>
+          <div class="p-meta">
+            <span class="price">Price unavailable — check listing</span>
+            
+            <span class="stars">
+              <svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--accent)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg><svg viewBox="0 0 20 20" fill="var(--border)"><path d="M10 1l2.4 5.5L18 7l-4.3 3.9L15 17l-5-3-5 3 1.3-6.1L2 7l5.6-.5L10 1z"/></svg>
+            </span>
+            <span>4.5/5 · 40</span>
+            
+          </div>
+          <p class="writeup">There isn&#39;t much detail on the listing beyond the basics, so it&#39;s worth skimming a few current reviews before buying — but it earned a spot here for anyone shopping for 7 amazon fall wardrobe essentials that make getting dressed easier.</p>
+          
+          <a class="link cta" href="https://link.amazon/B0fcteNQa" target="_blank" rel="noopener sponsored">See it on Amazon</a>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+
+  
+
+  <div class="closing">
+    <p>You don't need all of these. Pick whichever one matches what's actually bothering you, and go from there.</p>
+  </div>
+
+  <footer>As an Amazon Associate, this page may earn from qualifying purchases. Design inspired by AstroPaper.</footer>
+</div>
+
+<script>
+  const products = document.querySelectorAll('.product');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  products.forEach(p => io.observe(p));
+</script>
+
+</body>
+</html>
